@@ -1,17 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import * as Styled from "./App.styled.js";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import Header from "./components/Header/Header";
-import Content from "./components/Content/Content.js";
-import Footer from "./components/Footer/Footer";
+import Navbar from "./components/Navbar/Navbar";
+import GameWindow from "./components/Content/GameWindow.js";
+import StartWindow from "./components/Content/StartWindow.js";
 
 const App = () => {
+   const [startWindow, setStartWindow] = useState(true)
+   const startWindowHandler = () => {
+      console.log('from app js')
+      setStartWindow(prevState => !prevState)
+   }
+
    return (
       <Styled.App className="App">
-         <Header></Header>
-         <Content></Content>
-         <Footer></Footer>
+         <Navbar></Navbar>
+         {startWindow ? <StartWindow windowHandler={startWindowHandler}/> : <GameWindow></GameWindow>}
       </Styled.App>
    );
 };
