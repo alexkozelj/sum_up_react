@@ -16,7 +16,7 @@ const App = () => {
    return (
       <Styled.App className="App">
          <Navbar></Navbar>
-         {startWindow ? <StartWindow windowHandler={startWindowHandler}/> : <GameWindow></GameWindow>}
+         {startWindow ? <StartWindow windowHandler={startWindowHandler}/> : <GameWindow/>}
       </Styled.App>
    );
 };

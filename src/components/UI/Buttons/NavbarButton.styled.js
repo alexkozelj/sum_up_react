@@ -15,7 +15,7 @@ export const NavbarButton = styled.div`
       
    }
 
-   @media (max-width: 400px) {
+   @media (max-width: 440px), (max-height: 430px) {
       a  {
          font-size: 0.8em
       }

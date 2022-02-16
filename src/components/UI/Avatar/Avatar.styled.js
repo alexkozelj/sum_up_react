@@ -20,8 +20,9 @@ export const Avatar = styled.div`
    .wrapper {
       display: flex;
       /* position: relative; */
-      max-width: 50%;
+      /* max-width: 50%; */
       max-height: 50%;
+      /* min-width: 45%; */
       justify-content: center;
       /* max-width: 100px; */
       /* height: 100px; */
