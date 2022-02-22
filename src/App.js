@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import * as Styled from "./App.styled.js";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import Navbar from "./components/Navbar/Navbar";
+import GameWindow from "./components/Content/GameWindow.js";
+import StartWindow from "./components/Content/StartWindow.js";
+
+const App = () => {
+   const [startWindow, setStartWindow] = useState(true)
+   const startWindowHandler = () => {
+      console.log('from app js')
+      setStartWindow(prevState => !prevState)
+   }
+
+   return (
+      <Styled.App className="App">
+         <Navbar></Navbar>
+         {startWindow ? <StartWindow windowHandler={startWindowHandler}/> : <GameWindow/>}
+      </Styled.App>
+   );
+};
 
 export default App;
