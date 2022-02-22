@@ -28,7 +28,7 @@ const GameWindow = () => {
 
             <div className={'playerField'}>
                <Card symbol={'hearts'} value={'2'} />
-               <Card symbol={'hearts'} value={'4'} />
+               <Card symbol={'spades'} value={'4'} />
                <Card symbol={'hearts'} value={'5'} />
                <Card symbol={'hearts'} value={'10'} />
                <Card symbol={'hearts'} value={'8'} />

@@ -1,5 +1,5 @@
 import * as Styled from "./Card.styled.js";
-import J_Diamonds from './../../../images/J-diamonds-full.png'
+import J_Diamonds from './../../../images/J-diamonds-full-min.png'
 
 const Card = (props) => {
 
@@ -26,9 +26,17 @@ const Card = (props) => {
       <Styled.Card>
          <section className={"card card--" + props.symbol} value={props.value}>
             <div className="corner_wrapper_top">
-               <div className={"corner_value_top"}>{props.value}</div>
-               <div className={"corner_symbol_top"}>{setSymbolHandler(props.symbol)}</div>
+               <div className={"corner_value_top " + props.symbol}>{props.value}</div>
+               <div className={"corner_symbol_top " + props.symbol}>{setSymbolHandler(props.symbol)}</div>
             </div>
+
+            {props.value === 'A' &&
+               <div className="card__inner card__inner--centered">
+                  <div style={{fontSize:30}}>
+                     {cardSymbol}
+                  </div>
+               </div>
+            }
 
             {props.value === '2' &&
                <div className="card__inner card__inner--centered">
@@ -172,14 +180,6 @@ const Card = (props) => {
                </div>
             }
 
-            {props.value === 'A' &&
-               <div className="card__inner card__inner--centered">
-                  <div className="card__column--img">
-                     {cardSymbol}
-                  </div>
-               </div>
-            }
-
             {props.value === 'J' &&
                <div className="card__inner card__inner--centered">
                   <div className="card__column--img">
@@ -189,8 +189,8 @@ const Card = (props) => {
             }
 
             <div className="corner_wrapper_bottom">
-               <div className={"corner_symbol--bottom"}>{setSymbolHandler(props.symbol)}</div>
-               <div className={"corner_value--bottom"}>{props.value}</div>
+               <div className={"corner_symbol--bottom " + props.symbol}>{setSymbolHandler(props.symbol)}</div>
+               <div className={"corner_value--bottom " + props.symbol}>{props.value}</div>
             </div>
          </section>
 

@@ -22,11 +22,12 @@ const spade = ' ♠';
 export const Card = styled.div`
 
    display: flex;
-   width: 100%;
-	height: auto;
-   padding: 0.5em;
+   width: 80px;
+   height: 120px;
+   padding:  0.6em 0.4em;
 	margin: 5px;
-	border-radius: 0.5em;
+	border-radius: 0.6em;
+   /* border: 1px solid black; */
 	background-color: ${cardBackground};
 	box-shadow: 4px 5px 5px rgba(0, 0, 0, 0.38);
    font: ${fontSize} 'Trebuchet MS';
@@ -41,6 +42,7 @@ export const Card = styled.div`
       height: 75px;
       padding: 0.6em 0.4em;
       margin: 1vw;
+      border-radius: 0.5em;
          
    }
 	
@@ -69,8 +71,9 @@ export const Card = styled.div`
       display: flex;
       flex-direction: column;
       align-self: flex-start;
-      font-size: 1.5em;
-      color: red;
+      font-size: 1.2em;
+      
+      /* color: red; */
 
       > div {
          align-self: flex-start;
@@ -78,7 +81,7 @@ export const Card = styled.div`
 
       .corner_value_top {
          /* background-color: pink; */
-      
+         line-height: 12px;
 
          @media (max-width: 480px) {
             
@@ -98,18 +101,22 @@ export const Card = styled.div`
    }
 
    .corner_wrapper_bottom {
-      /* {fluidTypo(8, 10, 40, 40)} */
-      font-size: ${props => {
+      
+      /* font-size: {props => {
          return fluidCalc(14, 40, 480, 1440)
-      }};
-
+      }}; */
+      font-size: 1.2em;
       align-self: flex-end;
-      color: red;
-      /* font-size: 1.5em; */
-      > div {
-         /* height: 100%; */
-         transform: rotate(180deg)
-      }
+      /* color: red; */
+      
+         > div {
+            transform: rotate(180deg)
+         }
+      
+         .corner_value--bottom {
+            line-height: 12px;
+         }
+
       @media (max-width: 480px) {
          height: 0;
          display: none;
@@ -121,9 +128,9 @@ export const Card = styled.div`
 .card__inner {
 	box-sizing: border-box;
 	/* position: absolute; */
+	display: flex;
    width: 100%;
    height: 100%;
-	display: flex;
    /* width: 100%; */
 	justify-content: center;
    align-items: center;
@@ -145,14 +152,16 @@ export const Card = styled.div`
 .card__column {
 	display: flex;
 	flex-direction: column;
-   width: 30%;
+   width: 20%;
    height: 90%;
 	justify-content: space-around;
-   /* align-items: center; */
+   align-items: center;
 	
    
    @media (max-width: 480px) {
          
+      width: 30%;
+      justify-content: space-around;
       /* max-height: 80px; */
          
    }
@@ -167,6 +176,8 @@ export const Card = styled.div`
    /* margin: 5px; */
 	/* height:  */
    /* width: ; */
+   font-size: 13px;
+   line-height: 12px;
 	text-align: center;
 
    @media (max-width: 480px) {
@@ -190,14 +201,18 @@ export const Card = styled.div`
 
 .card__column--img {
    display: flex;
+   position: absolute;
    justify-content: center;
    align-items: center;
    width: 100%;
    height: 100%;
    
    
+   /* overflow: visible; */
+   
+   
    @media (max-width: 480px) {
-         
+      top: 11px;
       /* max-height: 80px; */
          
    }
@@ -205,7 +220,9 @@ export const Card = styled.div`
    img {
       /* height: auto; */
       align-self: center;
-      
+      max-width: 78%;
+      height: auto;
+      /* overflow: visible !important; */
       /* max-width: 100%;
       max-height: 100%; */
       padding: 2px;
@@ -213,6 +230,7 @@ export const Card = styled.div`
       @media (max-width: 480px) {
          max-width: 68%;
          padding: 0;
+         margin-left: 3px;
          /* max-height: 100%; */
             
       }
