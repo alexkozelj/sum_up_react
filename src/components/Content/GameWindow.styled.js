@@ -42,26 +42,25 @@ export const GameWindow = styled.div`
     height: 20%;
   }
 
-   .playground {
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
-      height: 60%;
-      
-      .tableCardsWrapper {
-         width: 75%;
-         height: 100%;
-         border: 2px solid red;
-      }
+  .playground {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 60%;
 
-      .scoreWrapper {
-         width: 25%;
-         height: 90%;
-         border: 2px solid red;
-      }
+    .tableCardsWrapper {
+      width: 75%;
+      height: 100%;
+      border: 2px solid red;
+    }
 
-   }
+    .scoreWrapper {
+      width: 25%;
+      height: 90%;
+      border: 2px solid red;
+    }
+  }
 
   .playerField {
     display: flex;
@@ -69,5 +68,62 @@ export const GameWindow = styled.div`
     justify-content: center;
     align-items: center;
     height: 20%;
+  }
+
+  .opponentCardsWrapper {
+     display: flex;
+     width: 170px;
+     /* position: flex; */
+     top: 15px;
+     left: 0;
+  }
+
+
+  .opponentCard-1 {
+    position: absolute;
+    top: 80px;
+    left: 15px;
+    transform: rotate(-20deg);
+    z-index: 100;
+  }
+
+  .opponentCard-2 {
+    position: absolute;
+    top: 72px;
+    left: 25px;
+    transform: rotate(-13deg);
+    z-index: 100;
+  }
+
+  .opponentCard-3 {
+    position: absolute;
+    top: 66px;
+    left: 40px;
+    transform: rotate(-5deg);
+    z-index: 100;
+  }
+
+  .opponentCard-4 {
+    position: absolute;
+    top: 66px;
+    left: 55px;
+    transform: rotate(5deg);
+    z-index: 100;
+  }
+
+  .opponentCard-5 {
+    position: absolute;
+    top: 72px;
+    left: 70px;
+    transform: rotate(13deg);
+    z-index: 100;
+  }
+
+  .opponentCard-6 {
+    position: absolute;
+    top: 80px;
+    left: 80px;
+    transform: rotate(20deg);
+    z-index: 100;
   }
 `;

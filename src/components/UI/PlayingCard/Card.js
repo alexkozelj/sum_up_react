@@ -1,5 +1,6 @@
 import * as Styled from "./Card.styled.js";
-import J_Diamonds from './../../../images/J-diamonds-full-min.png'
+import J_Diamonds from './../../../images/Cards/J-diamonds-min.png'
+import Q_Spades from './../../../images/Cards/Q-spades-min.png'
 
 const Card = (props) => {
 
@@ -183,8 +184,18 @@ const Card = (props) => {
             {props.value === 'J' &&
                <div className="card__inner card__inner--centered">
                   <div className="card__column--img">
-                     <img src={J_Diamonds} alt={'Jack diamonds card'} />
+                     {/* <img src={J_Diamonds} alt={'Jack diamonds card'} /> */}
+                     <img src={Q_Spades} alt={'Jack diamonds card'} />
                   </div>
+               </div>
+            }
+
+            {!props.value &&
+               <div className="card__inner card__inner--centered">
+                  {/* <div className="card__column--img"> */}
+               
+                     <div className={'back'}></div>
+                  {/* </div> */}
                </div>
             }
 
