@@ -24,7 +24,7 @@ const Card = (props) => {
       </div>
 
    return (
-      <Styled.Card>
+      <Styled.Card className={props.className}>
          <section className={"card card--" + props.symbol} value={props.value}>
             <div className="corner_wrapper_top">
                <div className={"corner_value_top " + props.symbol}>{props.value}</div>

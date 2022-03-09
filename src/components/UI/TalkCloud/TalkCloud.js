@@ -10,7 +10,9 @@ const TalkCloud = (props) => {
                src={talkCloud}
                >
             </img>
-            <div className="opponentMessage">Пробај Лаки!</div>
+            <div className="opponentMessage">
+               <p className={'message1'}>Пробај Лаки!</p>
+            </div>
          </div>
       </Styled.TalkCloud>
    );
