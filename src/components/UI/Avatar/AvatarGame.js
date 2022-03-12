@@ -1,4 +1,4 @@
-import * as Styled from './Avatar.styled.js';
+import * as Styled from './AvatarGame.styled.js';
 import BiliProfilna from './../../../images/bili_profilna_crnobela.jpg'
 
 const Avatar = (props) => {
