@@ -1,24 +1,23 @@
 import styled from "styled-components";
 
-const cardWidth = '60px';
-const cardHeight = '100px';
-const cardHeight_Mobile = '65px';
-const cardWidth_Mobile = '40px';
+const cardWidth = "60px";
+const cardHeight = "100px";
+const cardHeight_Mobile = "65px";
+const cardWidth_Mobile = "40px";
 
-const top_Mobile1 = '12px';
-const top_Mobile2 = '6px';
-const top_Mobile3 = '3px';
-const top_Mobile4 = '3px';
-const top_Mobile5 = '6px';
-const top_Mobile6 = '12px';
+const top_Mobile1 = "12px";
+const top_Mobile2 = "6px";
+const top_Mobile3 = "3px";
+const top_Mobile4 = "3px";
+const top_Mobile5 = "6px";
+const top_Mobile6 = "12px";
 
-const left_Mobile1 = '15px';
-const left_Mobile2 = '22px';
-const left_Mobile3 = '30px';
-const left_Mobile4 = '40px';
-const left_Mobile5 = '50px';
-const left_Mobile6 = '60px';
-
+const left_Mobile1 = "15px";
+const left_Mobile2 = "22px";
+const left_Mobile3 = "30px";
+const left_Mobile4 = "40px";
+const left_Mobile5 = "50px";
+const left_Mobile6 = "60px";
 
 export const GameWindow = styled.div`
   display: flex;
@@ -86,9 +85,38 @@ export const GameWindow = styled.div`
   .playerField {
     display: flex;
     flex-direction: row;
+    height: 18%;
+    width: 100%;
     justify-content: center;
     align-items: center;
-    height: 20%;
+    @media (max-width: 480px) {
+      width: 100%;
+      height: 22%;
+    }
+  }
+
+  .playerFieldCardsWrapper {
+     display: flex;
+     flex-direction: row;
+     justify-content: center;
+     align-items: center;
+     width: 70%;
+     max-width: 950px;
+     margin-right: 30px;
+     @media (max-width: 480px) {
+      width: 100%;
+      margin-right: 0;
+    }
+  }
+
+  .playerFieldBuffer {
+     display: flex;
+     flex-direction: row;
+     width: 30%;
+     max-width: 200px;
+     @media (max-width: 480px) {
+      display: none;
+    }
   }
 
   .opponentAvatarWrapper {
@@ -128,7 +156,7 @@ export const GameWindow = styled.div`
     width: 100%;
     height: 100%;
     /* right: 12px; */
-     /* min-width: 130px; */
+    /* min-width: 130px; */
     /* position: flex; */
     /* top: 15px; */
     /* left: 0; */
