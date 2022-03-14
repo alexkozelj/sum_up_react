@@ -22,8 +22,8 @@ const spade = ' ♠';
 export const Card = styled.div`
 
    display: flex;
-   width: 80px;
-   height: 120px;
+   width: 70px;
+   height: 110px;
    padding: 0.5em;
 	margin: 5px;
 	border-radius: 0.6em;

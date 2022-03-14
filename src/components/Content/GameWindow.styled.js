@@ -62,6 +62,27 @@ export const GameWindow = styled.div`
     height: 20%;
   }
 
+  .opponentFieldContainer {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    width: 70%;
+    max-width: 950px;
+    margin-right: 30px;
+    @media (max-width: 480px) {
+      width: 100%;
+      margin-right: 0;
+    }
+  }
+
+  .opponentFieldBuffer {
+    width: 30%;
+    max-width: 200px;
+    @media (max-width: 480px) {
+      display: none;
+    }
+  }
+
   .playground {
     display: flex;
     flex-direction: row;
@@ -96,33 +117,38 @@ export const GameWindow = styled.div`
   }
 
   .playerFieldCardsWrapper {
-     display: flex;
-     flex-direction: row;
-     justify-content: center;
-     align-items: center;
-     width: 70%;
-     max-width: 950px;
-     margin-right: 30px;
-     @media (max-width: 480px) {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 70%;
+    max-width: 950px;
+    margin-right: 30px;
+    @media (max-width: 480px) {
       width: 100%;
       margin-right: 0;
     }
   }
 
   .playerFieldBuffer {
-     display: flex;
-     flex-direction: row;
-     width: 30%;
-     max-width: 200px;
-     @media (max-width: 480px) {
+    display: flex;
+    flex-direction: row;
+    width: 30%;
+    max-width: 200px;
+    @media (max-width: 480px) {
       display: none;
     }
   }
 
   .opponentAvatarWrapper {
     display: flex;
+    position: relative;
     justify-content: center;
-    align-items: flex-end;
+    align-items: flex-start;
+    width: 65px;
+    @media (max-width: 480px) {
+      width: 55px;
+    }
   }
 
   .opponentTalkCloudWrapper {
@@ -130,23 +156,24 @@ export const GameWindow = styled.div`
     position: relative;
     justify-content: center;
     align-items: flex-start;
-    bottom: 7px;
-    right: 2px;
+    /* bottom: 7px;
+    right: 2px; */
   }
 
   .opponentCardsWrapper {
     /* display: flex; */
     position: relative;
     width: 162px;
-    min-width: 130px;
+    min-width: 120px;
+    height: 120px;
     /* position: flex; */
-    top: 15px;
+    /* top: 15px; */
     left: 0;
 
     @media (max-width: 480px) {
       top: 0;
-      width: 120px;
-      min-width: 120px;
+      width: 110px;
+      /* min-width: 120px; */
     }
   }
 

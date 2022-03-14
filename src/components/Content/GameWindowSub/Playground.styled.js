@@ -44,8 +44,8 @@ export const Playground = styled.div`
     width: 60px;
     height: 100px;
     @media (max-width: 440px) {
-       width: 35px;
-       height: 60px;
+      width: 35px;
+      height: 60px;
     }
   }
 
@@ -58,7 +58,7 @@ export const Playground = styled.div`
     padding: 5px 0;
     justify-content: center;
     align-items: center;
-    align-self: center;    
+    align-self: center;
     border: 2px solid white;
     border-radius: 15px;
     box-shadow: 2px 3px 10px black, 0 0 125px #7ca385 inset;
@@ -82,8 +82,8 @@ export const Playground = styled.div`
     border: 0.5px solid white;
     margin: 0 0 20px 0;
     @media (max-width: 440px) {
-       height: 85px;
-       margin: 0 0 5px 0;
+      height: 85px;
+      margin: 0 0 5px 0;
     }
   }
 
@@ -95,8 +95,8 @@ export const Playground = styled.div`
     border-radius: 15px 15px 0 0;
     border: 0.5px solid white;
     @media (max-width: 440px) {
-       font-size: 12px;
-       padding: 5px 0;
+      font-size: 12px;
+      padding: 5px 0;
     }
   }
 
@@ -129,9 +129,9 @@ export const Playground = styled.div`
     /* padding: 15px; */
     align-items: center;
     @media (max-width: 440px) {
-       height: 193px;
-       /* padding-bottom: 10px; */
-       /* max-height: 210px; */
+      height: 193px;
+      /* padding-bottom: 10px; */
+      /* max-height: 210px; */
     }
   }
 
@@ -143,7 +143,7 @@ export const Playground = styled.div`
     border-radius: 11px 11px 0 0;
     border: 0.5px solid white;
     @media (max-width: 440px) {
-       padding: 5px;
+      padding: 5px;
       font-size: 12px;
     }
   }
@@ -197,37 +197,37 @@ export const Playground = styled.div`
 
   .opponentName,
   .playerName {
-     width: 100%;
-     font-size: 16px;
-     font-weight: bold;
-     border-bottom: 1px solid grey;
-     padding: 10px;
-     @media (max-width: 440px) {
-        padding: 5px;
-        font-size: 11px;
-        padding: 2px;
+    width: 100%;
+    font-size: 16px;
+    font-weight: bold;
+    border-bottom: 1px solid grey;
+    padding: 10px;
+    @media (max-width: 440px) {
+      padding: 5px;
+      font-size: 11px;
+      padding: 2px;
       /* color: green; */
     }
   }
 
   .opponentScore,
   .playerScore {
-     font-size: 18px;
-     padding: 5px;
-   @media (max-width: 440px) {
+    font-size: 18px;
+    padding: 5px;
+    @media (max-width: 440px) {
       font-size: 14px;
     }
   }
 
   .tablaWrapper {
-     padding: 0 0 5px 0;
+    padding: 0 0 5px 0;
   }
 
   .tabla {
+    position: relative;
     height: max-content;
     width: 100%;
     @media (max-width: 440px) {
-      
       height: 15px;
       font-size: 8px;
       text-align: center;
@@ -236,51 +236,50 @@ export const Playground = styled.div`
 
   .tablaCross {
     position: absolute;
-    /* left: 2px;
-    bottom: 3px; */
-    transform: rotate(15deg);
+    left: -4px;
+    bottom: 5px;
+    transform: rotate(-15deg);
     @media (max-width: 440px) {
-       left: 2px;
-       bottom: 15px;
+      left: -2px;
+      bottom: 6px;
     }
   }
 
   .cardsSum {
-     padding: 0 0 10px 0;
-     font-style: italic;
-     font-size: 13px;
-     @media (max-width: 440px) {
-        font-size: 9px;
-        font-style: italic;
-        padding: 0 0 5px 0;
+    padding: 0 0 10px 0;
+    font-style: italic;
+    font-size: 13px;
+    @media (max-width: 440px) {
+      font-size: 9px;
+      font-style: italic;
+      padding: 0 0 5px 0;
     }
   }
 
   .sumTitle {
-     font-style: italic;
-     font-size: 13px;
+    font-style: italic;
+    font-size: 13px;
 
     @media (max-width: 440px) {
       font-size: 9px;
-      
     }
   }
 
   .overallResultWrapper {
-     width: 95%;
-     background-color: #f9e3a0e6;
-     padding: 15px 1px;
-     font-weight: bold;
-     border-bottom: 1px solid grey;
-     @media (max-width: 440px) {
-       padding: 5px 1px;
+    width: 95%;
+    background-color: #f9e3a0e6;
+    padding: 15px 1px;
+    font-weight: bold;
+    border-bottom: 1px solid grey;
+    @media (max-width: 440px) {
+      padding: 5px 1px;
     }
   }
 
   .overallResult {
-     width: 100%;
-     @media (max-width: 440px) {
-       font-size: 8px;
+    width: 100%;
+    @media (max-width: 440px) {
+      font-size: 8px;
     }
   }
 
@@ -292,8 +291,7 @@ export const Playground = styled.div`
     border-bottom: 1px solid grey;
     width: 95%;
     @media (max-width: 440px) {
-       font-size: 8px;
-       
+      font-size: 8px;
     }
   }
 
@@ -305,15 +303,14 @@ export const Playground = styled.div`
 
   .totalResultOpponent,
   .totalResultPlayer {
-     background-color: #f9e3a0e6;
-     width: 100%;
-     padding:10px 0;
-     font-size: 16px;
-     font-weight: bold;
-     @media (max-width: 440px) {
-      
-        padding: 3px 0;
-       font-size: 12px;
+    background-color: #f9e3a0e6;
+    width: 100%;
+    padding: 10px 0;
+    font-size: 16px;
+    font-weight: bold;
+    @media (max-width: 440px) {
+      padding: 3px 0;
+      font-size: 12px;
     }
   }
 `;

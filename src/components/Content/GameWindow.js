@@ -13,36 +13,37 @@ const GameWindow = () => {
          <div className={'gameWindowWrapper'}>
 
             <div className={'opponentField'}>
-               <div className={'opponentCardsWrapper'}>
-                  <div className={'opponentCardsPositioner'}>
-                     <div className={'opponentCard-1'}>
-                        <Card className={'backCard-1'} />
-                     </div>
-                     <div className={'opponentCard-2'}>
-                        <Card className={'backCard-2'} />
-                     </div>
-                     <div className={'opponentCard-3'}>
-                        <Card className={'backCard-3'} />
-                     </div>
-                     <div className={'opponentCard-4'}>
-                        <Card className={'backCard-4'} />
-                     </div>
-                     <div className={'opponentCard-5'}>
-                        <Card className={'backCard-5'} />
-                     </div>
-                     <div className={'opponentCard-6'}>
-                        <Card className={'backCard-6'} />
+               <div className={'opponentFieldContainer'}>
+                  <div className={'opponentCardsWrapper'}>
+                     <div className={'opponentCardsPositioner'}>
+                        <div className={'opponentCard-1'}>
+                           <Card className={'backCard-1'} />
+                        </div>
+                        <div className={'opponentCard-2'}>
+                           <Card className={'backCard-2'} />
+                        </div>
+                        <div className={'opponentCard-3'}>
+                           <Card className={'backCard-3'} />
+                        </div>
+                        <div className={'opponentCard-4'}>
+                           <Card className={'backCard-4'} />
+                        </div>
+                        <div className={'opponentCard-5'}>
+                           <Card className={'backCard-5'} />
+                        </div>
+                        <div className={'opponentCard-6'}>
+                           <Card className={'backCard-6'} />
+                        </div>
                      </div>
                   </div>
+                  <div className={'opponentAvatarWrapper'}>
+                     <Avatar small={true}></Avatar>
+                  </div>
+                  <div className={'opponentTalkCloudWrapper'}>
+                     <TalkCloud small={true}></TalkCloud>
+                  </div>
                </div>
-               <div className={'opponentAvatarWrapper'}>
-                  <Avatar small={true}></Avatar>
-               </div>
-               <div className={'opponentTalkCloudWrapper'}>
-                  <TalkCloud small={true}></TalkCloud>
-               </div>
-
-
+               <div className={'opponentFieldBuffer'}></div>
             </div>
 
             <Playground />

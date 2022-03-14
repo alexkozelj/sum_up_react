@@ -7,10 +7,14 @@ export const Avatar = styled.div`
   /* max-height: 50%; */
   justify-content: center;
   align-items: center;
-  align-self: start;
+  /* align-self: start; */
+  width: 65px;
+    max-width: 75px;
+    
+  position: absolute;
+  top: 40px;
 
-  /* position: absolute;
-   top: 115px;
+   /* top: 115px;
    left: 140px; */
   /* border: 3px solid black; */
   border-radius: 10px;
@@ -19,11 +23,14 @@ export const Avatar = styled.div`
   text-align: center;
   /* display: grid; */
   margin-bottom: 5px;
-  margin-top: 45px;
+  /* margin-top: 45px; */
 
   @media (max-width: 440px) {
     max-width: 55px;
-    margin-top: 20px;
+    /* margin-top: 20px; */
+    
+    height: 120px;
+    top: 1px;
   }
 
   .wrapper {
