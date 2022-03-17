@@ -50,6 +50,7 @@ export const Avatar = styled.div`
     /* display: grid; */
   }
 
+
   img {
     /* position: absolute; */
     /* padding: 2px; */

@@ -1,6 +1,16 @@
 import * as Styled from "./Card.styled.js";
 import J_Diamonds from './../../../images/Cards/J-diamonds-min.png'
+import J_Hearts from './../../../images/Cards/J-hearts-min.png'
+import J_Clubs from './../../../images/Cards/J-clubs-min.png'
+import J_Spades from './../../../images/Cards/J-spades-min.png'
+import Q_Diamonds from './../../../images/Cards/Q-diamonds-min.png'
+import Q_Hearts from './../../../images/Cards/Q-hearts-min.png'
+import Q_Clubs from './../../../images/Cards/Q-clubs-min.png'
 import Q_Spades from './../../../images/Cards/Q-spades-min.png'
+import K_Diamonds from './../../../images/Cards/K-diamonds-min.png'
+import K_Hearts from './../../../images/Cards/K-hearts-min.png'
+import K_Clubs from './../../../images/Cards/K-clubs-min.png'
+import K_Spades from './../../../images/Cards/Q-spades-min.png'
 
 const Card = (props) => {
 
@@ -33,7 +43,7 @@ const Card = (props) => {
 
             {props.value === 'A' &&
                <div className="card__inner card__inner--centered">
-                  <div style={{fontSize:30}}>
+                  <div className={'ace_card'}>
                      {cardSymbol}
                   </div>
                </div>
@@ -184,8 +194,32 @@ const Card = (props) => {
             {props.value === 'J' &&
                <div className="card__inner card__inner--centered">
                   <div className="card__column--img">
-                     {/* <img src={J_Diamonds} alt={'Jack diamonds card'} /> */}
-                     <img src={Q_Spades} alt={'Jack diamonds card'} />
+                     {props.symbol === 'diamonds' && <img src={J_Diamonds} alt={'Jack diamonds card'} />}
+                     {props.symbol === 'hearts' && <img src={J_Hearts} alt={'Jack hearts card'} />}
+                     {props.symbol === 'clubs' && <img src={J_Clubs} alt={'Jack clubs card'} />}
+                     {props.symbol === 'spades' && <img src={J_Spades} alt={'Jack spades card'} />}
+                  </div>
+               </div>
+            }
+
+            {props.value === 'Q' &&
+               <div className="card__inner card__inner--centered">
+                  <div className="card__column--img">
+                     {props.symbol === 'diamonds' && <img src={Q_Diamonds} alt={'Queen diamonds card'} />}
+                     {props.symbol === 'hearts' && <img src={Q_Hearts} alt={'Queen hearts card'} />}
+                     {props.symbol === 'clubs' && <img src={Q_Clubs} alt={'Queen clubs card'} />}
+                     {props.symbol === 'spades' && <img src={Q_Spades} alt={'Queen spades card'} />}
+                  </div>
+               </div>
+            }
+
+            {props.value === 'K' &&
+               <div className="card__inner card__inner--centered">
+                  <div className="card__column--img">
+                     {props.symbol === 'diamonds' && <img src={K_Diamonds} alt={'King diamonds card'} />}
+                     {props.symbol === 'hearts' && <img src={K_Hearts} alt={'King hearts card'} />}
+                     {props.symbol === 'clubs' && <img src={K_Clubs} alt={'King clubs card'} />}
+                     {props.symbol === 'spades' && <img src={K_Spades} alt={'King spades card'} />}
                   </div>
                </div>
             }
