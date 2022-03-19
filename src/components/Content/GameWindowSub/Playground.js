@@ -6,13 +6,13 @@ const Playground = () => {
       <Styled.Playground>
          <div className={"playgroundCardsWrapper"}>
             <div className={"cardsWrapper"}>
-               <Card className={"playgroundCard"} symbol={"hearts"} value={"8"} />
-               <Card className={"playgroundCard"} symbol={"spades"} value={"J"} />
-               <Card className={"playgroundCard"} symbol={"hearts"} value={"8"} />
-               <Card className={"playgroundCard"} symbol={"spades"} value={"J"} />
-               <Card className={"playgroundCard"} symbol={"hearts"} value={"8"} />
-               <Card className={"playgroundCard"} symbol={"spades"} value={"J"} />
-               <Card className={"playgroundCard"} symbol={"hearts"} value={"8"} />
+               <Card className={"playgroundCard"} suits={"hearts"} ranks={"9"} />
+               <Card className={"playgroundCard"} suits={"hearts"} ranks={"J"} />
+               <Card className={"playgroundCard"} suits={"clubs"} ranks={"K"} />
+               <Card className={"playgroundCard"} suits={"diamonds"} ranks={"Q"} />
+               <Card className={"playgroundCard"} suits={"hearts"} ranks={"8"} />
+               <Card className={"playgroundCard"} suits={"clubs"} ranks={"A"} />
+               <Card className={"playgroundCard"} suits={"hearts"} ranks={"10"} />
             </div>
          </div>
 

@@ -5,7 +5,7 @@ import Avatar from '../UI/Avatar/Avatar'
 
 const StartWindow = (props) => {
    const startGameHandler = () => {
-      console.log('test')
+      // console.log('test')
       props.windowHandler()
    }
 

@@ -3,7 +3,7 @@
    const StartGameButton = (props) => {
       
       const startGameHandler = () => {
-         console.log('this is from button')
+         // console.log('this is from button')
          props.startGame()
       }
 

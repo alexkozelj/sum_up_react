@@ -1,11 +1,19 @@
-
+import React from 'react'
+import useCreateDeck from '../../hooks/use-create-deck'
+import { StoreContext } from './../../store/store'
 import * as Styled from "./GameWindow.styled.js";
+
 import Card from './../UI/PlayingCard/Card'
 import Playground from './GameWindowSub/Playground'
 import Avatar from './../UI/Avatar/AvatarGame'
 import TalkCloud from './../UI/TalkCloud/TalkCloud'
 
 const GameWindow = () => {
+   // const newDeck = useCreateDeck()
+   // console.log("🚀 ~ file: GameWindow.js ~ line 13 ~ GameWindow ~ newDeck", newDeck)
+   // const store = React.useContext(StoreContext)
+   // console.log("🚀 ~ file: GameWindow.js ~ line 12 ~ GameWindow ~ store", store)
+   // console.log('this is store.test',store.test)
    return (
       <Styled.GameWindow>
 
@@ -50,12 +58,12 @@ const GameWindow = () => {
 
             <div className={'playerField'}>
                <div className={'playerFieldCardsWrapper'}>
-                  <Card symbol={'hearts'} value={'2'} />
-                  <Card symbol={'spades'} value={'4'} />
-                  <Card symbol={'hearts'} value={'5'} />
-                  <Card symbol={'hearts'} value={'10'} />
-                  <Card symbol={'hearts'} value={'8'} />
-                  <Card symbol={'spades'} value={'J'} />
+                  <Card suits={'hearts'} ranks={'2'} />
+                  <Card suits={'spades'} ranks={'4'} />
+                  <Card suits={'diamonds'} ranks={'5'} />
+                  <Card suits={'hearts'} ranks={'10'} />
+                  <Card suits={'clubs'} ranks={'8'} />
+                  <Card suits={'spades'} ranks={'J'} />
                </div>
                <div className={"playerFieldBuffer"}></div>
             </div>

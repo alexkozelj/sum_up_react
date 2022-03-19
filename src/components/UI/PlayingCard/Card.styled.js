@@ -107,7 +107,7 @@ export const Card = styled.div`
       justify-content: space-around;
     }
 
-    .card__symbol {
+    .card__suits {
       font-size: 13px;
       line-height: 12px;
       text-align: center;
