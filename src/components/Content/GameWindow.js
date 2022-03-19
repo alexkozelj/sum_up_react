@@ -11,37 +11,26 @@ import TalkCloud from './../UI/TalkCloud/TalkCloud'
 const GameWindow = () => {
    // const newDeck = useCreateDeck()
    // console.log("🚀 ~ file: GameWindow.js ~ line 13 ~ GameWindow ~ newDeck", newDeck)
-   // const store = React.useContext(StoreContext)
-   // console.log("🚀 ~ file: GameWindow.js ~ line 12 ~ GameWindow ~ store", store)
+   const store = React.useContext(StoreContext)
+   console.log("🚀 ~ file: GameWindow.js ~ line 12 ~ GameWindow ~ store", store)
    // console.log('this is store.test',store.test)
    return (
       <Styled.GameWindow>
 
          {/* playground */}
          <div className={'gameWindowWrapper'}>
-
+            {/* OPPONENT AREA */}
             <div className={'opponentField'}>
                <div className={'opponentFieldContainer'}>
                   <div className={'opponentCardsWrapper'}>
                      <div className={'opponentCardsPositioner'}>
-                        <div className={'opponentCard-1'}>
-                           <Card className={'backCard-1'} />
-                        </div>
-                        <div className={'opponentCard-2'}>
-                           <Card className={'backCard-2'} />
-                        </div>
-                        <div className={'opponentCard-3'}>
-                           <Card className={'backCard-3'} />
-                        </div>
-                        <div className={'opponentCard-4'}>
-                           <Card className={'backCard-4'} />
-                        </div>
-                        <div className={'opponentCard-5'}>
-                           <Card className={'backCard-5'} />
-                        </div>
-                        <div className={'opponentCard-6'}>
-                           <Card className={'backCard-6'} />
-                        </div>
+
+                        {store.compInHandCards[0].map((card, index) => {
+                           return <div key={card[0].id} className={`opponentCard-${index + 1}`}>
+                              <Card className={`backCard-${index + 1}`} />
+                           </div>
+                        })}
+
                      </div>
                   </div>
                   <div className={'opponentAvatarWrapper'}>
@@ -56,21 +45,18 @@ const GameWindow = () => {
 
             <Playground />
 
+            {/* PLAYER AREA */}
             <div className={'playerField'}>
                <div className={'playerFieldCardsWrapper'}>
-                  <Card suits={'hearts'} ranks={'2'} />
-                  <Card suits={'spades'} ranks={'4'} />
-                  <Card suits={'diamonds'} ranks={'5'} />
-                  <Card suits={'hearts'} ranks={'10'} />
-                  <Card suits={'clubs'} ranks={'8'} />
-                  <Card suits={'spades'} ranks={'J'} />
+
+                  {store.playerInHandCards[0].map((card, index) => {
+                     return <Card key={card[0].id} suits={card[0].suit} ranks={card[0].rank} />
+                  })}
+                  
                </div>
                <div className={"playerFieldBuffer"}></div>
             </div>
-
          </div>
-
-
 
       </Styled.GameWindow>
    );

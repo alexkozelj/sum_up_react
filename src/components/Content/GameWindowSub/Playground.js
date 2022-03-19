@@ -1,18 +1,25 @@
+import React from 'react';
 import * as Styled from "./Playground.styled.js";
+import { StoreContext } from './../../../store/store'
 import Card from "./../../UI/PlayingCard/Card";
 
 const Playground = () => {
+
+   const store = React.useContext(StoreContext)
+
    return (
       <Styled.Playground>
          <div className={"playgroundCardsWrapper"}>
             <div className={"cardsWrapper"}>
-               <Card className={"playgroundCard"} suits={"hearts"} ranks={"9"} />
-               <Card className={"playgroundCard"} suits={"hearts"} ranks={"J"} />
-               <Card className={"playgroundCard"} suits={"clubs"} ranks={"K"} />
-               <Card className={"playgroundCard"} suits={"diamonds"} ranks={"Q"} />
-               <Card className={"playgroundCard"} suits={"hearts"} ranks={"8"} />
-               <Card className={"playgroundCard"} suits={"clubs"} ranks={"A"} />
-               <Card className={"playgroundCard"} suits={"hearts"} ranks={"10"} />
+
+               {store.cardsOnTable[0].map((card, index) => {
+                  return <Card 
+                     className={"playgroundCard"}
+                     key={card[0].id} 
+                     suits={card[0].suit} 
+                     ranks={card[0].rank} />
+               })}
+               
             </div>
          </div>
 

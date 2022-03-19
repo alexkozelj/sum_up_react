@@ -15,6 +15,8 @@ const useShuffleDeck = (deck) => {
       deck[location2] = tmp;
    }
    store.fullDeck.push(deck);
+   console.log("🚀 ~ file: use-shuffle-deck.js ~ line 18 ~ useShuffleDeck ~ store.fullDeck", store.fullDeck)
+   console.log("🚀 type of",typeof(store.fullDeck))
    store.isShuffled = true
 }
 

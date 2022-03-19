@@ -12,12 +12,14 @@ export const StoreProvider = ({ children }) => {
 
       suits: ["diamonds", "hearts", "clubs", "spades"],
 
-      ranks: ["a", "2", "3", "4", "5", "6", "7", "8", "9", "10", "j", "q", "k"],
+      ranks: ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"],
 
       fullDeck: [],
 
       isShuffled: false,
-      
+
+      isDealt: false,
+
       compCollectedCards: [],
 
       playerCollectedCards: [],
