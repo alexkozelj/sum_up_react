@@ -7,6 +7,10 @@ export const StoreContext = React.createContext();
 export const StoreProvider = ({ children }) => {
 
    const store = useLocalStore(() => ({
+      
+      addToArray: (array, item) => {
+         array.push(item)
+      },
 
       test: ['test mobx'],
 

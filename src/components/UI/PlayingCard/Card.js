@@ -33,8 +33,14 @@ const Card = (props) => {
          </div>
       </div>
 
+   // const cardClickHandler = () => {
+   //    console.log('this is from cardClickHandler')
+   //    props.cardClickHandler()
+   // }
+   // console.log('id from card', props.id)
+
    return (
-      <Styled.Card className={props.className}>
+      <Styled.Card className={props.className} id={props.id} onClick={props.onClick}>
          <section className={"card card--" + props.suits} ranks={props.ranks}>
             <div className="corner_wrapper_top">
                <div className={"corner_ranks_top " + props.suits}>{props.ranks}</div>

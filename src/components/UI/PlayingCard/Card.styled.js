@@ -11,6 +11,7 @@ export const Card = styled.div`
   padding: 0.5em;
   margin: 5px;
   border-radius: 0.6em;
+  border: 2.5px solid transparent;
   background-color: ${cardBackground};
   box-shadow: 4px 5px 5px rgba(0, 0, 0, 0.38);
   font: ${fontSize} "Trebuchet MS";

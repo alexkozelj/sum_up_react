@@ -1,6 +1,7 @@
 import React from 'react'
 import { StoreContext } from '../store/store'
 
+
 const useShuffleDeck = (deck) => {
    const store = React.useContext(StoreContext)
    if (store.isShuffled) return
@@ -14,10 +15,11 @@ const useShuffleDeck = (deck) => {
       deck[location1] = deck[location2];
       deck[location2] = tmp;
    }
-   store.fullDeck.push(deck);
-   console.log("🚀 ~ file: use-shuffle-deck.js ~ line 18 ~ useShuffleDeck ~ store.fullDeck", store.fullDeck)
-   console.log("🚀 type of",typeof(store.fullDeck))
+
+   deck.map(arr => store.addToArray(store.fullDeck, arr[0]))
    store.isShuffled = true
+   console.log("🚀 ~ file: use-shuffle-deck.js ~ line 18 ~ useShuffleDeck ~ store.fullDeck", store.fullDeck)
+
 }
 
 export default useShuffleDeck

@@ -49,6 +49,11 @@ export const Playground = styled.div`
     }
   }
 
+  .markedCard {
+     border: 2.5px outset #a13aea;
+     /* transform: scale(1.05, 1.05); */
+  }
+
   .scoreboardContainer {
     display: flex;
     flex-direction: column;

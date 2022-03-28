@@ -7,19 +7,40 @@ const Playground = () => {
 
    const store = React.useContext(StoreContext)
 
+   const cardClickHandler = (id) => {
+      const card = store.cardsOnTable.find(x => x.id === id);
+      console.log("🚀 ~ file: Playground.js ~ line 30 ~ cardClickHandler ~ card", card)
+      if (document.getElementById(id).classList.contains('playgroundCard')) {
+         if (document.getElementById(id).classList.contains('markedCard')) {
+            const cardIndex = store.cardsInCalculation.findIndex(x => x.id === id);
+            store.cardsInCalculation.splice(cardIndex, 1)
+            document.getElementById(id).classList.remove('markedCard')
+            console.log('it spliced')
+         } else {
+            document.getElementById(id).classList.add('markedCard')
+            store.cardsInCalculation.push(card)
+            console.log('it pushed')
+         }
+      }
+      console.log("🚀 ~ file: Playground.js ~ line 9 ~ Playground ~ store", store.cardsInCalculation)
+
+   }
+
    return (
       <Styled.Playground>
          <div className={"playgroundCardsWrapper"}>
             <div className={"cardsWrapper"}>
 
-               {store.cardsOnTable[0].map((card, index) => {
-                  return <Card 
+               {store.cardsOnTable.map((card, index) => {
+                  return <Card
                      className={"playgroundCard"}
-                     key={card[0].id} 
-                     suits={card[0].suit} 
-                     ranks={card[0].rank} />
+                     id={card.id}
+                     onClick={() => cardClickHandler(card.id)}
+                     key={card.id}
+                     suits={card.suit}
+                     ranks={card.rank} />
                })}
-               
+
             </div>
          </div>
 
