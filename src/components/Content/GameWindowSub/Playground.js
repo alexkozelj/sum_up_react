@@ -8,18 +8,28 @@ const Playground = () => {
    const store = React.useContext(StoreContext)
 
    const cardClickHandler = (id) => {
+
       const card = store.cardsOnTable.find(x => x.id === id);
-      console.log("🚀 ~ file: Playground.js ~ line 30 ~ cardClickHandler ~ card", card)
+      console.log("🚀 ~ file: Playground.js ~ line 13 ~ cardClickHandler ~ store.cardsOnTable", store.cardsOnTable)
+      console.log("🚀 ~ file: Playground.js ~ line 29 ~ cardClickHandler ~ store.cardsInCalculation", store.cardsInCalculation)
+      // console.log("🚀 ~ file: Playground.js ~ line 30 ~ cardClickHandler ~ card", card)
+      
       if (document.getElementById(id).classList.contains('playgroundCard')) {
+
          if (document.getElementById(id).classList.contains('markedCard')) {
+      
             const cardIndex = store.cardsInCalculation.findIndex(x => x.id === id);
             store.cardsInCalculation.splice(cardIndex, 1)
             document.getElementById(id).classList.remove('markedCard')
             console.log('it spliced')
+
          } else {
+
             document.getElementById(id).classList.add('markedCard')
             store.cardsInCalculation.push(card)
+            
             console.log('it pushed')
+            
          }
       }
       console.log("🚀 ~ file: Playground.js ~ line 9 ~ Playground ~ store", store.cardsInCalculation)

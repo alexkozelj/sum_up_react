@@ -11,6 +11,10 @@ export const StoreProvider = ({ children }) => {
       addToArray: (array, item) => {
          array.push(item)
       },
+      
+      moveFromArrayToArray: (item, fromArray, toArray) => {
+         // array.push(item)
+      },
 
       test: ['test mobx'],
 
