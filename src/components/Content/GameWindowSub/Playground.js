@@ -3,11 +3,13 @@ import * as Styled from "./Playground.styled.js";
 import { StoreContext } from './../../../store/store'
 import Card from "./../../UI/PlayingCard/Card";
 
-const Playground = () => {
+const Playground = (props) => {
 
    const store = React.useContext(StoreContext)
 
    const cardClickHandler = (id) => {
+      
+      if (!props.playersMove) return
 
       const card = store.cardsOnTable.find(x => x.id === id);
       console.log("🚀 ~ file: Playground.js ~ line 13 ~ cardClickHandler ~ store.cardsOnTable", store.cardsOnTable)

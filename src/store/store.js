@@ -12,10 +12,10 @@ export const StoreProvider = ({ children }) => {
          array.push(item)
       },
       
-      moveFromArrayToArray: (item, fromArray, toArray) => {
-         // array.push(item)
+      removeItemFromArray: (array, item) => {
+         array.filter(arrItem => arrItem !== item)
       },
-
+      
       test: ['test mobx'],
 
       suits: ["diamonds", "hearts", "clubs", "spades"],
