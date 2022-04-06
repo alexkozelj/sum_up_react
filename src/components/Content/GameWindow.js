@@ -14,7 +14,7 @@ const GameWindow = () => {
 
    const store = React.useContext(StoreContext)
    const [playersMove, isPlayersMove] = useState(true)
-   console.log("🚀 ~ file: GameWindow.js ~ line 12 ~ GameWindow ~ store", store)
+   // console.log("🚀 ~ file: GameWindow.js ~ line 12 ~ GameWindow ~ store", store)
 
    let cardsValuesInCalculation = []
 
@@ -83,17 +83,18 @@ const GameWindow = () => {
 
    const combinations = []
 
-   const checkComputerCalculus = (arr, aceValue = false) => {
-      console.log("🚀 ~ file: GameWindow.js ~ line 87 ~ checkComputerCalculus ~ aceValue", aceValue)
+   const checkComputerCalculus = (arr, isAceThere = false) => {
+      // console.log("🚀 ~ file: GameWindow.js ~ line 87 ~ checkComputerCalculus ~ isAceThere", isAceThere)
       let cardValue
 
       arr.map((card, i) => {
          let combi = []
-         cardValue = aceValue ? 11 : card.calculusValue
-         console.log("🚀 ~ file: GameWindow.js ~ line 93 ~ arr.map ~ cardValue", cardValue)
+         if (isAceThere && card.calculusValue !== 1) return
+         cardValue = 11 
+         // console.log("🚀 ~ file: GameWindow.js ~ line 93 ~ arr.map ~ cardValue", cardValue)
          // same card + a + b + c + d ...
          store.cardsOnTable.map((tableCardA, a) => {
-            if (aceValue && cardValue !== 11) return
+            if (isAceThere && cardValue !== 11) return
             if (tableCardA.calculusValue > cardValue) return
             if (tableCardA.calculusValue === cardValue) {
                if (combi && combi.includes(card)) { combi.push(tableCardA) } else { combi.push(card, tableCardA) }
@@ -112,7 +113,7 @@ const GameWindow = () => {
                if (tableCardA.calculusValue === 1 || tableCardB.calculusValue === 1) { isAceThere = true }
                if (tableCardA.calculusValue + tableCardB.calculusValue < cardValue && isAceThere) {
                   if (tableCardA.calculusValue + tableCardB.calculusValue + 10 === cardValue) {
-                     console.log('IT CHECKS FOR ACE !@#@!#@!!@!#$!$@!#@!$@$#$#@$#@@@###')
+                     // console.log('IT CHECKS FOR ACE !@#@!#@!!@!#$!$@!#@!$@$#$#@$#@@@###')
                      if (combi && combi.includes(tableCardA) || combi.includes(tableCardB)) return
                      if (combi && combi.includes(card)) { combi.push(tableCardA, tableCardB) } else { combi.push(card, tableCardA, tableCardB) }
                   }
@@ -152,16 +153,42 @@ const GameWindow = () => {
       isPlayersMove(false)
       console.log("🚀 ~ file: GameWindow.js ~ line 88 ~ compMove ~ store.compInHandCards", store.compInHandCards.map(card => card.calculusValue))
 
+      // CHECK COMP COMBINATIONS
       checkComputerCalculus(store.compInHandCards)
       const isAceThere = store.compInHandCards.some(card => card.calculusValue === 1)
+      
+      // CHECK WITH ACE
       isAceThere && checkComputerCalculus(store.compInHandCards, true)
+      
+      // FIND BEST COMBI AND PUSH
+      if (combinations.length) {
+         let combiValueSum = 0;
+         let combiLengthSum = 0;
+         let bestCombiIndex;
+         
+         // console.log('checking combinations')
+         combinations.map((combi, combiIndex) => {
 
+            let combiValue = combi.reduce((prev, current) => prev + current.value, 0)
+            let combiLength = combi.length
+
+            if ( combiValue > combiValueSum || combiLength > combiLengthSum) {
+               console.log('NEW BEST COMBI')
+               combiValueSum = combiValue
+               combiLengthSum = combiLength
+               bestCombiIndex = combiIndex
+            }
+
+            console.log("🚀 ~ file: GameWindow.js ~ line 172 ~ combiValue ~ combiValue", combiValue)
+         })
+         console.log("🚀 ~ file: GameWindow.js ~ line 167 ~ compMove ~ bestCombiIndex", bestCombiIndex)
+      }
 
       console.log("🚀 ~ file: GameWindow.js ~ line 89 ~ compMove ~ combinations", combinations)
       await delay(3000)
       console.log('after first await')
-      await delay(2000)
-      console.log('after second await')
+      // await delay(2000)
+      // console.log('after second await')
 
       isPlayersMove(true)
    }
@@ -170,6 +197,7 @@ const GameWindow = () => {
 
       if (!playersMove) return
 
+      // THROW CARD - NO CALC
       if (store.cardsInCalculation.length === 0) {
          console.log('THROW PLAYER CARD')
 
@@ -185,7 +213,7 @@ const GameWindow = () => {
       checkCalculus(playerCard, cardsValuesForCalculating)
 
       console.log("🚀 ~ file: GameWindow.js ~ line 19 ~ GameWindow ~ cardsValuesInCalculation", cardsValuesInCalculation)
-      // if player marked cards on table -> do the calculus check
+      // CHECK MARKED CARDS
       if (cardsValuesInCalculation.length === 0) {
          console.log("🚀 ~ file: GameWindow.js ~ line 85 ~ playerCardClickHandler ~ store.cardsOnTable", store.cardsOnTable)
 
@@ -221,6 +249,7 @@ const GameWindow = () => {
          store.cardsInCalculation.splice(0, store.cardsInCalculation.length)
 
       } else {
+         // WRONG CALCULATED CARDS
          console.log('player calc is WRONG!')
          return
       }
