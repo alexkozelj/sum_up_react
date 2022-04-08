@@ -7,16 +7,10 @@ export const StoreContext = React.createContext();
 export const StoreProvider = ({ children }) => {
 
    const store = useLocalStore(() => ({
-      
+
       addToArray: (array, item) => {
          array.push(item)
       },
-      
-      removeItemFromArray: (array, item) => {
-         array.filter(arrItem => arrItem !== item)
-      },
-      
-      test: ['test mobx'],
 
       suits: ["diamonds", "hearts", "clubs", "spades"],
 
@@ -27,6 +21,16 @@ export const StoreProvider = ({ children }) => {
       isShuffled: false,
 
       isDealt: false,
+
+
+
+      gameNumber: 1,
+
+      dealNumber: 1,
+
+      overallResultComputer: 0,
+      overallResultPlayer: 0,
+      
 
       compCollectedCards: [],
 

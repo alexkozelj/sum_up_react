@@ -189,6 +189,16 @@ export const GameWindow = styled.div`
     /* left: 0; */
   }
 
+  .showCard {
+     /* position: absolute; */
+     z-index: 999 !important;
+     > div {
+        border: 2px solid tomato;
+        /* scale: 1.9; */
+     }
+     box-shadow: 14px 15px 15px rgba(green);
+  }
+
   .opponentCard-1 {
     position: absolute;
     top: 10px;

@@ -1,60 +1,6 @@
 import styled from "styled-components";
 
-export const Playground = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  height: 60%;
-  @media (max-width: 440px) {
-  }
-
-  .playgroundCardsWrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 70%;
-    max-width: 950px;
-    height: 95%;
-    padding: 10px;
-    margin-right: 30px;
-    background-color: #7ca385;
-    border-radius: 15px;
-    border: 1px solid white;
-    overflow: hidden;
-    @media (max-width: 440px) {
-      margin-right: 10px;
-      height: 100%;
-    }
-  }
-
-  .cardsWrapper {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    max-width: 550px;
-    height: fit-content;
-    justify-content: center;
-    align-items: center;
-    @media (max-width: 440px) {
-    }
-  }
-
-  .playgroundCard {
-    width: 60px;
-    height: 100px;
-    @media (max-width: 440px) {
-      width: 35px;
-      height: 60px;
-    }
-  }
-
-  .markedCard {
-     border: 2.5px outset tomato;
-     /* transform: scale(1.05, 1.05); */
-  }
-
-  .scoreboardContainer {
+export const Scoreboard = styled.div`
     display: flex;
     flex-direction: column;
     width: 30%;
@@ -74,7 +20,7 @@ export const Playground = styled.div`
       align-self: center;
       flex-direction: column;
     }
-  }
+  
 
   .gameInfoContainer {
     display: flex;

@@ -39,16 +39,32 @@ const Card = (props) => {
    // }
    // console.log('id from card', props.id)
 
+   // {props.backCard &&
+   //    <div className="card__inner card__inner--centered">
+   //       {/* <div className="card__column--img"> */}
+
+   //       <div className={'back'}></div>
+   //       {/* </div> */}
+   //    </div>
+   // }
+
    return (
       <Styled.Card className={props.className} id={props.id} onClick={props.onClick}>
+
          <section className={"card card--" + props.suits} ranks={props.ranks}>
+            
+            {/* backCardDiv */}
+            <div id={`backCardDiv-${props.id}`} className={props.classNameSection}></div>
+
             <div className="corner_wrapper_top">
                <div className={"corner_ranks_top " + props.suits}>{props.ranks}</div>
                <div className={"corner_suits_top " + props.suits}>{setSuitHandler(props.suits)}</div>
             </div>
 
+
             {props.ranks === 'A' &&
                <div className="card__inner card__inner--centered">
+
                   <div className={'ace_card'}>
                      {cardSuit}
                   </div>
@@ -230,19 +246,15 @@ const Card = (props) => {
                </div>
             }
 
-            {!props.ranks &&
-               <div className="card__inner card__inner--centered">
-                  {/* <div className="card__column--img"> */}
-               
-                     <div className={'back'}></div>
-                  {/* </div> */}
+            {!props.backCard &&
+               <div className="corner_wrapper_bottom">
+                  <div className={"corner_suits--bottom " + props.suits}>{setSuitHandler(props.suits)}</div>
+                  <div className={"corner_ranks--bottom " + props.suits}>{props.ranks}</div>
                </div>
             }
 
-            <div className="corner_wrapper_bottom">
-               <div className={"corner_suits--bottom " + props.suits}>{setSuitHandler(props.suits)}</div>
-               <div className={"corner_ranks--bottom " + props.suits}>{props.ranks}</div>
-            </div>
+
+
          </section>
 
       </Styled.Card >

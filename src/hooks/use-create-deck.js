@@ -30,10 +30,10 @@ const useCreateDeck = () => {
          if (store.ranks[x] === "2") { calculusValue = 2 }
          // console.log('CREATE DECK - CALCULUS VALUE', calculusValue)
          if (
-            store.ranks[x] === "a" ||
-            store.ranks[x] === "j" ||
-            store.ranks[x] === "q" ||
-            store.ranks[x] === "k"
+            store.ranks[x] === "A" ||
+            store.ranks[x] === "J" ||
+            store.ranks[x] === "Q" ||
+            store.ranks[x] === "K"
          ) {
 
             value = 1;
@@ -43,15 +43,9 @@ const useCreateDeck = () => {
             value = 1;
 
          } else if (store.ranks[x] === "10") {
-            if (store.suits[i] === "diamonds") {
-
-               value = 2;
-
-            } else {
-
-               value = 1;
-
-            }
+            
+            (store.suits[i] === "diamonds") ? value = 2 :  value = 1
+            
          } else {
 
             value = 0;

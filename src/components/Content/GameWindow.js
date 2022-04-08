@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import _ from 'lodash'
 // import useCreateDeck from '../../hooks/use-create-deck'
 import { StoreContext } from './../../store/store'
 import { useObserver } from 'mobx-react'
@@ -18,11 +19,13 @@ const GameWindow = () => {
 
    let cardsValuesInCalculation = []
 
+   const combinations = []
+
    const delay = (t) => {
       return new Promise((resolve) => { setTimeout(() => resolve(), t) })
    }
 
-
+   // PLAYER
    const calculus = (playerCard, cardsInCalc) => {
       let acc = 0;
       cardsInCalc.map((item, index) => {
@@ -81,32 +84,43 @@ const GameWindow = () => {
 
    }
 
-   const combinations = []
 
-   const checkComputerCalculus = (arr, isAceThere = false) => {
-      // console.log("🚀 ~ file: GameWindow.js ~ line 87 ~ checkComputerCalculus ~ isAceThere", isAceThere)
+   // COMPUTER
+   const checkComputerCalculus = (compInHandCards) => {
+
       let cardValue
+      let isWithAce = 0
+      console.log('CARD VALUE 156 ---')
 
-      arr.map((card, i) => {
+      compInHandCards.map((card, i) => {
          let combi = []
-         if (isAceThere && card.calculusValue !== 1) return
-         cardValue = 11 
-         // console.log("🚀 ~ file: GameWindow.js ~ line 93 ~ arr.map ~ cardValue", cardValue)
-         // same card + a + b + c + d ...
+         cardValue = card.calculusValue
+         console.log("🚀 ~ file: GameWindow.js ~ line 93 ~ compInHandCards.map ~ cardValue", cardValue)
+         let aceInHand = card.calculusValue === 1
+
          store.cardsOnTable.map((tableCardA, a) => {
-            if (isAceThere && cardValue !== 11) return
-            if (tableCardA.calculusValue > cardValue) return
+            // console.log("🚀 ~ file: GameWindow.js ~ line 98 ~ store.cardsOnTable.map ~ tableCardA", tableCardA.calculusValue, cardValue)
             if (tableCardA.calculusValue === cardValue) {
                if (combi && combi.includes(card)) { combi.push(tableCardA) } else { combi.push(card, tableCardA) }
             }
-
+            // if (aceInHand && tableCardA.calculusValue === 1 && tableCardA.calculusValue + store.cardsOnTable[a + 1]?.calculusValue > 11) {
+            //    if (combi && combi.includes(card)) { combi.push(tableCardA) } else { combi.push(card, tableCardA) }
+            // }
+            if (card.calculusValue === 1) {
+               console.log('CARD VALUE IS NOW 11')
+               cardValue = 11
+            }
+            if (tableCardA.calculusValue > cardValue) return
+            // CARD 2
             store.cardsOnTable.map((tableCardB, b) => {
                if (b === a) return
-               if (tableCardA === tableCardB) return
+               // if (aceInHand && tableCardA.calculusValue === 1 && tableCardA.calculusValue + tableCardB.calculusValue + store.cardsOnTable[b + 1]?.calculusValue > 11) {
+               //    if (combi && combi.includes(card)) { combi.push(tableCardA) } else { combi.push(card, tableCardA) }
+               // }
                if (tableCardB.calculusValue >= cardValue) return
                if (tableCardA.calculusValue + tableCardB.calculusValue > cardValue) return
                if (tableCardA.calculusValue + tableCardB.calculusValue === cardValue) {
-                  if (combi && combi.includes(tableCardA) || combi.includes(tableCardB)) return
+                  if (combi && (combi.includes(tableCardA) || combi.includes(tableCardB))) return
                   if (combi && combi.includes(card)) { combi.push(tableCardA, tableCardB) } else { combi.push(card, tableCardA, tableCardB) }
                }
                let isAceThere = false;
@@ -114,82 +128,131 @@ const GameWindow = () => {
                if (tableCardA.calculusValue + tableCardB.calculusValue < cardValue && isAceThere) {
                   if (tableCardA.calculusValue + tableCardB.calculusValue + 10 === cardValue) {
                      // console.log('IT CHECKS FOR ACE !@#@!#@!!@!#$!$@!#@!$@$#$#@$#@@@###')
-                     if (combi && combi.includes(tableCardA) || combi.includes(tableCardB)) return
+                     if (combi && (combi.includes(tableCardA) || combi.includes(tableCardB))) return
                      if (combi && combi.includes(card)) { combi.push(tableCardA, tableCardB) } else { combi.push(card, tableCardA, tableCardB) }
                   }
                }
 
+               // CARD 3
                store.cardsOnTable.map((tableCardC, c) => {
                   if (c === a || c === b) return
                   if (tableCardA === tableCardB || tableCardA === tableCardC || tableCardB === tableCardC) return
                   if (tableCardC.calculusValue >= cardValue) return
                   if (tableCardA.calculusValue + tableCardB.calculusValue + tableCardC.calculusValue > cardValue) return
                   if (tableCardA.calculusValue + tableCardB.calculusValue + tableCardC.calculusValue === cardValue) {
-                     if (combi && combi.includes(tableCardA) || combi.includes(tableCardB) || combi.includes(tableCardC)) return
+                     if (combi && ((combi.includes(tableCardA) || combi.includes(tableCardB) || combi.includes(tableCardC)))) return
                      if (combi && combi.includes(card)) { combi.push(tableCardA, tableCardB, tableCardC) } else { combi.push(card, tableCardA, tableCardB, tableCardC) }
                   }
 
+                  // CARD 4
                   store.cardsOnTable.map((tableCardD, d) => {
                      if (d === a || d === b || d === c) return
                      if (tableCardD === tableCardA || tableCardD === tableCardB || tableCardD === tableCardC) return
                      if (tableCardC.calculusValue >= cardValue) return
                      if (tableCardA.calculusValue + tableCardB.calculusValue + tableCardC.calculusValue + tableCardD.calculusValue > cardValue) return
                      if (tableCardA.calculusValue + tableCardB.calculusValue + tableCardC.calculusValue + tableCardD.calculusValue === cardValue) {
-                        if (combi && combi.includes(tableCardA) || combi.includes(tableCardB) || combi.includes(tableCardC) || combi.includes(tableCardD)) return
+                        if (combi && (combi.includes(tableCardA) || combi.includes(tableCardB) || combi.includes(tableCardC) || combi.includes(tableCardD))) return
                         if (combi && combi.includes(card)) { combi.push(tableCardA, tableCardB, tableCardC, tableCardD) } else { combi.push(card, tableCardA, tableCardB, tableCardC, tableCardD) }
                      }
                   })
                })
             })
 
+
+
+
             // console.log("🚀 ~ file: GameWindow.js ~ line 156 ~ arr.map ~ combi", combi)
             if (!combi || !combi.length) return
+
+            // ADD ACE AS A SAME CARD  
+            if (card.calculusValue === 1) {
+               let cardsOnTableAceId = []
+               let combiAcesId = []
+               store.cardsOnTable.map(el => el.calculusValue === 1 && cardsOnTableAceId.push(el.id))
+               combi.map(el => el.calculusValue === 1 && combiAcesId.push(el.id))
+               let acesMissing = cardsOnTableAceId.filter(x => !combiAcesId.includes(x));
+               if (acesMissing.length > 0) {
+                  acesMissing.map(el => store.cardsOnTable.find(item => item.id === el && combi.push(item)))
+               }
+            }
+
             combinations.push(combi)
          })
       })
    }
 
+   const showTakenCards = (combi) => {
+      // console.log("🚀 ~ file: GameWindow.js ~ line 184 ~ showTakenCards ~ combi", combi)
+      let card = document.getElementById(`backCardDiv-${combi[0].id}`)
+      let cardContainer = document.getElementById(`cardContainer-${combi[0].id}`)
+      card.classList.remove('showBack')
+      cardContainer.classList.add('showCard')
+      combi.map((card, i) => document.getElementById(card.id).classList.add('markedCard'))
+   }
+
+   const removeTakenCards = (combi) => {
+      store.compInHandCards = _.filter(store.compInHandCards, (e => e.id !== combi[0].id))
+      store.cardsOnTable = _.difference(store.cardsOnTable, combi, combi.id )
+   }
+
+   const throwComputerCard = () => {
+      let computerCardThrow = _.minBy(store.compInHandCards, store.compInHandCards.calculusValue)
+      store.compInHandCards = _.filter(store.compInHandCards, (e => e.id !== computerCardThrow.id))
+      store.cardsOnTable.push(computerCardThrow)
+   }
+
    const compMove = async () => {
+      
       isPlayersMove(false)
       console.log("🚀 ~ file: GameWindow.js ~ line 88 ~ compMove ~ store.compInHandCards", store.compInHandCards.map(card => card.calculusValue))
 
       // CHECK COMP COMBINATIONS
       checkComputerCalculus(store.compInHandCards)
-      const isAceThere = store.compInHandCards.some(card => card.calculusValue === 1)
-      
-      // CHECK WITH ACE
-      isAceThere && checkComputerCalculus(store.compInHandCards, true)
-      
+
       // FIND BEST COMBI AND PUSH
-      if (combinations.length) {
+      if (combinations.length > 0) {
          let combiValueSum = 0;
          let combiLengthSum = 0;
          let bestCombiIndex;
-         
-         // console.log('checking combinations')
+
          combinations.map((combi, combiIndex) => {
 
-            let combiValue = combi.reduce((prev, current) => prev + current.value, 0)
+            let combiValue = combi.reduce((prev, current) => {
+               // console.log('prev', prev, 'current', current.value)
+               return prev + current.value
+            }, 0)
+            // console.log("🚀 ~ file: GameWindow.js ~ line 179 ~ combiValue ~ combiValue", combi, combiValue)
             let combiLength = combi.length
 
-            if ( combiValue > combiValueSum || combiLength > combiLengthSum) {
-               console.log('NEW BEST COMBI')
+            if (combiValue > combiValueSum) {
                combiValueSum = combiValue
                combiLengthSum = combiLength
                bestCombiIndex = combiIndex
             }
-
-            console.log("🚀 ~ file: GameWindow.js ~ line 172 ~ combiValue ~ combiValue", combiValue)
+            if (combiValue <= combiValueSum && combiLength > combiLengthSum) {
+               combiValueSum = combiValue
+               combiLengthSum = combiLength
+               bestCombiIndex = combiIndex
+            }
+            // console.log("🚀 ~ file: GameWindow.js ~ line 172 ~ combiValue ~ combiValue", combiValue)
          })
-         console.log("🚀 ~ file: GameWindow.js ~ line 167 ~ compMove ~ bestCombiIndex", bestCombiIndex)
+
+         console.log("🚀 line 242 ~ compMove ~ combinations[bestCombiIndex]", combinations[bestCombiIndex].map(card => card.calculusValue))
+
+         await delay(1000)
+         showTakenCards(combinations[bestCombiIndex])
+         await delay(1000)
+         removeTakenCards(combinations[bestCombiIndex])
+         console.log("🚀 ~ file: GameWindow.js ~ line 167 ~ compMove ~ bestCombiIndex", bestCombiIndex, 'value', combiValueSum, 'length', combiLengthSum)
+      } else {
+         await delay(1500)
+         throwComputerCard()
       }
 
       console.log("🚀 ~ file: GameWindow.js ~ line 89 ~ compMove ~ combinations", combinations)
-      await delay(3000)
+      await delay(1000)
       console.log('after first await')
-      // await delay(2000)
-      // console.log('after second await')
-
+      
       isPlayersMove(true)
    }
 
@@ -271,11 +334,25 @@ const GameWindow = () => {
                   <div className={'opponentCardsWrapper'}>
                      <div className={'opponentCardsPositioner'}>
 
-                        {store.compInHandCards.map((card, index) => {
-                           return <div key={card.id} className={`opponentCard-${index + 1}`}>
-                              <Card className={`backCard-${index + 1}`} />
-                           </div>
-                        })}
+                        {
+                           useObserver(() =>
+
+                              store.compInHandCards.map((card, index) =>
+
+                                 <div key={`cardContainer-${card.id}`} id={`cardContainer-${card.id}`} className={`opponentCard-${index + 1}`}>
+                                    <Card
+                                       id={card.id}
+                                       className={`backCard-${index + 1}`}
+                                       classNameSection={'backCardDiv showBack'}
+                                       backCard={true}
+                                       suits={card.suit}
+                                       ranks={card.rank}
+                                    />
+                                 </div>
+
+                              )
+                           )
+                        }
 
                      </div>
                   </div>
@@ -295,16 +372,18 @@ const GameWindow = () => {
             <div className={'playerField'}>
                <div className={'playerFieldCardsWrapper'}>
                   {
-                     useObserver(() => {
-                        return store.playerInHandCards.map((card) => {
-                           return <Card
+                     useObserver(() =>
+
+                        store.playerInHandCards.map((card) =>
+
+                           <Card
                               key={card.id}
+                              id={card.id}
                               onClick={() => playerCardClickHandler(card.id, card.calculusValue)}
                               suits={card.suit}
                               ranks={card.rank} />
-                        })
-
-                     })
+                        )
+                     )
                   }
 
                </div>
@@ -317,66 +396,3 @@ const GameWindow = () => {
 }
 
 export default GameWindow;
-
-
-
-
-      // store.compInHandCards.map(card => {
-      //    let combi = []
-
-      //    //  same card
-      //    store.cardsOnTable.map((tableCard, i) => card.calculusValue === tableCard.calculusValue && combi.push(card, tableCard))
-      //    // pair
-      //    store.cardsOnTable.map((tableCard, i) => {
-      //       if (card.calculusValue - tableCard.calculusValue > 0) {
-      //          const pairedCard = store.cardsOnTable.find((pairCard,i) => pairCard.calculusValue === card.calculusValue - tableCard.calculusValue)
-      //          if (!pairedCard) return
-      //          // console.log("🚀 ~ file: GameWindow.js ~ line 102 ~ store.cardsOnTable.map ~ pairedCard", pairedCard)
-      //          // console.log("🚀 ~ file: GameWindow.js ~ line 104 ~ store.cardsOnTable.map ~ combinations[i]", combinations[i])
-      //          // if (combinations[i] && combinations[i].map(cardCombinations => cardCombinations.id === pairedCard.id || cardCombinations.id === card.id)) return
-      //          // combi.some(card => card.id === pairedCard.id || card.id === tableCard.id)
-      //          // console.log("🚀 ~ file: GameWindow.js ~ line 104 ~ store.cardsOnTable.map ~ isItThere", isItThere)
-      //          if(combi && combi.includes(tableCard) || combi.includes(pairedCard)) return
-      //          if(combi && !combi.includes(card)) combi.push(card)
-      //          pairedCard && combi.push(tableCard, pairedCard)
-      //       }
-      //    })
-
-      //    // console.log("🚀 ~ file: GameWindow.js ~ line 95 ~ compMove ~ combi", combi)
-      //    combinations.push(combi)
-      // })
-      // const areEqual = (array1, array2) => {
-      //    console.log('areEqual called!!!!!')
-      //    console.log("🚀 ~ file: GameWindow.js ~ line 118 ~ areEqual ~ array1",typeof( array1.sort().join(',')))
-      //    console.log("🚀 ~ file: GameWindow.js ~ line 118 ~ areEqual ~ array2", array2.sort().join(','))
-      //    if (array1?.length === array2?.length) {
-      //       console.log('length eqal!!@!!!')
-      //       if(array1.sort().join(',') !== array2.sort().join(',')) {return true}
-      //       else { return false }
-      //       // return array1.every((element) => {
-      //       //    console.log("🚀 ~ file: GameWindow.js ~ line 120 ~ returnarray1.every ~ element", element)
-      //       //    if (array2.includes(element)) {
-      //       //       // console.log('THEY ARE EQUALL !!! $^*$#**$#%*$#%**$%%*$#$*#*%*#*#$')
-      //       //       return true;
-      //       //    }
-
-      //       //    return false;
-      //       // });
-      //    }
-
-      //    return false;
-      // }
-
-      // function areEqual(array1, array2) {
-      //    if (array1.length === array2.length) {
-      //       return array1.every(element => {
-      //          if (array2.includes(element)) {
-      //             return true;
-      //          }
-
-      //          return false;
-      //       });
-      //    }
-
-      //    return false;
-      // }

@@ -145,11 +145,27 @@ export const Card = styled.div`
     }
   }
 
-  .back {
+  /* .hide {
+     display: none;
+  }
+
+  .card.hide {
+     display: none;
+     .corner_wrapper_top {
+     }
+  } */
+  
+
+  .backCardDiv.showBack {
+     position: absolute;
     width: 100%;
     height: 100%;
     border: 1px solid orange;
     border-radius: 3px;
+    /* background-color: orange; */
+    ~ div {
+       display: none;
+    }
     background-image: conic-gradient(
       #246104 25%,
       #626304 25%,
