@@ -30,6 +30,9 @@ export const StoreProvider = ({ children }) => {
 
       overallResultComputer: 0,
       overallResultPlayer: 0,
+
+      tablaPointComputer: ['|', '|', '|', '|', '|', ],
+      tablaPointPlayer: ['|', '|'],
       
 
       compCollectedCards: [],

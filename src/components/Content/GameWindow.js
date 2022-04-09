@@ -191,6 +191,8 @@ const GameWindow = () => {
    }
 
    const removeTakenCards = (combi) => {
+      store.compCollectedCards = store.compCollectedCards.concat(combi)
+      console.log("🚀 ~ file: GameWindow.js ~ line 195 ~ removeTakenCards ~ store.compCollectedCards", store.compCollectedCards)
       store.compInHandCards = _.filter(store.compInHandCards, (e => e.id !== combi[0].id))
       store.cardsOnTable = _.difference(store.cardsOnTable, combi, combi.id )
    }
@@ -287,18 +289,19 @@ const GameWindow = () => {
 
                if (tableCard.id === calcCard.id) {
                   console.log('card is found')
-
-                  store.playerCollectedCards.push(tableCard)
+                  store.playerCollectedCards = store.playerCollectedCards.concat(tableCard)
+                  // store.playerCollectedCards.push(tableCard)
                   store.cardsOnTable = store.cardsOnTable.filter(tableCard => tableCard !== calcCard)
-                  console.log("🚀 ~ file: GameWindow.js ~ line 93333 ~ store.cardsInCalculation.map ~ store.cardsOnTable", store.cardsOnTable)
+                  // console.log("🚀 ~ file: GameWindow.js ~ line 93333 ~ store.cardsInCalculation.map ~ store.cardsOnTable", store.cardsOnTable)
 
                   const playerCard = store.playerInHandCards.find(item => item.id === id)
-                  store.playerCollectedCards.push(playerCard)
+                  store.playerCollectedCards = store.playerCollectedCards.concat(playerCard)
+                  store.tablaPointComputer = store.tablaPointComputer.concat('|')
                   store.playerInHandCards = store.playerInHandCards.filter(card => card !== playerCard)
-                  console.log("🚀 ~ file: GameWindow.js ~ line 98 ~ store.cardsInCalculation.map ~ store.playerInHandCards", store.playerInHandCards)
+                  // console.log("🚀 ~ file: GameWindow.js ~ line 98 ~ store.cardsInCalculation.map ~ store.playerInHandCards", store.playerInHandCards)
                   // store.playerInHandCards.splice(store.playerInHandCards.findIndex(cardObj => cardObj === playerCard), 1)
-                  console.log("🚀 ~ file: GameWindow.js ~ line 96 ~ store.cardsInCalculation.map ~ store.playerInHandCards", store.playerInHandCards)
-                  console.log('it is pushed and removed')
+                  // console.log("🚀 ~ file: GameWindow.js ~ line 96 ~ store.cardsInCalculation.map ~ store.playerInHandCards", store.playerInHandCards)
+                  // console.log('it is pushed and removed')
 
                }
 

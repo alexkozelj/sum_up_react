@@ -185,13 +185,42 @@ export const Scoreboard = styled.div`
     }
   }
 
-  .tablaCross {
+  .tabla span:nth-child(4) {  
+      /* margin-right: 2px; */
+      @media (max-width: 440px) {
+         margin-right: 2px;
+      }
+   }
+
+  .tablaCross4 {
     position: absolute;
     left: -4px;
     bottom: 5px;
     transform: rotate(-15deg);
     @media (max-width: 440px) {
       left: -2px;
+      bottom: 6px;
+    }
+  }
+
+  .tablaCross9 {
+    position: absolute;
+    left: -4px;
+    bottom: 5px;
+    transform: rotate(-15deg);
+    @media (max-width: 440px) {
+      left: 8px;
+      bottom: 6px;
+    }
+  }
+
+  .tablaCross14 {
+    position: absolute;
+    left: -4px;
+    bottom: 5px;
+    transform: rotate(-15deg);
+    @media (max-width: 440px) {
+      left: 18px;
       bottom: 6px;
     }
   }
