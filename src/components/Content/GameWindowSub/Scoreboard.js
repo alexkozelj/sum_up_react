@@ -19,8 +19,10 @@ const Scoreboard = (props) => {
    let gameResultPlayer = _.sumBy(store.playerCollectedCards, 'value')
    let takenCardsComputer = store.compCollectedCards.length
    let takenCardsPlayer = store.playerCollectedCards.length
-   console.log("🚀 ~ file: Scoreboard.js ~ line 21 ~ Scoreboard ~ store.compCollectedCards", store.compCollectedCards.map(card => card.calculusValue))
-   console.log("🚀 ~ file: Scoreboard.js ~ line 22 ~ Scoreboard ~ store.playerCollectedCards", store.playerCollectedCards.map(card => card.calculusValue))
+   console.log("🚀 ~ file: Scoreboard.js ~ line 22 ~ Scoreboard ~ store.playerCollectedCards", store.playerCollectedCards)
+   console.log("🚀 ~ file: Scoreboard.js ~ line 22 ~ Scoreboard ~ takenCardsPlayer", takenCardsPlayer)
+   // console.log("🚀 ~ file: Scoreboard.js ~ line 21 ~ Scoreboard ~ store.compCollectedCards", store.compCollectedCards?.map(card => card.calculusValue))
+   // console.log("🚀 ~ file: Scoreboard.js ~ line 22 ~ Scoreboard ~ store.playerCollectedCards", store.playerCollectedCards?.map(card => card.calculusValue))
    // console.log("🚀 ~ file: Scoreboard.js ~ line 19 ~ Scoreboard ~ store.compCollectedCards", store.compCollectedCards)
    // console.log("🚀 ~ file: Scoreboard.js ~ line 17 ~ gameResultComputer ~ gameResultComputer", gameResultComputer)
 
@@ -50,32 +52,12 @@ const Scoreboard = (props) => {
                            useObserver(() =>
 
                               tablaPointComputer.map((tabla, index) =>
-                                 ( index !== 4 && index !== 9) ?
+                              ( index !== 4 && index !== 9 && index !== 14) ?
                                     <span key={`tablaComp-${index}`}>{tabla}</span> :
                                        <span key={`tablaComp-${index}`} className={`tablaCross${index}`}>___</span>
                               )
                            )
                         }
-
-                        {/* <span>|</span>
-                        <span>|</span>
-                        <span>|</span>
-                        <span>|</span>
-                        <span className={"tablaCross1"}>___</span>
-                        <span>  </span>
-
-                        <span>|</span>
-                        <span>|</span>
-                        <span>|</span>
-                        <span>|</span>
-                        <span className={"tablaCross2"}>___</span>
-                        <span>  </span>
-
-                        <span>|</span>
-                        <span>|</span>
-                        <span>|</span>
-                        <span>|</span>
-                        <span className={"tablaCross3"}>___</span> */}
 
                      </div>
                   </div>
@@ -90,8 +72,16 @@ const Scoreboard = (props) => {
                   <div className={"playerScore"}>{useObserver(() => gameResultPlayer)}</div>
                   <div className={"tablaWrapper"}>
                      <div className={"tabla"}>
-                        ||||
-                        <div className={"tablaCross"}>___</div>
+                     {
+                           useObserver(() =>
+
+                              tablaPointPlayer.map((tabla, index) =>
+                              ( index !== 4 && index !== 9 && index !== 14) ?
+                                    <span key={`tablaComp-${index}`}>{tabla}</span> :
+                                       <span key={`tablaComp-${index}`} className={`tablaCross${index}`}>___</span>
+                              )
+                           )
+                        }
                      </div>
                   </div>
                   <div className={"cardsSumWrapper"}>

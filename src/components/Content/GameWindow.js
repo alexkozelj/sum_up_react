@@ -195,6 +195,7 @@ const GameWindow = () => {
       console.log("🚀 ~ file: GameWindow.js ~ line 195 ~ removeTakenCards ~ store.compCollectedCards", store.compCollectedCards)
       store.compInHandCards = _.filter(store.compInHandCards, (e => e.id !== combi[0].id))
       store.cardsOnTable = _.difference(store.cardsOnTable, combi, combi.id )
+      if (store.cardsOnTable.length === 0) { store.tablaPointComputer = store.tablaPointComputer.concat('|')}
    }
 
    const throwComputerCard = () => {
@@ -267,7 +268,8 @@ const GameWindow = () => {
          console.log('THROW PLAYER CARD')
 
          store.cardsOnTable.push(store.playerInHandCards.find(playerCard => playerCard.id === id))
-         store.playerInHandCards.map((playerCard, index) => playerCard.id === id && store.playerInHandCards.splice(index, 1))
+         _.remove(store.playerInHandCards, (obj => obj.id === id))
+         
          isPlayersMove(false)
          compMove()
          return
@@ -277,42 +279,14 @@ const GameWindow = () => {
       cardsValuesInCalculation = [...cardsValuesForCalculating]
       checkCalculus(playerCard, cardsValuesForCalculating)
 
-      console.log("🚀 ~ file: GameWindow.js ~ line 19 ~ GameWindow ~ cardsValuesInCalculation", cardsValuesInCalculation)
+      // console.log("🚀 ~ file: GameWindow.js ~ line 19 ~ GameWindow ~ cardsValuesInCalculation", cardsValuesInCalculation)
       // CHECK MARKED CARDS
       if (cardsValuesInCalculation.length === 0) {
-         console.log("🚀 ~ file: GameWindow.js ~ line 85 ~ playerCardClickHandler ~ store.cardsOnTable", store.cardsOnTable)
-
-         store.cardsOnTable.map((tableCard, tableIndex) => {
-
-            console.log("🚀 ~ file: GameWindow.js ~ line 101 ~ store.cardsInCalculation.map ~ store.cardsInCalculation", store.cardsInCalculation)
-            store.cardsInCalculation.map((calcCard, calcIndex) => {
-
-               if (tableCard.id === calcCard.id) {
-                  console.log('card is found')
-                  store.playerCollectedCards = store.playerCollectedCards.concat(tableCard)
-                  // store.playerCollectedCards.push(tableCard)
-                  store.cardsOnTable = store.cardsOnTable.filter(tableCard => tableCard !== calcCard)
-                  // console.log("🚀 ~ file: GameWindow.js ~ line 93333 ~ store.cardsInCalculation.map ~ store.cardsOnTable", store.cardsOnTable)
-
-                  const playerCard = store.playerInHandCards.find(item => item.id === id)
-                  store.playerCollectedCards = store.playerCollectedCards.concat(playerCard)
-                  store.tablaPointComputer = store.tablaPointComputer.concat('|')
-                  store.playerInHandCards = store.playerInHandCards.filter(card => card !== playerCard)
-                  // console.log("🚀 ~ file: GameWindow.js ~ line 98 ~ store.cardsInCalculation.map ~ store.playerInHandCards", store.playerInHandCards)
-                  // store.playerInHandCards.splice(store.playerInHandCards.findIndex(cardObj => cardObj === playerCard), 1)
-                  // console.log("🚀 ~ file: GameWindow.js ~ line 96 ~ store.cardsInCalculation.map ~ store.playerInHandCards", store.playerInHandCards)
-                  // console.log('it is pushed and removed')
-
-               }
-
-               // const newArray = store.cardsOnTable.filter(tableCard.id !== calcCard.id)
-               // store.cardsOnTable = newArray
-               // console.log("🚀 ~ file: GameWindow.js ~ line 103 ~ store.cardsInCalculation.map ~ store.cardsOnTable", store.cardsOnTable)
-            })
-         })
-
+         store.playerCollectedCards = store.playerCollectedCards.concat( store.cardsInCalculation, store.playerInHandCards.find(playerCard => playerCard.id === id))
+         store.playerInHandCards = store.playerInHandCards.filter(el => el.id !== id)
+         store.cardsOnTable = _.difference(store.cardsOnTable, store.cardsInCalculation, store.cardsInCalculation.id )
+         store.cardsInCalculation = []
          console.log('clear cardsInCalc array')
-         store.cardsInCalculation.splice(0, store.cardsInCalculation.length)
 
       } else {
          // WRONG CALCULATED CARDS

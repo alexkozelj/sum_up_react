@@ -192,6 +192,13 @@ export const Scoreboard = styled.div`
       }
    }
 
+  .tabla span:nth-child(9) {  
+      /* margin-right: 2px; */
+      @media (max-width: 440px) {
+         margin-right: 2px;
+      }
+   }
+
   .tablaCross4 {
     position: absolute;
     left: -4px;
@@ -210,6 +217,17 @@ export const Scoreboard = styled.div`
     transform: rotate(-15deg);
     @media (max-width: 440px) {
       left: 8px;
+      bottom: 6px;
+    }
+  }
+
+  .tablaCross14 {
+    position: absolute;
+    left: -4px;
+    bottom: 5px;
+    transform: rotate(-15deg);
+    @media (max-width: 440px) {
+      left: 18px;
       bottom: 6px;
     }
   }
