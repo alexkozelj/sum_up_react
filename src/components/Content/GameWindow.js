@@ -194,18 +194,37 @@ const GameWindow = () => {
       store.compCollectedCards = store.compCollectedCards.concat(combi)
       console.log("🚀 ~ file: GameWindow.js ~ line 195 ~ removeTakenCards ~ store.compCollectedCards", store.compCollectedCards)
       store.compInHandCards = _.filter(store.compInHandCards, (e => e.id !== combi[0].id))
-      store.cardsOnTable = _.difference(store.cardsOnTable, combi, combi.id )
-      if (store.cardsOnTable.length === 0) { store.tablaPointComputer = store.tablaPointComputer.concat('|')}
+      store.cardsOnTable = _.difference(store.cardsOnTable, combi, combi.id)
+
+      if (store.cardsOnTable.length === 0) {
+         store.gameResultComputer += _.sumBy(combi, 'value') + 1
+         store.overallResultComputer += _.sumBy(combi, 'value') + 1
+         store.tablaPointComputer = store.tablaPointComputer.concat('|')
+      } else {
+         store.gameResultComputer += _.sumBy(combi, 'value')
+         store.overallResultComputer += _.sumBy(combi, 'value')
+      }
+
+      // if (store.cardsOnTable.length === 0) { store.tablaPointComputer = store.tablaPointComputer.concat('|')}
    }
 
    const throwComputerCard = () => {
-      let computerCardThrow = _.minBy(store.compInHandCards, store.compInHandCards.calculusValue)
+      let noValueCards = _.filter(store.compInHandCards, (card => card.value === 0))
+      console.log("🚀 ~ file: GameWindow.js ~ line 213 ~ throwComputerCard ~ noValueCards", noValueCards)
+      let computerCardThrow
+      if (noValueCards.length !== 0) {
+         computerCardThrow = _.minBy(noValueCards, 'calculusValue')
+      } else {
+         computerCardThrow = _.minBy(store.compInHandCards, 'calculusValue')
+      }
+
+      console.log("🚀 ~ file: GameWindow.js ~ line 215 ~ throwComputerCard ~ computerCardThrow", computerCardThrow)
       store.compInHandCards = _.filter(store.compInHandCards, (e => e.id !== computerCardThrow.id))
       store.cardsOnTable.push(computerCardThrow)
    }
 
    const compMove = async () => {
-      
+
       isPlayersMove(false)
       console.log("🚀 ~ file: GameWindow.js ~ line 88 ~ compMove ~ store.compInHandCards", store.compInHandCards.map(card => card.calculusValue))
 
@@ -255,11 +274,22 @@ const GameWindow = () => {
       console.log("🚀 ~ file: GameWindow.js ~ line 89 ~ compMove ~ combinations", combinations)
       await delay(1000)
       console.log('after first await')
-      
+
+      if (store.compInHandCards.length === 0 && store.playerInHandCards.length) {
+         store.fullDeck.splice(0, 6).map(arr => store.addToArray(store.compInHandCards, arr))
+         store.fullDeck.splice(0, 6).map(arr => store.addToArray(store.playerInHandCards, arr))
+         if (store.dealNumber === 4) {
+            store.dealNumber = 0
+            
+         }
+         store.dealNumber += 1
+
+      }
+
       isPlayersMove(true)
    }
 
-   const playerCardClickHandler = (id, playerCard) => {
+   const playerCardClickHandler = (card, id, playerCard) => {
 
       if (!playersMove) return
 
@@ -269,7 +299,7 @@ const GameWindow = () => {
 
          store.cardsOnTable.push(store.playerInHandCards.find(playerCard => playerCard.id === id))
          _.remove(store.playerInHandCards, (obj => obj.id === id))
-         
+
          isPlayersMove(false)
          compMove()
          return
@@ -278,13 +308,24 @@ const GameWindow = () => {
       const cardsValuesForCalculating = Object.values(store.cardsInCalculation).map(card => card.calculusValue)
       cardsValuesInCalculation = [...cardsValuesForCalculating]
       checkCalculus(playerCard, cardsValuesForCalculating)
-
       // console.log("🚀 ~ file: GameWindow.js ~ line 19 ~ GameWindow ~ cardsValuesInCalculation", cardsValuesInCalculation)
       // CHECK MARKED CARDS
       if (cardsValuesInCalculation.length === 0) {
-         store.playerCollectedCards = store.playerCollectedCards.concat( store.cardsInCalculation, store.playerInHandCards.find(playerCard => playerCard.id === id))
+
+         store.playerCollectedCards = store.playerCollectedCards.concat(store.cardsInCalculation, card)
          store.playerInHandCards = store.playerInHandCards.filter(el => el.id !== id)
-         store.cardsOnTable = _.difference(store.cardsOnTable, store.cardsInCalculation, store.cardsInCalculation.id )
+         store.cardsOnTable = _.difference(store.cardsOnTable, store.cardsInCalculation, store.cardsInCalculation.id)
+
+         if (store.cardsOnTable.length === 0) {
+            store.gameResultPlayer += _.sumBy(store.cardsInCalculation, 'value') + card.value + 1
+            store.overallResultPlayer += _.sumBy(store.cardsInCalculation, 'value') + card.value + 1
+            store.tablaPointPlayer = store.tablaPointComputer.concat('|')
+         } else {
+            store.gameResultPlayer += _.sumBy(store.cardsInCalculation, 'value') + card.value
+            store.overallResultPlayer += _.sumBy(store.cardsInCalculation, 'value') + card.value
+         }
+
+
          store.cardsInCalculation = []
          console.log('clear cardsInCalc array')
 
@@ -356,7 +397,7 @@ const GameWindow = () => {
                            <Card
                               key={card.id}
                               id={card.id}
-                              onClick={() => playerCardClickHandler(card.id, card.calculusValue)}
+                              onClick={() => playerCardClickHandler(card, card.id, card.calculusValue)}
                               suits={card.suit}
                               ranks={card.rank} />
                         )

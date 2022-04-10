@@ -1,11 +1,7 @@
-import React from 'react'
-import { StoreContext } from '../store/store'
 
-const useCreateDeck = () => {
+export const createDeck = (store) => {
 
-   const store = React.useContext(StoreContext)
-   if (store.fullDeck.length) return
-   store.isShuffled = false;
+   // store.isShuffled = false;
 
    let deck = [];
    let id = 0;
@@ -43,9 +39,15 @@ const useCreateDeck = () => {
             value = 1;
 
          } else if (store.ranks[x] === "10") {
-            
-            (store.suits[i] === "diamonds") ? value = 2 :  value = 1
-            
+            if (store.suits[i] === "diamonds") {
+
+               value = 2;
+
+            } else {
+
+               value = 1;
+
+            }
          } else {
 
             value = 0;
@@ -64,10 +66,9 @@ const useCreateDeck = () => {
          deck.push(card);
       }
    }
+   console.log("🚀 ~ file: use-create-deck.js ~ line 72 ~ createDeck ~ deck", deck)
    return deck
-   // const shuffledDeck = useShuffleDeck(deck)
-   // store.fullDeck.push(shuffledDeck);
-   // return shuffledDeck;
+   
 }
 
-export default useCreateDeck
+export default createDeck

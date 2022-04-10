@@ -9,18 +9,27 @@ const Scoreboard = (props) => {
 
    const store = React.useContext(StoreContext)
 
-   let { gameNumber, dealNumber, overallResultComputer, overallResultPlayer, tablaPointComputer, tablaPointPlayer } = store
+   // let { 
+   //    gameNumber,
+   //    dealNumber,
+   //    gameResultComputer,
+   //    gameResultPlayer,
+   //    tablaPointComputer,
+   //    tablaPointPlayer, 
+   //    overallResultComputer,
+   //    overallResultPlayer,
+   // } = store
    // console.log("🚀 ~ file: Scoreboard.js ~ line 12 ~ Scoreboard ~ gameNumber", gameNumber)
    // gameNumber = 3
    // let gameResultComputer = store.compCollectedCards.reduce((prev, current) => {
    //    return prev + current.value
    // }, 0)
-   let gameResultComputer = _.sumBy(store.compCollectedCards, 'value')
-   let gameResultPlayer = _.sumBy(store.playerCollectedCards, 'value')
-   let takenCardsComputer = store.compCollectedCards.length
-   let takenCardsPlayer = store.playerCollectedCards.length
-   console.log("🚀 ~ file: Scoreboard.js ~ line 22 ~ Scoreboard ~ store.playerCollectedCards", store.playerCollectedCards)
-   console.log("🚀 ~ file: Scoreboard.js ~ line 22 ~ Scoreboard ~ takenCardsPlayer", takenCardsPlayer)
+   // let gameResultComputer = _.sumBy(store.compCollectedCards, 'value')
+   // let gameResultPlayer = _.sumBy(store.playerCollectedCards, 'value')
+   // let takenCardsComputer = store.compCollectedCards.length
+   // let takenCardsPlayer = store.playerCollectedCards.length
+   // console.log("🚀 ~ file: Scoreboard.js ~ line 22 ~ Scoreboard ~ store.playerCollectedCards", store.playerCollectedCards)
+   // console.log("🚀 ~ file: Scoreboard.js ~ line 22 ~ Scoreboard ~ takenCardsPlayer", takenCardsPlayer)
    // console.log("🚀 ~ file: Scoreboard.js ~ line 21 ~ Scoreboard ~ store.compCollectedCards", store.compCollectedCards?.map(card => card.calculusValue))
    // console.log("🚀 ~ file: Scoreboard.js ~ line 22 ~ Scoreboard ~ store.playerCollectedCards", store.playerCollectedCards?.map(card => card.calculusValue))
    // console.log("🚀 ~ file: Scoreboard.js ~ line 19 ~ Scoreboard ~ store.compCollectedCards", store.compCollectedCards)
@@ -36,8 +45,8 @@ const Scoreboard = (props) => {
 
          <div className={"gameInfoContainer"}>
             <header className={"gameInfoHeader"}>Инфо</header>
-            <div className={"gameInfo"}>Igra: {useObserver(() => gameNumber)}</div>
-            <div className={"dealInfo"}>Deljenje: {useObserver(() => dealNumber)}/4</div>
+            <div className={"gameInfo"}>Igra: {useObserver(() => store.gameNumber)}</div>
+            <div className={"dealInfo"}>Deljenje: {useObserver(() => store.dealNumber)}/4</div>
          </div>
          <div className={"resultContainer"}>
             <header className={"resultHeader"}>Резултат</header>
@@ -45,13 +54,13 @@ const Scoreboard = (props) => {
             <div className={"resultWrapper"}>
                <div className={"opponentScoreContainer"}>
                   <div className={"opponentName"}>Били</div>
-                  <div className={"opponentScore"}>{useObserver(() => gameResultComputer)}</div>
+                  <div className={"opponentScore"}>{useObserver(() => store.gameResultComputer)}</div>
                   <div className={"tablaWrapper"}>
                      <div className={"tabla"}>
                         {
                            useObserver(() =>
 
-                              tablaPointComputer.map((tabla, index) =>
+                              store.tablaPointComputer.map((tabla, index) =>
                               ( index !== 4 && index !== 9 && index !== 14) ?
                                     <span key={`tablaComp-${index}`}>{tabla}</span> :
                                        <span key={`tablaComp-${index}`} className={`tablaCross${index}`}>___</span>
@@ -63,19 +72,19 @@ const Scoreboard = (props) => {
                   </div>
                   <div className={"cardsSumWrapper"}>
                      <div className={"sumTitle"}>karte</div>
-                     <div className={"cardsSum"}>{useObserver(() => takenCardsComputer)}</div>
+                     <div className={"cardsSum"}>{useObserver(() => store.compCollectedCards.length)}</div>
                   </div>
                </div>
 
                <div className={"playerScoreContainer"}>
                   <div className={"playerName"}> Лаки</div>
-                  <div className={"playerScore"}>{useObserver(() => gameResultPlayer)}</div>
+                  <div className={"playerScore"}>{useObserver(() => store.gameResultPlayer)}</div>
                   <div className={"tablaWrapper"}>
                      <div className={"tabla"}>
                      {
                            useObserver(() =>
 
-                              tablaPointPlayer.map((tabla, index) =>
+                              store.tablaPointPlayer.map((tabla, index) =>
                               ( index !== 4 && index !== 9 && index !== 14) ?
                                     <span key={`tablaComp-${index}`}>{tabla}</span> :
                                        <span key={`tablaComp-${index}`} className={`tablaCross${index}`}>___</span>
@@ -86,7 +95,7 @@ const Scoreboard = (props) => {
                   </div>
                   <div className={"cardsSumWrapper"}>
                      <div className={"sumTitle"}>karte</div>
-                     <div className={"cardsSum"}>{useObserver(() => takenCardsPlayer)}</div>
+                     <div className={"cardsSum"}>{useObserver(() => store.playerCollectedCards.length)}</div>
                   </div>
                </div>
 
@@ -96,8 +105,8 @@ const Scoreboard = (props) => {
                <div className={"overallResult"}>Укупан резултат</div>
             </div>
             <div className={"totalResultWrapper"}>
-               <div className={"totalResultOpponent"}>{useObserver(() => overallResultComputer)}</div>
-               <div className={"totalResultPlayer"}>{useObserver(() => overallResultPlayer)}</div>
+               <div className={"totalResultOpponent"}>{useObserver(() => store.overallResultComputer)}</div>
+               <div className={"totalResultPlayer"}>{useObserver(() => store.overallResultPlayer)}</div>
             </div>
          </div>
 

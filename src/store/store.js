@@ -25,8 +25,10 @@ export const StoreProvider = ({ children }) => {
 
 
       gameNumber: 1,
-
       dealNumber: 1,
+
+      gameResultComputer: 0,
+      gameResultPlayer: 0,
 
       overallResultComputer: 0,
       overallResultPlayer: 0,
