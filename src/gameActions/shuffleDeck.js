@@ -1,10 +1,6 @@
-import React from 'react'
-import { StoreContext } from '../store/store'
 
-
-export const shuffleDeck = (store, deck) => {
-   // const store = React.useContext(StoreContext)
-   // if (store.isShuffled) return
+export const shuffleDeck = (deck) => {
+   
    // for 1000 turns
    // switch the values of two random cards
    for (let i = 0; i < 1000; i++) {
@@ -20,8 +16,6 @@ export const shuffleDeck = (store, deck) => {
    return deck
    // deck.map(arr => store.addToArray(store.fullDeck, arr[0]))
    
-   // console.log("🚀 ~ file: use-shuffle-deck.js ~ line 18 ~ shuffleDeck ~ store.fullDeck", store.fullDeck)
-
 }
 
 export default shuffleDeck
