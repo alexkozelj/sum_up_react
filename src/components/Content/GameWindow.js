@@ -3,6 +3,8 @@ import _ from 'lodash'
 // import useCreateDeck from '../../hooks/use-create-deck'
 import { StoreContext } from './../../store/store'
 import { useObserver } from 'mobx-react'
+import newHandDeal from './../../gameActions/newHandDeal'
+import newGameSetup from './../../gameActions/newGameSetup'
 import * as Styled from "./GameWindow.styled.js";
 
 // import { timeout } from './../../helpers/Timeout'
@@ -195,7 +197,7 @@ const GameWindow = () => {
       console.log("🚀 ~ file: GameWindow.js ~ line 195 ~ removeTakenCards ~ store.compCollectedCards", store.compCollectedCards)
       store.compInHandCards = _.filter(store.compInHandCards, (e => e.id !== combi[0].id))
       store.cardsOnTable = _.difference(store.cardsOnTable, combi, combi.id)
-
+      
       if (store.cardsOnTable.length === 0) {
          store.gameResultComputer += _.sumBy(combi, 'value') + 1
          store.overallResultComputer += _.sumBy(combi, 'value') + 1
@@ -205,6 +207,7 @@ const GameWindow = () => {
          store.overallResultComputer += _.sumBy(combi, 'value')
       }
 
+      if (store.dealNumber === 4) store.whoTookLast = 'computer'
       // if (store.cardsOnTable.length === 0) { store.tablaPointComputer = store.tablaPointComputer.concat('|')}
    }
 
@@ -275,15 +278,60 @@ const GameWindow = () => {
       await delay(1000)
       console.log('after first await')
 
-      if (store.compInHandCards.length === 0 && store.playerInHandCards.length) {
-         store.fullDeck.splice(0, 6).map(arr => store.addToArray(store.compInHandCards, arr))
-         store.fullDeck.splice(0, 6).map(arr => store.addToArray(store.playerInHandCards, arr))
-         if (store.dealNumber === 4) {
-            store.dealNumber = 0
+      if (store.compInHandCards.length === 0 && store.playerInHandCards.length === 0) {
+         console.log('it is inside and needs to DEAL')
+         if (store.fullDeck.length === 0) {
+            console.log('END OF GAME !!!!!!')
             
-         }
-         store.dealNumber += 1
+            if (store.whoTookLast === 'player') {
+               console.log("🚀 ~ file: GameWindow.js ~ line 287 ~ compMove ~ store.whoTookLast", store.whoTookLast)
+               await delay(1000)
+               store.gameResultPlayer += _.sumBy(store.cardsOnTable, 'value') 
+               store.overallResultPlayer += _.sumBy(store.cardsOnTable, 'value')
+               store.playerCollectedCards = store.playerCollectedCards.concat(store.cardsOnTable)
+               store.cardsOnTable = []
+            } else {
+               console.log("🚀 ~ file: GameWindow.js ~ line 293 ~ compMove ~ store.whoTookLast", store.whoTookLast)
+               await delay(1000)
+               store.gameResultComputer += _.sumBy(store.cardsOnTable, 'value')
+               store.overallResultComputer += _.sumBy(store.cardsOnTable, 'value')
+               store.compCollectedCards = store.compCollectedCards.concat(store.cardsOnTable)
+               store.cardsOnTable = []
+            }
 
+            await delay(1000)
+            if (store.playerCollectedCards.length > store.compCollectedCards.length) {
+               console.log("🚀 ~ file: GameWindow.js ~ line 302 ~ compMove ~ store.compCollectedCards.length", store.compCollectedCards.length)
+               console.log("🚀 ~ file: GameWindow.js ~ line 302 ~ compMove ~ store.playerCollectedCards.length", store.playerCollectedCards.length)
+               store.gameResultPlayer += 3
+               store.overallResultPlayer += 3
+            } 
+            if (store.playerCollectedCards.length < store.compCollectedCards.length) {
+               console.log("🚀 ~ file: GameWindow.js ~ line 309 ~ compMove ~ store.compCollectedCards.length", store.compCollectedCards.length)
+               console.log("🚀 ~ file: GameWindow.js ~ line 309 ~ compMove ~ store.playerCollectedCards.length", store.playerCollectedCards.length)
+               store.gameResultComputer += 3
+               store.overallResultComputer += 3
+            }
+
+            await delay(1000)
+            console.log('END OF GAME cleanup !!!!!!')
+            store.dealNumber = 1
+            store.gameResultComputer = 0
+            store.gameResultPlayer = 0
+            store.tablaPointComputer = []
+            store.tablaPointPlayer = []
+            store.compCollectedCards = []
+            store.playerCollectedCards = []
+
+            store.gameNumber += 1
+            console.log('new game setup !!!!!!')
+            newGameSetup(store)
+         } else {
+            console.log('newHandDeal')
+            store.dealNumber += 1
+            newHandDeal(store)
+
+         }
       }
 
       isPlayersMove(true)
@@ -324,6 +372,7 @@ const GameWindow = () => {
             store.gameResultPlayer += _.sumBy(store.cardsInCalculation, 'value') + card.value
             store.overallResultPlayer += _.sumBy(store.cardsInCalculation, 'value') + card.value
          }
+         if (store.dealNumber === 4) store.whoTookLast = 'player'
 
 
          store.cardsInCalculation = []

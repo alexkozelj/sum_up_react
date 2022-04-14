@@ -22,6 +22,8 @@ export const StoreProvider = ({ children }) => {
 
       isDealt: false,
 
+      gameType: 'games', // points
+      gamesToPlay: '1',
 
 
       gameNumber: 1,
@@ -38,11 +40,9 @@ export const StoreProvider = ({ children }) => {
       
 
       compCollectedCards: [],
-
       playerCollectedCards: [],
 
       compInHandCards: [],
-
       playerInHandCards: [],
 
       cardsOnTable: [],
@@ -52,7 +52,7 @@ export const StoreProvider = ({ children }) => {
       cardsInCalculation: [],
 
       // Player who takes last combination in game, takes rest of cards
-      whoTookTheLast: 0
+      whoTookLast: '',
 
 
    }))
