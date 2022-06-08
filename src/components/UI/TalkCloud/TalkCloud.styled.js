@@ -5,7 +5,7 @@ export const TalkCloud = styled.div`
    
    display: flex;
    /* flex-direction: column; */
-   max-width: 150px;
+   /* max-width: 150px; */
    max-height: 100%;
    justify-content: center;
    align-items: center;
@@ -20,27 +20,39 @@ export const TalkCloud = styled.div`
    text-align: center;
    /* display: grid; */
    @media (max-width: 440px) {
-      max-width: 96px;
+      max-width: 100%;
+      bottom: 10px;
+      left: -15px;
    }
 
-   .wrapper {
-      position: relative;
-      width: 100%;
-      height: 100%;
-   }
-
-   .opponentMessage {
+   .container {
       display: flex;
       justify-content: center;
       align-items: center;
-      position: absolute;
-      width: 75%;
+      position: relative;
+      width: max-content;
       height: 47%;
       bottom: 32%;
       left: 15%;
-      font-size: 16px;
+      font-size: 0.9em;
       word-wrap: break-word;
    }
+
+
+   .wrapper {
+      position: relative;
+      width: max-content;
+      height: 100%;
+   }
+
+   .cloudWrapper {
+      width: max-content;
+      height: 80px;
+      @media (max-width: 440px) {
+         /* height: 40px; */
+      }
+   }
+
 
    img {
       /* margin-top: 10px; */
@@ -52,19 +64,37 @@ export const TalkCloud = styled.div`
       /* align-self: center; */
       /* opacity: 0.5; */
       /* justify-content: center; */
-      max-width: 100%;
-      max-height: 100%;
+      /* padding-top: 52px; */
+      margin-top: 10px;
+      width: 100%;
+      max-height: 65px;
       padding: 2px;
-      object-fit: contain;
+      /* object-fit: contain; */
       overflow: hidden;
+      @media (max-width: 440px) {
+         /* height: 60px; */
+         /* max-width: 50px; */
+      }
    }
 
    .message1 {
-      font-size: 16px;
+      font-size: 0.9em;
+      position: relative;
+      bottom: 3.2em;
+      padding: 0 2em 0 2.3em;
+      width: max-content;
+      /* overflow: hidden; */
+      white-space: nowrap;
       margin: 0;
       font-family: "Comic Sans MS", "Comic Sans", cursive;
       @media (max-width: 440px) {
-         font-size: 14px;
+         /* display: inline-block; */
+         /* width: 50px; */
+         /* display: flex;
+         align-self: center; */
+         word-wrap: break-word;
+         font-size: 8px;
+         bottom: 55%;
       }  
    }
 

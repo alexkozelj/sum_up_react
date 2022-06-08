@@ -7,7 +7,7 @@ export const NavbarButton = styled.div`
    margin: 0 1.4em;
    width: 6em;
    height: 100%;
-   font-size: 0.8em;
+   font-size: 0.6em;
 
    a {
       font-size: 1em;

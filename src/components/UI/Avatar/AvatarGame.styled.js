@@ -3,16 +3,17 @@ import styled from "styled-components";
 export const Avatar = styled.div`
   display: flex;
   flex-direction: column;
-  max-width: 75px;
+  /* max-width: 75px; */
   /* max-height: 50%; */
   justify-content: center;
   align-items: center;
   /* align-self: start; */
-  width: 65px;
-    max-width: 75px;
+  width: 57px;
+   max-width: 75px;
     
   position: absolute;
-  top: 40px;
+  top: 20px;
+  left: 8px;
 
    /* top: 115px;
    left: 140px; */
@@ -59,16 +60,18 @@ export const Avatar = styled.div`
     /* align-self: center; */
     /* opacity: 0.5; */
     /* justify-content: center; */
-    max-width: 100%;
-    max-height: 100%;
-    padding: 2px;
+    width: 100%;
+    /* max-height: 100%; */
+    border-radius: 10px;
+    padding: 3px;
     object-fit: contain;
     overflow: hidden;
   }
 
   p {
-    font-size: 10px;
-    padding: 5px;
+    font-size: 0.7em;;
+    /* font-weight: bold; */
+    padding: 1px 3px 0 3px;
     margin: 0;
     @media (max-width: 440px) {
       font-size: 8px;

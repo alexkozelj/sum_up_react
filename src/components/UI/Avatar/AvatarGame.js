@@ -1,5 +1,5 @@
 import * as Styled from './AvatarGame.styled.js';
-import BiliProfilna from './../../../images/bili_profilna_crnobela.jpg'
+import BiliProfilna from './../../../images/Bili/bili_profilna_crnobela.jpg'
 
 const Avatar = (props) => {
 // console.log("🚀 ~ file: Avatar.js ~ line 5 ~ Avatar ~ props", props)
@@ -13,7 +13,7 @@ const Avatar = (props) => {
 
             </img>
          </div>
-         <p>Били Питон</p>
+         <p>Били</p>
       </Styled.Avatar>
    );
 }

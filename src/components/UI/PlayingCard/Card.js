@@ -18,6 +18,9 @@ const Card = (props) => {
    const diamonds = '♦'
    const spades = '♠'
    const clubs = '♣'
+   const king = '♚'
+   const queen = '♛'
+   const jack = '⚜'
 
    const setSuitHandler = (suits) => {
       if (suits === 'hearts') return hearts
@@ -216,32 +219,32 @@ const Card = (props) => {
             {props.ranks === 'J' &&
                <div className="card__inner card__inner--centered">
                   <div className="card__column--img">
-                     {props.suits === 'diamonds' && <img src={J_Diamonds} alt={'Jack diamonds card'} />}
-                     {props.suits === 'hearts' && <img src={J_Hearts} alt={'Jack hearts card'} />}
-                     {props.suits === 'clubs' && <img src={J_Clubs} alt={'Jack clubs card'} />}
-                     {props.suits === 'spades' && <img src={J_Spades} alt={'Jack spades card'} />}
+                     {props.suits === 'diamonds' && <span className={'red'}>{jack}</span>}
+                     {props.suits === 'hearts' && <span className={'red'}>{jack}</span>}
+                     {props.suits === 'clubs' && <span className={'black'}>{jack}</span>}
+                     {props.suits === 'spades' && <span className={'black'}>{jack}</span>}
                   </div>
                </div>
             }
 
             {props.ranks === 'Q' &&
                <div className="card__inner card__inner--centered">
-                  <div className="card__column--img">
-                     {props.suits === 'diamonds' && <img src={Q_Diamonds} alt={'Queen diamonds card'} />}
-                     {props.suits === 'hearts' && <img src={Q_Hearts} alt={'Queen hearts card'} />}
-                     {props.suits === 'clubs' && <img src={Q_Clubs} alt={'Queen clubs card'} />}
-                     {props.suits === 'spades' && <img src={Q_Spades} alt={'Queen spades card'} />}
+               <div className="card__column--img">
+                     {props.suits === 'diamonds' && <span className={'red'}>{queen}</span>}
+                     {props.suits === 'hearts' && <span className={'red'}>{queen}</span>}
+                     {props.suits === 'clubs' && <span className={'black'}>{queen}</span>}
+                     {props.suits === 'spades' && <span className={'black'}>{queen}</span>}
                   </div>
                </div>
             }
 
             {props.ranks === 'K' &&
                <div className="card__inner card__inner--centered">
-                  <div className="card__column--img">
-                     {props.suits === 'diamonds' && <img src={K_Diamonds} alt={'King diamonds card'} />}
-                     {props.suits === 'hearts' && <img src={K_Hearts} alt={'King hearts card'} />}
-                     {props.suits === 'clubs' && <img src={K_Clubs} alt={'King clubs card'} />}
-                     {props.suits === 'spades' && <img src={K_Spades} alt={'King spades card'} />}
+               <div className="card__column--img">
+                     {props.suits === 'diamonds' && <span className={'red'}>{king}</span>}
+                     {props.suits === 'hearts' && <span className={'red'}>{king}</span>}
+                     {props.suits === 'clubs' && <span className={'black'}>{king}</span>}
+                     {props.suits === 'spades' && <span className={'black'}>{king}</span>}
                   </div>
                </div>
             }

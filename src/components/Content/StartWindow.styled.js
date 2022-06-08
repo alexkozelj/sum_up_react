@@ -14,4 +14,26 @@ export const StartWindow = styled.div`
    padding-top: 4vh;
    /* display: grid; */
 
+   h1 {
+      font-size: 1.4em;
+   }
+
+   h3 {
+      font-size: 1em;
+      margin: 0 !important;
+   }
+
+`
+
+export const GameTypeWrapper = styled.div`
+   display: flex;
+   flex-direction: row;
+   padding-bottom: 10px;
+
+`
+
+export const NumberOfGamesWrapper = styled.div`
+   display: flex;
+   flex-direction: row;
+   padding-bottom: 10px;
 `

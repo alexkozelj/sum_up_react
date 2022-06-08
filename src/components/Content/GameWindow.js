@@ -12,11 +12,18 @@ import Card from './../UI/PlayingCard/Card'
 import Playground from './GameWindowSub/Playground'
 import Avatar from './../UI/Avatar/AvatarGame'
 import TalkCloud from './../UI/TalkCloud/TalkCloud'
+import Modal from './../UI/Modal/Modal'
+import StartGameButton from './../UI/Buttons/StartGameButton'
+
+import Bili_u_cudu from './../../images/Bili/bili_cudi_se.jpg'
+import Bili_smeh from './../../images/Bili/bili-smeh.jpg'
 
 const GameWindow = () => {
 
    const store = React.useContext(StoreContext)
    const [playersMove, isPlayersMove] = useState(true)
+   const [showWinner, setShowWinner] = useState('')
+   const [combi, setCombi] = useState(<p></p>)
    // console.log("🚀 ~ file: GameWindow.js ~ line 12 ~ GameWindow ~ store", store)
 
    let cardsValuesInCalculation = []
@@ -184,12 +191,23 @@ const GameWindow = () => {
    }
 
    const showTakenCards = (combi) => {
+      setCombi('')
       // console.log("🚀 ~ file: GameWindow.js ~ line 184 ~ showTakenCards ~ combi", combi)
       let card = document.getElementById(`backCardDiv-${combi[0].id}`)
       let cardContainer = document.getElementById(`cardContainer-${combi[0].id}`)
       card.classList.remove('showBack')
       cardContainer.classList.add('showCard')
       combi.map((card, i) => document.getElementById(card.id).classList.add('markedCard'))
+      combi.map((card, i) => {
+         console.log("🚀 ~ file: GameWindow.js ~ line 202 ~ combi.map ~ card", card)
+         // console.log("🚀 ~ file: GameWindow.js ~ line 202 ~ combi.map ~ card", card.calculusValue)
+         let val = i === 0 && `${card.calculusValue} = `
+         if (i === 0 && card.calculusValue === 1) { val = `11(1) = ` }
+         if (combi.length - 1 !== i && i !== 0) { val = `${card.calculusValue} + ` }
+         if (combi.length - 1 === i) { val = `${card.calculusValue} ` }
+         if (typeof (val) === 'Object') return
+         setCombi(prevState => prevState += `${val}`)
+      })
    }
 
    const removeTakenCards = (combi) => {
@@ -197,14 +215,14 @@ const GameWindow = () => {
       console.log("🚀 ~ file: GameWindow.js ~ line 195 ~ removeTakenCards ~ store.compCollectedCards", store.compCollectedCards)
       store.compInHandCards = _.filter(store.compInHandCards, (e => e.id !== combi[0].id))
       store.cardsOnTable = _.difference(store.cardsOnTable, combi, combi.id)
-      
+
       if (store.cardsOnTable.length === 0) {
+         if (store.gameType === 'points') store.overallResultComputer += _.sumBy(combi, 'value') + 1
          store.gameResultComputer += _.sumBy(combi, 'value') + 1
-         store.overallResultComputer += _.sumBy(combi, 'value') + 1
          store.tablaPointComputer = store.tablaPointComputer.concat('|')
       } else {
          store.gameResultComputer += _.sumBy(combi, 'value')
-         store.overallResultComputer += _.sumBy(combi, 'value')
+         if (store.gameType === 'points') store.overallResultComputer += _.sumBy(combi, 'value')
       }
 
       if (store.dealNumber === 4) store.whoTookLast = 'computer'
@@ -270,31 +288,32 @@ const GameWindow = () => {
          removeTakenCards(combinations[bestCombiIndex])
          console.log("🚀 ~ file: GameWindow.js ~ line 167 ~ compMove ~ bestCombiIndex", bestCombiIndex, 'value', combiValueSum, 'length', combiLengthSum)
       } else {
-         await delay(1500)
+         await delay(500)
          throwComputerCard()
       }
 
       console.log("🚀 ~ file: GameWindow.js ~ line 89 ~ compMove ~ combinations", combinations)
-      await delay(1000)
+      await delay(500)
       console.log('after first await')
 
+      // END OF GAME
       if (store.compInHandCards.length === 0 && store.playerInHandCards.length === 0) {
          console.log('it is inside and needs to DEAL')
          if (store.fullDeck.length === 0) {
             console.log('END OF GAME !!!!!!')
-            
+
             if (store.whoTookLast === 'player') {
                console.log("🚀 ~ file: GameWindow.js ~ line 287 ~ compMove ~ store.whoTookLast", store.whoTookLast)
                await delay(1000)
-               store.gameResultPlayer += _.sumBy(store.cardsOnTable, 'value') 
-               store.overallResultPlayer += _.sumBy(store.cardsOnTable, 'value')
+               store.gameResultPlayer += _.sumBy(store.cardsOnTable, 'value')
+               if (store.gameType === 'points') store.overallResultPlayer += _.sumBy(store.cardsOnTable, 'value')
                store.playerCollectedCards = store.playerCollectedCards.concat(store.cardsOnTable)
                store.cardsOnTable = []
             } else {
                console.log("🚀 ~ file: GameWindow.js ~ line 293 ~ compMove ~ store.whoTookLast", store.whoTookLast)
                await delay(1000)
                store.gameResultComputer += _.sumBy(store.cardsOnTable, 'value')
-               store.overallResultComputer += _.sumBy(store.cardsOnTable, 'value')
+               if (store.gameType === 'points') store.overallResultComputer += _.sumBy(store.cardsOnTable, 'value')
                store.compCollectedCards = store.compCollectedCards.concat(store.cardsOnTable)
                store.cardsOnTable = []
             }
@@ -304,16 +323,36 @@ const GameWindow = () => {
                console.log("🚀 ~ file: GameWindow.js ~ line 302 ~ compMove ~ store.compCollectedCards.length", store.compCollectedCards.length)
                console.log("🚀 ~ file: GameWindow.js ~ line 302 ~ compMove ~ store.playerCollectedCards.length", store.playerCollectedCards.length)
                store.gameResultPlayer += 3
-               store.overallResultPlayer += 3
-            } 
+               if (store.gameType === 'points') store.overallResultPlayer += 3
+            }
             if (store.playerCollectedCards.length < store.compCollectedCards.length) {
                console.log("🚀 ~ file: GameWindow.js ~ line 309 ~ compMove ~ store.compCollectedCards.length", store.compCollectedCards.length)
                console.log("🚀 ~ file: GameWindow.js ~ line 309 ~ compMove ~ store.playerCollectedCards.length", store.playerCollectedCards.length)
                store.gameResultComputer += 3
-               store.overallResultComputer += 3
+               if (store.gameType === 'points') store.overallResultComputer += 3
             }
 
-            await delay(1000)
+
+            if (store.gameType === 'games') {
+               if (store.gameResultComputer > store.gameResultPlayer) {
+                  console.log('point for computer')
+                  store.overallResultComputer += 1
+                  store.gameNumber += 1
+               }
+               if (store.gameResultComputer < store.gameResultPlayer) {
+                  console.log('point for player')
+                  store.overallResultPlayer += 1
+                  store.gameNumber += 1
+               }
+               if (store.gameResultComputer === store.gameResultPlayer) {
+                  console.log('it is tie')
+
+               }
+            } else {
+               store.gameNumber += 1
+            }
+
+            await delay(500)
             console.log('END OF GAME cleanup !!!!!!')
             store.dealNumber = 1
             store.gameResultComputer = 0
@@ -323,7 +362,36 @@ const GameWindow = () => {
             store.compCollectedCards = []
             store.playerCollectedCards = []
 
-            store.gameNumber += 1
+
+            if (store.gameType === 'points' && store.gameNumber + 1 > store.gamesToPlay) {
+               console.log('DECLARE A WINNER')
+               if (store.overallResultPlayer === +store.gamesToPlay) {
+                  console.log('DECLARE PLAYER AS A WINNER')
+                  setShowWinner('player')
+               }
+               if (store.overallResultComputer === +store.gamesToPlay) {
+                  console.log('DECLARE COMPUTER AS A WINNER')
+                  setShowWinner('computer')
+               }
+
+            }
+
+
+            console.log("🚀 ~ file: GameWindow.js ~ line 356 ~ compMove ~ +store.gamesToPlay", typeof (+store.gamesToPlay))
+            if (store.gameType === 'games') {
+
+               if (store.overallResultPlayer === +store.gamesToPlay) {
+                  console.log('DECLARE PLAYER AS A WINNER')
+                  setShowWinner('player')
+               }
+               if (store.overallResultComputer === +store.gamesToPlay) {
+                  console.log('DECLARE COMPUTER AS A WINNER')
+                  setShowWinner('computer')
+               }
+
+            }
+
+
             console.log('new game setup !!!!!!')
             newGameSetup(store)
          } else {
@@ -366,11 +434,11 @@ const GameWindow = () => {
 
          if (store.cardsOnTable.length === 0) {
             store.gameResultPlayer += _.sumBy(store.cardsInCalculation, 'value') + card.value + 1
-            store.overallResultPlayer += _.sumBy(store.cardsInCalculation, 'value') + card.value + 1
+            if (store.gameType === 'points') store.overallResultPlayer += _.sumBy(store.cardsInCalculation, 'value') + card.value + 1
             store.tablaPointPlayer = store.tablaPointComputer.concat('|')
          } else {
             store.gameResultPlayer += _.sumBy(store.cardsInCalculation, 'value') + card.value
-            store.overallResultPlayer += _.sumBy(store.cardsInCalculation, 'value') + card.value
+            if (store.gameType === 'points') store.overallResultPlayer += _.sumBy(store.cardsInCalculation, 'value') + card.value
          }
          if (store.dealNumber === 4) store.whoTookLast = 'player'
 
@@ -392,7 +460,34 @@ const GameWindow = () => {
 
    return (
       <Styled.GameWindow>
-
+      
+         {showWinner === 'computer' &&
+            <Modal>
+               <h1> _ПОРАЗ_</h1>
+               <img
+                  alt="opponent avatar"
+                  src={Bili_smeh}
+               />
+               <div>
+                  <h2> Такав је пос'o, ни ја не волим да ГУБИМ!</h2>
+               </div>
+               <StartGameButton action={() => {store.startWindow = true}} label={'Реванш!'}/>
+            </Modal>
+         }
+         {showWinner === 'player' &&
+            <Modal>
+               <h1>ПОБЕДА !!!</h1>
+               
+               <img
+                  alt="opponent avatar"
+                  src={Bili_u_cudu}
+               />
+               <div>
+                  <h2> Ајде !!!</h2>
+               </div>
+               <StartGameButton action={() => {store.startWindow = true}} label={'Реванш!'}/>
+            </Modal>
+         }
          {/* playground */}
          <div className={'gameWindowWrapper'}>
             {/* OPPONENT AREA */}
@@ -409,7 +504,7 @@ const GameWindow = () => {
                                  <div key={`cardContainer-${card.id}`} id={`cardContainer-${card.id}`} className={`opponentCard-${index + 1}`}>
                                     <Card
                                        id={card.id}
-                                       className={`backCard-${index + 1}`}
+                                       className={`biliCard backCard-${index + 1}`}
                                        classNameSection={'backCardDiv showBack'}
                                        backCard={true}
                                        suits={card.suit}
@@ -423,17 +518,18 @@ const GameWindow = () => {
 
                      </div>
                   </div>
-                  <div className={'opponentAvatarWrapper'}>
-                     <Avatar small={true}></Avatar>
-                  </div>
                   <div className={'opponentTalkCloudWrapper'}>
+                     <div className={'opponentAvatarWrapper'}>
+                        <Avatar small={true}></Avatar>
+                     </div>
                      <TalkCloud small={true}></TalkCloud>
                   </div>
                </div>
                <div className={'opponentFieldBuffer'}></div>
             </div>
 
-            <Playground playersMove={playersMove} />
+            {/* {combi} */}
+            <Playground playersMove={playersMove} combi={combi} />
 
             {/* PLAYER AREA */}
             <div className={'playerField'}>

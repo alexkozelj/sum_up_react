@@ -42,7 +42,7 @@ const Scoreboard = (props) => {
 
          {/* SCOREBOARD */}
 
-
+         <div className={'combiWrapper'}>{props.combi}</div>
          <div className={"gameInfoContainer"}>
             <header className={"gameInfoHeader"}>Инфо</header>
             <div className={"gameInfo"}>Igra: {useObserver(() => store.gameNumber)}</div>
@@ -71,7 +71,7 @@ const Scoreboard = (props) => {
                      </div>
                   </div>
                   <div className={"cardsSumWrapper"}>
-                     <div className={"sumTitle"}>karte</div>
+                     <div className={"sumTitle"}>karte:</div>
                      <div className={"cardsSum"}>{useObserver(() => store.compCollectedCards.length)}</div>
                   </div>
                </div>
@@ -91,10 +91,11 @@ const Scoreboard = (props) => {
                               )
                            )
                         }
+                        
                      </div>
                   </div>
                   <div className={"cardsSumWrapper"}>
-                     <div className={"sumTitle"}>karte</div>
+                     <div className={"sumTitle"}>karte:</div>
                      <div className={"cardsSum"}>{useObserver(() => store.playerCollectedCards.length)}</div>
                   </div>
                </div>
@@ -102,7 +103,12 @@ const Scoreboard = (props) => {
             </div>
 
             <div className={"overallResultWrapper"}>
-               <div className={"overallResult"}>Укупан резултат</div>
+            {store.gameType === 'games' ? 
+               <div className={"overallResult"}>Укупно победа</div> 
+               :
+               <div className={"overallResult"}>Укупно поена</div> 
+            
+            }
             </div>
             <div className={"totalResultWrapper"}>
                <div className={"totalResultOpponent"}>{useObserver(() => store.overallResultComputer)}</div>
@@ -117,3 +123,10 @@ const Scoreboard = (props) => {
 };
 
 export default Scoreboard;
+
+
+// <span key={`tablaComp-`}>|</span>
+{/* <span key={`tablaComp-`}>|</span>
+<span key={`tablaComp-`}>|</span>
+<span key={`tablaComp-`}>|</span>
+<span key={`tablaComp-`} className={`tablaCross4`}>___</span> */}

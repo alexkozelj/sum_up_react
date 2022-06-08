@@ -65,7 +65,7 @@ const Playground = (props) => {
             </div>
          </div>
 
-         <Scoreboard/>
+         <Scoreboard combi={props.combi}/>
 
       </Styled.Playground>
       

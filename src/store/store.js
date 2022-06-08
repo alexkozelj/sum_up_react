@@ -12,6 +12,8 @@ export const StoreProvider = ({ children }) => {
          array.push(item)
       },
 
+      startWindow: true,
+
       suits: ["diamonds", "hearts", "clubs", "spades"],
 
       ranks: ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"],

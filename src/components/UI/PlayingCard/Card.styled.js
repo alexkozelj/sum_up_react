@@ -16,9 +16,20 @@ export const Card = styled.div`
   box-shadow: 4px 5px 5px rgba(0, 0, 0, 0.38);
   font: ${fontSize} "Trebuchet MS";
 
+  @media (max-width: 1440px) {
+    width: 100%;
+    max-width: 44px;
+    /* height: 100%; */
+    max-height: 70px;
+    padding: 0.4em;
+    margin: 1vw;
+    border-radius: 0.5em;
+  }
+
   @media (max-width: 480px) {
     width: 44px;
-    height: 75px;
+    /* height: 100%; */
+    max-height: 75px;
     padding: 0.4em;
     margin: 1vw;
     border-radius: 0.5em;
@@ -42,28 +53,41 @@ export const Card = styled.div`
       display: flex;
       flex-direction: column;
       align-self: flex-start;
-      font-size: 1.2em;
+      font-size: 0.5em;
+
+      
+      @media (max-width: 480px) {
+        height: min-content;
+        /* font-size: 1em; */
+      }
 
       > div {
         align-self: flex-start;
       }
 
-      .corner_value_top {
+      .corner_ranks_top {
+         font-size: 1.5em;
+         line-height: 0.9em;
+      }
+
+      .corner_suits_top {
+         font-size: 1.15em;
+         line-height: 1.2em;
+      }
+
+      /* .corner_value_top {
         line-height: 12px;
 
         @media (max-width: 480px) {
           line-height: 10px;
         }
-      }
+      } */
 
-      @media (max-width: 480px) {
-        height: min-content;
-        font-size: 1em;
-      }
     }
 
     .corner_wrapper_bottom {
-      font-size: 1.2em;
+      font-size: 0.4em;
+      line-height: 1em;
       align-self: flex-end;
 
       > div {
@@ -89,6 +113,8 @@ export const Card = styled.div`
     justify-content: center;
     align-items: center;
     overflow: hidden;
+    margin-left: 1px;
+
 
     @media (max-width: 480px) {
     }
@@ -109,12 +135,12 @@ export const Card = styled.div`
     }
 
     .card__suits {
-      font-size: 13px;
-      line-height: 12px;
+      font-size: 9px;
+      line-height: 7px;
       text-align: center;
 
       @media (max-width: 480px) {
-        font-size: 10px;
+        font-size: 9px;
         line-height: 8px;
       }
     }
@@ -127,12 +153,14 @@ export const Card = styled.div`
     align-items: center;
     width: 100%;
     height: 100%;
-
+      font-size: 1.5em;
     @media (max-width: 480px) {
       top: 8px;
+      font-size: 1.8em;
     }
 
     img {
+      
       align-self: center;
       max-width: 78%;
       height: auto;
@@ -144,17 +172,6 @@ export const Card = styled.div`
       }
     }
   }
-
-  /* .hide {
-     display: none;
-  }
-
-  .card.hide {
-     display: none;
-     .corner_wrapper_top {
-     }
-  } */
-  
 
   .backCardDiv.showBack {
      position: absolute;
@@ -175,13 +192,22 @@ export const Card = styled.div`
       #edc60f 75%
     );
     opacity: 0.8;
-    background-size: 10px 10px;
+    background-size: 7px 7px;
     transform: rotateY(-180deg);
 
     @media (max-width: 480px) {
-      background-size: 7px 7px;
+      background-size: 5px 5px;
     }
   }
+
+  
+  .red {
+     color: red;
+  }
+  .black {
+     color: black;
+  }
+
 
   .hearts,
   .diamonds {

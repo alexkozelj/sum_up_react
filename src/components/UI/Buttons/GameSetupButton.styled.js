@@ -4,10 +4,14 @@ export const GameSetupButton = styled.div`
 
    background: ${props => {
       console.log('FEWFEWFEW',props)
-      return props.selected ? 'tomato' : '#51A3B8'
+      return props.selected ? '#b54936' : '#51A3B8'
    }}; 
    font-size: 11px;
-   color: white;
+   color :${props => {
+      console.log('FEWFEWFEW',props)
+      return props.selected ? 'white' : 'white'
+   }}; 
+   /* color: white; */
    border-radius: 7px;
    box-shadow: 0 5px 0px #387796;
    display: inline-block;
@@ -21,7 +25,7 @@ export const GameSetupButton = styled.div`
 
 :active {
    top: 3px;
-   box-shadow: 0 2px 0px #387796;
+   box-shadow: 0 2px 0px #388796;
    transition: all .1s;
 } 
 

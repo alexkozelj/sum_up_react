@@ -5,13 +5,14 @@ export const Scoreboard = styled.div`
     flex-direction: column;
     width: 30%;
     max-width: 200px;
+    /* height: 100%; */
     height: max-content;
-    padding: 5px 0;
+    padding: 10px 0;
     justify-content: center;
     align-items: center;
     align-self: center;
     border: 2px solid white;
-    border-radius: 15px;
+    border-radius: 20px;
     box-shadow: 2px 3px 10px black, 0 0 125px #7ca385 inset;
     /* background: #fffef0; */
     /* padding-top: 10px; */
@@ -19,19 +20,28 @@ export const Scoreboard = styled.div`
     @media (max-width: 440px) {
       align-self: center;
       flex-direction: column;
+      padding-top: 0;
     }
   
+    .combiWrapper {
+       font-size: 0.7em;
+       
+      @media (max-width: 440px) {
+         padding-top: 5px;
+         font-size: 8px;
+      }
+    }
 
   .gameInfoContainer {
     display: flex;
     flex-direction: column;
-    padding: 0 0 10px 0;
-    width: 95%;
+    /* padding: 0 0 10px 0; */
+    width: 85%;
     height: 30%;
     background-color: #c3e6cb;
     border-radius: 15px;
     border: 0.5px solid white;
-    margin: 0 0 20px 0;
+    margin: 0 0 10px 0;
     @media (max-width: 440px) {
       height: 85px;
       margin: 0 0 5px 0;
@@ -40,7 +50,8 @@ export const Scoreboard = styled.div`
 
   .gameInfoHeader {
     height: max-content;
-    padding: 10px 0;
+    padding: 4px 0;
+    font-size: 0.9em;
     background-color: #333333;
     color: white;
     border-radius: 15px 15px 0 0;
@@ -57,8 +68,9 @@ export const Scoreboard = styled.div`
   .gameInfo,
   .dealInfo {
     text-align: center;
+    font-size: 0.7em;
     /* border-bottom: 1px solid white; */
-    padding: 5px;
+    padding: 0.6em;
     @media (max-width: 440px) {
       font-size: 10px;
     }
@@ -68,8 +80,9 @@ export const Scoreboard = styled.div`
     display: flex;
     flex-direction: column;
     background-color: #ffeeba;
-    width: 95%;
-    height: 65%;
+    width: 85%;
+    /* height: 50vh; */
+    /* height: max-content; */
     padding: 0 0 15px 0;
     justify-content: flex-start;
     /* align-items: center; */
@@ -80,7 +93,7 @@ export const Scoreboard = styled.div`
     /* padding: 15px; */
     align-items: center;
     @media (max-width: 440px) {
-      height: 193px;
+      height: max-content;
       /* padding-bottom: 10px; */
       /* max-height: 210px; */
     }
@@ -89,7 +102,8 @@ export const Scoreboard = styled.div`
   .resultHeader {
     background-color: #333333;
     width: 100%;
-    padding: 15px;
+    padding: 5px;
+    font-size: 0.9em;
     color: white;
     border-radius: 11px 11px 0 0;
     border: 0.5px solid white;
@@ -104,7 +118,7 @@ export const Scoreboard = styled.div`
     flex-direction: row;
     background-color: #ffeeba;
     width: 95%;
-    height: max-content;
+    /* height: max-content; */
     justify-content: center;
     align-items: flex-start;
     /* border-radius: 12px; */
@@ -139,7 +153,7 @@ export const Scoreboard = styled.div`
     height: 100%;
     align-items: center;
     justify-content: center;
-    height: max-content;
+    /* height: max-content; */
     border-bottom: 1px solid grey;
     /* margin: 0 5px; */
     @media (max-width: 440px) {
@@ -149,10 +163,10 @@ export const Scoreboard = styled.div`
   .opponentName,
   .playerName {
     width: 100%;
-    font-size: 16px;
+    font-size: 0.9em;
     font-weight: bold;
     border-bottom: 1px solid grey;
-    padding: 10px;
+    padding: 5px;
     @media (max-width: 440px) {
       padding: 5px;
       font-size: 11px;
@@ -163,20 +177,23 @@ export const Scoreboard = styled.div`
 
   .opponentScore,
   .playerScore {
-    font-size: 18px;
-    padding: 5px;
+    font-size: 0.9em;
+    padding: 2px;
+    width: 100%;
+    border-bottom: 1px solid grey;
     @media (max-width: 440px) {
-      font-size: 14px;
+      font-size: 12px;
     }
   }
 
   .tablaWrapper {
-    padding: 0 0 5px 0;
+    padding: 5px 0 0 0;
   }
 
   .tabla {
     position: relative;
-    height: max-content;
+    height: 20px;
+    font-size: 0.7em;
     width: 100%;
     @media (max-width: 440px) {
       height: 15px;
@@ -201,8 +218,8 @@ export const Scoreboard = styled.div`
 
   .tablaCross4 {
     position: absolute;
-    left: -4px;
-    bottom: 5px;
+    left: -3px;
+    bottom: 7px;
     transform: rotate(-15deg);
     @media (max-width: 440px) {
       left: -2px;
@@ -243,12 +260,24 @@ export const Scoreboard = styled.div`
     }
   }
 
+  .cardsSumWrapper {
+     /* height: */
+     padding: 0 5px;
+     width: 70%;
+     display: flex;
+     flex-direction: row;
+     justify-content: space-between;
+     @media (max-width: 440px) {
+      padding: 0;
+    }
+  }
+
   .cardsSum {
-    padding: 0 0 10px 0;
+    padding: 0 0 5px 0;
     font-style: italic;
-    font-size: 13px;
+    font-size: 0.7em;
     @media (max-width: 440px) {
-      font-size: 9px;
+      font-size: 7px;
       font-style: italic;
       padding: 0 0 5px 0;
     }
@@ -256,17 +285,18 @@ export const Scoreboard = styled.div`
 
   .sumTitle {
     font-style: italic;
-    font-size: 13px;
+    font-size: 0.7em;
 
     @media (max-width: 440px) {
-      font-size: 9px;
+      font-size: 7px;
     }
   }
 
   .overallResultWrapper {
     width: 95%;
     background-color: #f9e3a0e6;
-    padding: 15px 1px;
+    padding: 5px 1px;
+    font-size: 0.9em;
     font-weight: bold;
     border-bottom: 1px solid grey;
     @media (max-width: 440px) {
@@ -287,7 +317,6 @@ export const Scoreboard = styled.div`
     flex-direction: row;
     justify-content: center;
     border-bottom: 1px solid grey;
-    width: 95%;
     @media (max-width: 440px) {
       font-size: 8px;
     }
@@ -303,8 +332,8 @@ export const Scoreboard = styled.div`
   .totalResultPlayer {
     background-color: #f9e3a0e6;
     width: 100%;
-    padding: 10px 0;
-    font-size: 16px;
+    padding: 5px 0;
+    font-size: 1em;
     font-weight: bold;
     @media (max-width: 440px) {
       padding: 3px 0;
