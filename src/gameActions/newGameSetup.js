@@ -1,25 +1,47 @@
 
-import createDeck from './createDeck'
-import shuffleDeck from './shuffleDeck'
-import dealCards from './dealCards'
-
 
 export const newGameSetup = (store) => {
    
-   store.isShuffled = false;
-   store.isDealt = false;
+   // store.startWindow= true
 
-   let newlyCreatedDeck = createDeck(store)
-   // console.log("🚀 ~ file: App.js ~ line 19 ~ App ~ newlyCreatedDeck", newlyCreatedDeck)
+   store.fullDeck= []
+
+   store.isShuffled= false
+
+   store.isDealt= false
+
+   // store.gameType= 'games'
+   // store.gamesToPlay= '1'
+
+
+   store.gameNumber= 1
+   store.dealNumber= 1
+
+   store.gameResultComputer= 0
+   store.gameResultPlayer= 0
+
+   store.overallResultComputer= 0
+   store.overallResultPlayer= 0
+
+   store.tablaPointComputer= []
+   store.tablaPointPlayer= []
    
-   const shuffledDeck =  shuffleDeck(newlyCreatedDeck)
-   console.log("🚀 ~ file: App.js ~ line 25 ~ App ~ shuffledDeck", shuffledDeck)
+
+   store.compCollectedCards= []
+   store.playerCollectedCards= []
+
+   store.compInHandCards= []
+   store.playerInHandCards= []
+
+   store.cardsOnTable= []
+
+   store.cardsToDeal= []
+
+   store.cardsInCalculation= []
+
+   // Player who takes last combination in game, takes rest of cards
+   store.whoTookLast= ''
    
-   shuffledDeck.map(arr => store.addToArray(store.fullDeck, arr[0]))
-   store.isShuffled = true
-   
-   dealCards(store)
-   store.isDealt = true;
 }
 
 export default newGameSetup

@@ -3,12 +3,12 @@ import styled from "styled-components";
 export const GameSetupButton = styled.div`
 
    background: ${props => {
-      console.log('FEWFEWFEW',props)
+      // console.log('FEWFEWFEW',props)
       return props.selected ? '#b54936' : '#51A3B8'
    }}; 
    font-size: 11px;
    color :${props => {
-      console.log('FEWFEWFEW',props)
+      // console.log('FEWFEWFEW',props)
       return props.selected ? 'white' : 'white'
    }}; 
    /* color: white; */

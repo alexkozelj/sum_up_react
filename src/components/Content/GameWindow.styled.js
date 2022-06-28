@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
-const cardWidth = "35px";
-const cardHeight = "55px";
-const cardPadding ='3px';
+const cardWidth = "30px";
+const cardHeight = "50px";
+const cardPadding ='2px';
 const cardHeight_Mobile = "45px";
 const cardWidth_Mobile = "25px";
 const cardPadding_Mobile ='1px';
@@ -20,6 +20,20 @@ const left_Mobile3 = "20px";
 const left_Mobile4 = "30px";
 const left_Mobile5 = "40px";
 const left_Mobile6 = "50px";
+
+const top1 = "6px";
+const top2 = "3px";
+const top3 = "0";
+const top4 = "0";
+const top5 = "3px";
+const top6 = "6px";
+
+const left1 = "5px";
+const left2 = "12px";
+const left3 = "20px";
+const left4 = "30px";
+const left5 = "40px";
+const left6 = "50px";
 
 export const GameWindow = styled.div`
   display: flex;
@@ -75,6 +89,7 @@ export const GameWindow = styled.div`
     height: 100%;
     max-width: 950px;
     margin-right: 30px;
+    padding-bottom: 5px;
     /* margin-left: 26vw; */
     @media (max-width: 1440px) {
       /* margin-left: 12vw; */
@@ -157,9 +172,10 @@ export const GameWindow = styled.div`
   .opponentTalkCloudWrapper {
     display: flex;
     position: relative;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: flex-start;
     height: 90px;
+    width: 220px;
     /* bottom: 7px;
     right: 2px; */
 
@@ -169,7 +185,7 @@ export const GameWindow = styled.div`
       position: relative;
       justify-content: center;
       align-items: flex-start;
-      width: 65px;
+      width: 50px;
       @media (max-width: 480px) {
          > div {
             max-width: 45px;
@@ -184,7 +200,7 @@ export const GameWindow = styled.div`
   .opponentCardsWrapper {
     /* display: flex; */
     position: relative;
-    width: 150px;
+    width: 105px;
     /* min-width: 120px; */
     height: 80px;
     /* position: flex; */
@@ -193,7 +209,7 @@ export const GameWindow = styled.div`
 
     @media (max-width: 480px) {
       top: 0;
-      width: 70px;
+      width: 80px;
       /* min-width: 120px; */
     }
   }
@@ -221,6 +237,7 @@ export const GameWindow = styled.div`
   }
 
   .biliCard {
+     cursor: auto;
       width: ${cardWidth};
       height: ${cardHeight};
       padding: ${cardPadding};
@@ -232,8 +249,8 @@ export const GameWindow = styled.div`
 
   .opponentCard-1 {
     position: absolute;
-    top: 10px;
-    left: 15px;
+    top: ${top1};
+    left: ${left1};
     transform: rotate(-20deg);
     z-index: 100;
 
@@ -254,8 +271,8 @@ export const GameWindow = styled.div`
 
   .opponentCard-2 {
     position: absolute;
-    top: 4px;
-    left: 25px;
+    top: ${top2};
+    left: ${left2};
     transform: rotate(-13deg);
     z-index: 100;
 
@@ -275,8 +292,8 @@ export const GameWindow = styled.div`
 
   .opponentCard-3 {
     position: absolute;
-    top: 0;
-    left: 40px;
+    top: ${top3};
+    left: ${left3};
     transform: rotate(-5deg);
     z-index: 100;
 
@@ -296,8 +313,8 @@ export const GameWindow = styled.div`
 
   .opponentCard-4 {
     position: absolute;
-    top: 0;
-    left: 55px;
+    top: ${top4};
+    left: ${left4};
     transform: rotate(5deg);
     z-index: 100;
 
@@ -317,8 +334,8 @@ export const GameWindow = styled.div`
 
   .opponentCard-5 {
     position: absolute;
-    top: 4px;
-    left: 70px;
+    top: ${top5};
+    left: ${left5};
     transform: rotate(13deg);
     z-index: 100;
 
@@ -338,8 +355,8 @@ export const GameWindow = styled.div`
 
   .opponentCard-6 {
     position: absolute;
-    top: 10px;
-    left: 80px;
+    top: ${top6};
+    left: ${left6};
     transform: rotate(20deg);
     z-index: 100;
 

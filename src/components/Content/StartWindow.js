@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import * as Styled from "./StartWindow.styled.js";
 import { StoreContext } from './../../store/store'
 import { useObserver } from 'mobx-react'
+import nextGameSetup from './../../gameActions/nextGameSetup'
+import newGameSetup from './../../gameActions/newGameSetup'
 
 import StartGameButton from '../UI/Buttons/StartGameButton'
 import GameSetupButton from '../UI/Buttons/GameSetupButton'
@@ -11,19 +13,22 @@ import Avatar from '../UI/Avatar/Avatar'
 const StartWindow = (props) => {
 
    const store = React.useContext(StoreContext)
-   const startGameHandler = () => { store.startWindow = false }
+   const startGameHandler = () => { 
+      newGameSetup(store)
+      store.startWindow = false 
+   }
 
    const gamesToPlay = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
 
    const gameTypeHandler = (type) => {
-      console.log("🚀 ~ file: StartWindow.js ~ line 21 ~ gameTypeHandler ~ type", type)
-      console.log("🚀 ~ file: StartWindow.js ~ line 21 ~ gameTypeHandler ~ typeof(+type) === 'number'", typeof (+type) === 'number')
-      if ((type === 'games' || type === 'points') && type !== store.gameType) {
-         store.gamesToPlay = '1'
-         return store.gameType = type
-      }
-      if ((type !== 'games' || type !== 'points') && type !== store.gamesToPlay) { return store.gamesToPlay = type }
+      if ( type === 'games' ) { store.gameType = 'games'}
+      if ( type === 'points' ) { store.gameType = 'points'}
+      
+   }
 
+   const numberOfGamesHandler = (numberOfGames) => {
+      if ( numberOfGames ) { store.gamesToPlay = numberOfGames }
+      console.log('start window, games to play', store.gamesToPlay)
    }
 
    return (
@@ -52,7 +57,7 @@ const StartWindow = (props) => {
                         id={number}
                         selected={number === store.gamesToPlay}
                         type={'numberOfGames'}
-                        onClick={() => gameTypeHandler(number)}
+                        onClick={() => numberOfGamesHandler(number)}
                      >
                         {number}
                      </GameSetupButton>

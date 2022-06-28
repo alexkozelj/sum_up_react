@@ -8,12 +8,12 @@ export const Avatar = styled.div`
   justify-content: center;
   align-items: center;
   /* align-self: start; */
-  width: 57px;
+  width: 50px;
    max-width: 75px;
     
   position: absolute;
   top: 20px;
-  left: 8px;
+  /* left: 8px; */
 
    /* top: 115px;
    left: 140px; */

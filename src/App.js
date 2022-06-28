@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { useObserver } from 'mobx-react'
 import { StoreContext } from './store/store'
 import * as Styled from "./App.styled.js";
-import newGameSetup from "./gameActions/newGameSetup";
+import nextGameSetup from "./gameActions/nextGameSetup";
 
 import Navbar from "./components/Navbar/Navbar";
 import GameWindow from "./components/Content/GameWindow.js";
@@ -16,7 +16,7 @@ const App = () => {
    const store = React.useContext(StoreContext)
    // let newlyCreatedDeck
 
-   if (store.fullDeck.length === 0 && store.gameResultComputer === 0 && store.gameResultPlayer === 0) newGameSetup(store)
+   if (store.fullDeck.length === 0 && store.gameResultComputer === 0 && store.gameResultPlayer === 0) nextGameSetup(store)
 
 
    const [startWindow, setStartWindow] = useState(true)

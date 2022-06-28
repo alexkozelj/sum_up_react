@@ -13,7 +13,7 @@ const TalkCloud = (props) => {
                      src={talkCloud}
                   >
                   </img>
-                  <div className={'message1'}>Пробај  dsfЛаки! </div>
+                  <div className={'message1'}>Пробај Лаки! </div>
                </div>
                
             {/* </div> */}

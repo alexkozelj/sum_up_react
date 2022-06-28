@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import * as Styled from './GameSetupButton.styled.js';
-import { StoreContext } from './../../../store/store'
-import { useObserver } from 'mobx-react'
+// import { StoreContext } from './../../../store/store'
+// import { useObserver } from 'mobx-react'
 
 const GameSetupButton = (props) => {
-   const store = React.useContext(StoreContext)
+   // const store = React.useContext(StoreContext)
    // const [selected, setSelected] = useState(props.children === store.gamesToPlay || props.type === store.gameType)
    // let selected = props.children === store.gamesToPlay || props.type === store.gameType
    // // console.log("🚀 ~ file: gameSetupButton.js ~ line 8 ~ GameSetupButton ~ store.gamesToPlay + ''", store.gamesToPlay + '')

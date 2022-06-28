@@ -15,6 +15,7 @@ export const Card = styled.div`
   background-color: ${cardBackground};
   box-shadow: 4px 5px 5px rgba(0, 0, 0, 0.38);
   font: ${fontSize} "Trebuchet MS";
+  cursor: pointer;
 
   @media (max-width: 1440px) {
     width: 100%;

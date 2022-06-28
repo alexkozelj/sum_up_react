@@ -66,7 +66,7 @@ export const createDeck = (store) => {
          deck.push(card);
       }
    }
-   console.log("🚀 ~ file: use-create-deck.js ~ line 72 ~ createDeck ~ deck", deck)
+   // console.log("🚀 ~ file: use-create-deck.js ~ line 72 ~ createDeck ~ deck", deck)
    return deck
    
 }

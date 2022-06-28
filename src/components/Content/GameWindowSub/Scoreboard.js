@@ -45,7 +45,7 @@ const Scoreboard = (props) => {
          <div className={'combiWrapper'}>{props.combi}</div>
          <div className={"gameInfoContainer"}>
             <header className={"gameInfoHeader"}>Инфо</header>
-            <div className={"gameInfo"}>Igra: {useObserver(() => store.gameNumber)}</div>
+            <div className={"gameInfo"}>Igra: {useObserver(() => store.gameNumber)}/{useObserver(() => store.gamesToPlay)}</div>
             <div className={"dealInfo"}>Deljenje: {useObserver(() => store.dealNumber)}/4</div>
          </div>
          <div className={"resultContainer"}>

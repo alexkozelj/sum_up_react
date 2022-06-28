@@ -27,7 +27,7 @@ export const Scoreboard = styled.div`
        font-size: 0.7em;
        
       @media (max-width: 440px) {
-         padding-top: 5px;
+         padding-top: 1px;
          font-size: 8px;
       }
     }
@@ -43,7 +43,7 @@ export const Scoreboard = styled.div`
     border: 0.5px solid white;
     margin: 0 0 10px 0;
     @media (max-width: 440px) {
-      height: 85px;
+      height: 75px;
       margin: 0 0 5px 0;
     }
   }
@@ -72,7 +72,8 @@ export const Scoreboard = styled.div`
     /* border-bottom: 1px solid white; */
     padding: 0.6em;
     @media (max-width: 440px) {
-      font-size: 10px;
+      font-size: 9px;
+      padding: 3px;
     }
   }
 

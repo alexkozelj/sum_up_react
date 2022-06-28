@@ -29,8 +29,8 @@ export const Backdrop = styled.div`
 export const Modal = styled.div`
    position: fixed;
    
-  width: 40%;
-  height: 70%;
+  width: 45%;
+  height: 85%;
   /* this is what centers your element in the fixed wrapper*/
   display: flex;
   flex-flow: column nowrap;

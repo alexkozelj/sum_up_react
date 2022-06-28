@@ -7,7 +7,8 @@ export const TalkCloud = styled.div`
    /* flex-direction: column; */
    /* max-width: 150px; */
    max-height: 100%;
-   justify-content: center;
+   width: 170px;
+   justify-content: flex-start;
    align-items: center;
    position: relative;
    /* position: absolute;
@@ -20,9 +21,9 @@ export const TalkCloud = styled.div`
    text-align: center;
    /* display: grid; */
    @media (max-width: 440px) {
-      max-width: 100%;
-      bottom: 10px;
-      left: -15px;
+      width: 100px;
+      /* bottom: 10px;
+      left: -15px; */
    }
 
    .container {

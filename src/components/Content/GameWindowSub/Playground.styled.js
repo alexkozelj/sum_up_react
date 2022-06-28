@@ -43,6 +43,7 @@ export const Playground = styled.div`
   .playgroundCard {
     width: 60px;
     height: 100px;
+    /* cursor: pointer; */
     @media (max-width: 440px) {
       width: 38px;
       height: 68px;
