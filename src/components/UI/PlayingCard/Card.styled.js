@@ -1,7 +1,7 @@
 import styled from "styled-components";
 // import { fluidCalc, fluidTypo } from "./../../Helpers/FluidTypo";
 
-const fontSize = "0.8em";
+const fontSize = "1em";
 const cardBackground = "#fff";
 
 export const Card = styled.div`
@@ -19,9 +19,9 @@ export const Card = styled.div`
 
   @media (max-width: 1440px) {
     width: 100%;
-    max-width: 44px;
+    max-width: 49px;
     /* height: 100%; */
-    max-height: 70px;
+    max-height: 75px;
     padding: 0.4em;
     margin: 1vw;
     border-radius: 0.5em;
@@ -48,6 +48,10 @@ export const Card = styled.div`
 
     .ace_card {
       font-size: 30px;
+
+      @media (max-width: 480px) {
+         font-size: 18px;
+    }
     }
 
     .corner_wrapper_top {
@@ -67,13 +71,13 @@ export const Card = styled.div`
       }
 
       .corner_ranks_top {
-         font-size: 1.5em;
-         line-height: 0.9em;
+         font-size: 1.4em;
+         line-height: 0.8em;
       }
 
       .corner_suits_top {
-         font-size: 1.15em;
-         line-height: 1.2em;
+         font-size: 0.9em;
+         line-height: 1.1em;
       }
 
       /* .corner_value_top {
@@ -141,7 +145,7 @@ export const Card = styled.div`
       text-align: center;
 
       @media (max-width: 480px) {
-        font-size: 9px;
+        font-size: 7px;
         line-height: 8px;
       }
     }
@@ -154,10 +158,10 @@ export const Card = styled.div`
     align-items: center;
     width: 100%;
     height: 100%;
-      font-size: 1.5em;
+      font-size: 1.7em;
     @media (max-width: 480px) {
       top: 8px;
-      font-size: 1.8em;
+      font-size: 1.75em;
     }
 
     img {

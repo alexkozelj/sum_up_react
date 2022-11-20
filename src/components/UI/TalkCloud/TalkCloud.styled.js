@@ -93,9 +93,10 @@ export const TalkCloud = styled.div`
          /* width: 50px; */
          /* display: flex;
          align-self: center; */
+         padding: 0 2em 0 2.8em;
          word-wrap: break-word;
          font-size: 8px;
-         bottom: 55%;
+         bottom: 51%;
       }  
    }
 

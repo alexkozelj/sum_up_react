@@ -9,7 +9,7 @@ export const StartGameButton = styled.div`
       width: fit-GameWindow;
       height: auto;
       padding: 10px;
-      margin-bottom: 20px;
+      margin: 20px 0;
    }
 
    button {

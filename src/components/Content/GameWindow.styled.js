@@ -3,8 +3,8 @@ import styled from "styled-components";
 const cardWidth = "30px";
 const cardHeight = "50px";
 const cardPadding ='2px';
-const cardHeight_Mobile = "45px";
-const cardWidth_Mobile = "25px";
+const cardHeight_Mobile = "60px";
+const cardWidth_Mobile = "33px";
 const cardPadding_Mobile ='1px';
 
 const top_Mobile1 = "12px";
@@ -209,7 +209,7 @@ export const GameWindow = styled.div`
 
     @media (max-width: 480px) {
       top: 0;
-      width: 80px;
+      width: 100px;
       /* min-width: 120px; */
     }
   }

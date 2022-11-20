@@ -22,14 +22,14 @@ const Playground = (props) => {
             const cardIndex = store.cardsInCalculation.findIndex(x => x.id === id);
             store.cardsInCalculation.splice(cardIndex, 1)
             document.getElementById(id).classList.remove('markedCard')
-            console.log('it spliced')
+            // console.log('it spliced')
 
          } else {
 
             document.getElementById(id).classList.add('markedCard')
             store.cardsInCalculation.push(card)
 
-            console.log('it pushed')
+            // console.log('it pushed')
 
          }
       }

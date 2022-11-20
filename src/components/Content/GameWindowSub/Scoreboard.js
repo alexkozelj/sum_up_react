@@ -77,7 +77,7 @@ const Scoreboard = (props) => {
                </div>
 
                <div className={"playerScoreContainer"}>
-                  <div className={"playerName"}> Лаки</div>
+                  <div className={"playerName"}> Играч</div>
                   <div className={"playerScore"}>{useObserver(() => store.gameResultPlayer)}</div>
                   <div className={"tablaWrapper"}>
                      <div className={"tabla"}>
