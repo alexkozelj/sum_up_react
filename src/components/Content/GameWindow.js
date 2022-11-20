@@ -315,8 +315,8 @@ const GameWindow = () => {
             if (store.whoTookLast === 'player') {
                console.log("🚀 ~ file: GameWindow.js ~ line 287 ~ compMove ~ store.whoTookLast", store.whoTookLast)
                await delay(1000)
-               setShowWhoTookLast('Лаки')
-               await delay(4000)
+               setShowWhoTookLast('Ти')
+               await delay(7000)
                setShowWhoTookLast('')
                store.gameResultPlayer += _.sumBy(store.cardsOnTable, 'value')
                if (store.gameType === 'points') store.overallResultPlayer += _.sumBy(store.cardsOnTable, 'value')
