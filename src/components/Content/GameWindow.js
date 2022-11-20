@@ -180,15 +180,24 @@ const GameWindow = () => {
             if (!combi || !combi.length) return
 
             // ADD ACE AS A SAME CARD  
-            if (card.calculusValue === 1) {
-               let cardsOnTableAceId = []
-               let combiAcesId = []
-               store.cardsOnTable.map(el => el.calculusValue === 1 && cardsOnTableAceId.push(el.id))
-               combi.map(el => el.calculusValue === 1 && combiAcesId.push(el.id))
-               let acesMissing = cardsOnTableAceId.filter(x => !combiAcesId.includes(x));
-               if (acesMissing.length > 0) {
-                  acesMissing.map(el => store.cardsOnTable.find(item => item.id === el && combi.push(item)))
+            if (card.calculusValue === 11) {
+               console.log("🚀 ~ CARD VALE IS 11 184")
+               console.log("🚀 ~ file: GameWindow.js ~ line 184 ~ store.cardsOnTable.map ~ card.calculusValue", card.calculusValue)
+               let isAceInCombi = false
+               let isAceOnTable = false
+               
+               combi.length && combi.map(combiCard => {if (combiCard.calculusValue === 1) {isAceInCombi = true} })
+               store.cardsOnTable.map(tableCard => {if (tableCard.calculusValue === 1) {isAceOnTable = true} })
+               
+               if (!isAceInCombi && isAceOnTable) {
+
+                  console.log("🚀 ~ 194 TAKEING ACE ====>>>>>")
+                  store.cardsOnTable.map(el => el.calculusValue === 1 && store.cardsOnTable.find(ace => ace.id === el.id && combi.push(ace)))
+                  
                }
+
+               console.log('this is COMBI from ACE 199 combi=', combi)
+               
             }
 
             combinations.push(combi)
