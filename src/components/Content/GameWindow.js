@@ -298,7 +298,7 @@ const GameWindow = () => {
 
          await delay(1000)
          showTakenCards(combinations[bestCombiIndex])
-         await delay(2000)
+         await delay(1800)
          removeTakenCards(combinations[bestCombiIndex])
          // console.log("🚀 ~ file: GameWindow.js ~ line 167 ~ compMove ~ bestCombiIndex", bestCombiIndex, 'value', combiValueSum, 'length', combiLengthSum)
       } else {
@@ -375,6 +375,8 @@ const GameWindow = () => {
             await delay(500)
 
             if(store.gameType === 'games') { 
+               // store.gameResultPlayer = 1
+               // store.gameResultComputer = 1
                if (store.gameResultComputer > store.gameResultPlayer) { store.overallResultComputer += 1}
                if (store.gameResultPlayer > store.gameResultComputer) { store.overallResultPlayer += 1}
                if (store.gameResultPlayer === store.gameResultComputer) {    
@@ -388,7 +390,10 @@ const GameWindow = () => {
                   store.compCollectedCards = []
                   store.playerCollectedCards = []
                   // console.log('new game setup !!!!!!')
+                  setShowWinner('game tie')
+                  // await delay(5000)
                   nextGameSetup(store)
+                  isPlayersMove(true)
                   return
                }
             }
@@ -396,6 +401,7 @@ const GameWindow = () => {
             //  THIS IS GAME WITH POINTS
             if ((store.gameType === 'points') && +store.gameNumber + 1 > +store.gamesToPlay) {
                // console.log('DECLARE A WINNER')
+               
                if (store.overallResultPlayer > store.overallResultComputer) {
                   // console.log('DECLARE PLAYER AS A WINNER')
                   setShowWinner('player')
@@ -531,7 +537,7 @@ const GameWindow = () => {
                <h2> Ко је узео највише карата?</h2>
                <h1>{showWhoHasMoreCards}</h1>
                <div>
-                  {showWhoHasMoreCards === "Ти" && <h2>Браво! Добијаш додатна 3 пеона!</h2>}
+                  {showWhoHasMoreCards === "Ти" && <h2>Браво! Добијаш додатна 3 поена!</h2>}
                   {showWhoHasMoreCards === "Били" && <h2>Били добија додатна 3 поена!</h2>}
                </div>
             </Modal>
@@ -561,6 +567,19 @@ const GameWindow = () => {
                   <h2> Нисам гледао Лаки, ајд опет! </h2>
                </div>
                <StartGameButton action={() => {store.startWindow = true}} label={'Реванш!'}/>
+            </Modal>
+         }
+         {showWinner === 'game tie' &&
+            <Modal>
+               <h1> -НЕРЕШЕНО-</h1>
+               <img
+                  alt="opponent avatar"
+                  src={Bili_dekocentrisan}
+               />
+               <div>
+                  <h2> Нисам гледао Лаки, ајд опет! </h2>
+               </div>
+               <StartGameButton action={() => setShowWinner('reset')} label={'Идемо поново!'}/>
             </Modal>
          }
          {showWinner === 'player' &&
