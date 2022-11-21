@@ -5,7 +5,6 @@ import { StoreContext } from './../../store/store'
 import { useObserver } from 'mobx-react'
 import newHandDeal from './../../gameActions/newHandDeal'
 import nextGameSetup from '../../gameActions/nextGameSetup'
-import newGameSetup from '../../gameActions/newGameSetup'
 import * as Styled from "./GameWindow.styled.js";
 
 // import { timeout } from './../../helpers/Timeout'
@@ -44,9 +43,9 @@ const GameWindow = () => {
    const calculus = (playerCard, cardsInCalc) => {
       let acc = 0;
       cardsInCalc.map((item, index) => {
-         console.log("🚀 ~ file: GameWindow.js ~ line 52 ~ checkCalculus ~ playerCard", playerCard)
-         console.log("🚀 ~ file: GameWindow.js ~ line 54 ~ cardsInCalc.map ~ item", item)
-         console.log('start acc', acc)
+         // console.log("🚀 ~ file: GameWindow.js ~ line 52 ~ checkCalculus ~ playerCard", playerCard)
+         // console.log("🚀 ~ file: GameWindow.js ~ line 54 ~ cardsInCalc.map ~ item", item)
+         // console.log('start acc', acc)
          if (acc <= playerCard) {
             if (acc === playerCard) {
                // console.log('it is equal - index is', index)
@@ -60,10 +59,10 @@ const GameWindow = () => {
                   acc = 0
                }
             }
-            console.log('summed acc', acc)
+            // console.log('summed acc', acc)
          } else {
             acc = item
-            console.log('acc = item')
+            // console.log('acc = item')
          }
       })
    }
@@ -71,12 +70,12 @@ const GameWindow = () => {
    const checkCalculus = (playerCard, cardsInCalc) => {
       // IF ACE
       if (playerCard === 1 || cardsInCalc.includes(1)) {
-         console.log('ACE is THERE', playerCard, cardsInCalc.includes(1))
+         // console.log('ACE is THERE', playerCard, cardsInCalc.includes(1))
 
          calculus(playerCard, cardsInCalc)
          if (cardsValuesInCalculation.length === 0) return
 
-         console.log('not returned')
+         // console.log('not returned')
          if (playerCard === 1) {
             calculus(11, cardsInCalc)
             if (cardsValuesInCalculation.length === 0) return
@@ -86,7 +85,7 @@ const GameWindow = () => {
             cardsInCalc.map((item, index) => {
                if (cardsValuesInCalculation.length === 0) return
                if (item === 1) {
-                  console.log('ACE IS IN CALC')
+                  // console.log('ACE IS IN CALC')
                   cardsInCalc[index] = 11
                   calculus(playerCard, cardsInCalc)
                }
@@ -105,12 +104,12 @@ const GameWindow = () => {
 
       let cardValue
       let isWithAce = 0
-      console.log('CARD VALUE 156 ---')
+      // console.log('CARD VALUE 156 ---')
 
       compInHandCards.map((card, i) => {
          let combi = []
          cardValue = card.calculusValue
-         console.log("🚀 ~ file: GameWindow.js ~ line 93 ~ compInHandCards.map ~ cardValue", cardValue)
+         // console.log("🚀 ~ file: GameWindow.js ~ line 93 ~ compInHandCards.map ~ cardValue", cardValue)
          let aceInHand = card.calculusValue === 1
 
          store.cardsOnTable.map((tableCardA, a) => {
@@ -122,7 +121,7 @@ const GameWindow = () => {
             //    if (combi && combi.includes(card)) { combi.push(tableCardA) } else { combi.push(card, tableCardA) }
             // }
             if (card.calculusValue === 1) {
-               console.log('CARD VALUE IS NOW 11')
+               // console.log('CARD VALUE IS NOW 11')
                cardValue = 11
             }
             if (tableCardA.calculusValue > cardValue) return
@@ -181,8 +180,8 @@ const GameWindow = () => {
 
             // ADD ACE AS A SAME CARD  
             if (card.calculusValue === 11) {
-               console.log("🚀 ~ CARD VALE IS 11 184")
-               console.log("🚀 ~ file: GameWindow.js ~ line 184 ~ store.cardsOnTable.map ~ card.calculusValue", card.calculusValue)
+               // console.log("🚀 ~ CARD VALE IS 11 184")
+               // console.log("🚀 ~ file: GameWindow.js ~ line 184 ~ store.cardsOnTable.map ~ card.calculusValue", card.calculusValue)
                let isAceInCombi = false
                let isAceOnTable = false
                
@@ -196,7 +195,7 @@ const GameWindow = () => {
                   
                }
 
-               console.log('this is COMBI from ACE 199 combi=', combi)
+               // console.log('this is COMBI from ACE 199 combi=', combi)
                
             }
 
@@ -214,7 +213,7 @@ const GameWindow = () => {
       cardContainer.classList.add('showCard')
       combi.map((card, i) => document.getElementById(card.id).classList.add('markedCard'))
       combi.map((card, i) => {
-         console.log("🚀 ~ file: GameWindow.js ~ line 202 ~ combi.map ~ card", card)
+         // console.log("🚀 ~ file: GameWindow.js ~ line 202 ~ combi.map ~ card", card)
          // console.log("🚀 ~ file: GameWindow.js ~ line 202 ~ combi.map ~ card", card.calculusValue)
          let val = i === 0 && `${card.calculusValue} = `
          if (i === 0 && card.calculusValue === 1) { val = `11(1) = ` }
@@ -227,7 +226,7 @@ const GameWindow = () => {
 
    const removeTakenCards = (combi) => {
       store.compCollectedCards = store.compCollectedCards.concat(combi)
-      console.log("🚀 ~ file: GameWindow.js ~ line 195 ~ removeTakenCards ~ store.compCollectedCards", store.compCollectedCards)
+      // console.log("🚀 ~ file: GameWindow.js ~ line 195 ~ removeTakenCards ~ store.compCollectedCards", store.compCollectedCards)
       store.compInHandCards = _.filter(store.compInHandCards, (e => e.id !== combi[0].id))
       store.cardsOnTable = _.difference(store.cardsOnTable, combi, combi.id)
 
@@ -246,7 +245,7 @@ const GameWindow = () => {
 
    const throwComputerCard = () => {
       let noValueCards = _.filter(store.compInHandCards, (card => card.value === 0))
-      console.log("🚀 ~ file: GameWindow.js ~ line 213 ~ throwComputerCard ~ noValueCards", noValueCards)
+      // console.log("🚀 ~ file: GameWindow.js ~ line 213 ~ throwComputerCard ~ noValueCards", noValueCards)
       let computerCardThrow
       if (noValueCards.length !== 0) {
          computerCardThrow = _.minBy(noValueCards, 'calculusValue')
@@ -254,7 +253,7 @@ const GameWindow = () => {
          computerCardThrow = _.minBy(store.compInHandCards, 'calculusValue')
       }
 
-      console.log("🚀 ~ file: GameWindow.js ~ line 215 ~ throwComputerCard ~ computerCardThrow", computerCardThrow)
+      // console.log("🚀 ~ file: GameWindow.js ~ line 215 ~ throwComputerCard ~ computerCardThrow", computerCardThrow)
       store.compInHandCards = _.filter(store.compInHandCards, (e => e.id !== computerCardThrow.id))
       store.cardsOnTable.push(computerCardThrow)
    }
@@ -262,7 +261,7 @@ const GameWindow = () => {
    const compMove = async () => {
 
       isPlayersMove(false)
-      console.log("🚀 ~ file: GameWindow.js ~ line 88 ~ compMove ~ store.compInHandCards", store.compInHandCards.map(card => card.calculusValue))
+      // console.log("🚀 ~ file: GameWindow.js ~ line 88 ~ compMove ~ store.compInHandCards", store.compInHandCards.map(card => card.calculusValue))
 
       // CHECK COMP COMBINATIONS
       checkComputerCalculus(store.compInHandCards)
@@ -295,34 +294,34 @@ const GameWindow = () => {
             // console.log("🚀 ~ file: GameWindow.js ~ line 172 ~ combiValue ~ combiValue", combiValue)
          })
 
-         console.log("🚀 line 242 ~ compMove ~ combinations[bestCombiIndex]", combinations[bestCombiIndex].map(card => card.calculusValue))
+         // console.log("🚀 line 242 ~ compMove ~ combinations[bestCombiIndex]", combinations[bestCombiIndex].map(card => card.calculusValue))
 
          await delay(1000)
          showTakenCards(combinations[bestCombiIndex])
-         await delay(1000)
+         await delay(2000)
          removeTakenCards(combinations[bestCombiIndex])
-         console.log("🚀 ~ file: GameWindow.js ~ line 167 ~ compMove ~ bestCombiIndex", bestCombiIndex, 'value', combiValueSum, 'length', combiLengthSum)
+         // console.log("🚀 ~ file: GameWindow.js ~ line 167 ~ compMove ~ bestCombiIndex", bestCombiIndex, 'value', combiValueSum, 'length', combiLengthSum)
       } else {
          await delay(500)
          throwComputerCard()
       }
 
-      console.log("🚀 ~ file: GameWindow.js ~ line 89 ~ compMove ~ combinations", combinations)
+      // console.log("🚀 ~ file: GameWindow.js ~ line 89 ~ compMove ~ combinations", combinations)
       await delay(500)
-      console.log('after first await')
+      // console.log('after first await')
 
       // END OF GAME
       if (store.compInHandCards.length === 0 && store.playerInHandCards.length === 0) {
-         console.log('it is inside and needs to DEAL')
+         // console.log('it is inside and needs to DEAL')
          if (store.fullDeck.length === 0) {
             
             // ************************************
-            console.log('END OF GAME !!!!!!')
+            // console.log('END OF GAME !!!!!!')
             // ************************************
 
             // WHO TOOK LAST
             if (store.whoTookLast === 'player') {
-               console.log("🚀 ~ file: GameWindow.js ~ line 287 ~ compMove ~ store.whoTookLast", store.whoTookLast)
+               // console.log("🚀 ~ file: GameWindow.js ~ line 287 ~ compMove ~ store.whoTookLast", store.whoTookLast)
                await delay(1000)
                setShowWhoTookLast('Ти')
                await delay(7000)
@@ -332,7 +331,7 @@ const GameWindow = () => {
                store.playerCollectedCards = store.playerCollectedCards.concat(store.cardsOnTable)
                store.cardsOnTable = []
             } else {
-               console.log("🚀 ~ file: GameWindow.js ~ line 293 ~ compMove ~ store.whoTookLast", store.whoTookLast)
+               // console.log("🚀 ~ file: GameWindow.js ~ line 293 ~ compMove ~ store.whoTookLast", store.whoTookLast)
                await delay(1000)
                setShowWhoTookLast('Били')
                await delay(4000)
@@ -346,22 +345,31 @@ const GameWindow = () => {
             // WHO HAS MORE CARDS TAKEN
             await delay(1000)
             if (store.playerCollectedCards.length > store.compCollectedCards.length) {
-               console.log("🚀 ~ file: GameWindow.js ~ line 302 ~ compMove ~ store.compCollectedCards.length", store.compCollectedCards.length)
-               console.log("🚀 ~ file: GameWindow.js ~ line 302 ~ compMove ~ store.playerCollectedCards.length", store.playerCollectedCards.length)
-               setShowWhoHasMoreCards('Лаки')
+               // console.log("🚀 ~ file: GameWindow.js ~ line 302 ~ compMove ~ store.compCollectedCards.length", store.compCollectedCards.length)
+               // console.log("🚀 ~ file: GameWindow.js ~ line 302 ~ compMove ~ store.playerCollectedCards.length", store.playerCollectedCards.length)
+               setShowWhoHasMoreCards('Ти')
                await delay(4000)
                setShowWhoHasMoreCards('')
                store.gameResultPlayer += 3
                if (store.gameType === 'points') store.overallResultPlayer += 3
             }
             if (store.playerCollectedCards.length < store.compCollectedCards.length) {
-               console.log("🚀 ~ file: GameWindow.js ~ line 309 ~ compMove ~ store.compCollectedCards.length", store.compCollectedCards.length)
-               console.log("🚀 ~ file: GameWindow.js ~ line 309 ~ compMove ~ store.playerCollectedCards.length", store.playerCollectedCards.length)
+               // console.log("🚀 ~ file: GameWindow.js ~ line 309 ~ compMove ~ store.compCollectedCards.length", store.compCollectedCards.length)
+               // console.log("🚀 ~ file: GameWindow.js ~ line 309 ~ compMove ~ store.playerCollectedCards.length", store.playerCollectedCards.length)
                setShowWhoHasMoreCards('Били')
                await delay(4000)
                setShowWhoHasMoreCards('')
                store.gameResultComputer += 3
                if (store.gameType === 'points') store.overallResultComputer += 3
+            }
+            if (store.playerCollectedCards.length === store.compCollectedCards.length) {
+               // console.log("🚀 ~ file: GameWindow.js ~ line 309 ~ compMove ~ store.compCollectedCards.length", store.compCollectedCards.length)
+               // console.log("🚀 ~ file: GameWindow.js ~ line 309 ~ compMove ~ store.playerCollectedCards.length", store.playerCollectedCards.length)
+               setShowWhoHasMoreCards('Нико. Обоје имате исти број узетих карата')
+               await delay(4000)
+               setShowWhoHasMoreCards('')
+               
+               
             }
 
             await delay(500)
@@ -370,7 +378,7 @@ const GameWindow = () => {
                if (store.gameResultComputer > store.gameResultPlayer) { store.overallResultComputer += 1}
                if (store.gameResultPlayer > store.gameResultComputer) { store.overallResultPlayer += 1}
                if (store.gameResultPlayer === store.gameResultComputer) {    
-                  console.log('IT IS A TIE - GAMES!!!')
+                  // console.log('IT IS A TIE - GAMES!!!')
                   await delay(1500)
                   store.dealNumber = 1
                   store.gameResultComputer = 0
@@ -379,7 +387,7 @@ const GameWindow = () => {
                   store.tablaPointPlayer = []
                   store.compCollectedCards = []
                   store.playerCollectedCards = []
-                  console.log('new game setup !!!!!!')
+                  // console.log('new game setup !!!!!!')
                   nextGameSetup(store)
                   return
                }
@@ -387,22 +395,22 @@ const GameWindow = () => {
 
             //  THIS IS GAME WITH POINTS
             if ((store.gameType === 'points') && +store.gameNumber + 1 > +store.gamesToPlay) {
-               console.log('DECLARE A WINNER')
+               // console.log('DECLARE A WINNER')
                if (store.overallResultPlayer > store.overallResultComputer) {
-                  console.log('DECLARE PLAYER AS A WINNER')
+                  // console.log('DECLARE PLAYER AS A WINNER')
                   setShowWinner('player')
                   // newGameSetup(store)
                   return
                }
                if (store.overallResultComputer > store.overallResultPlayer) {
-                  console.log('DECLARE COMPUTER AS A WINNER')
+                  // console.log('DECLARE COMPUTER AS A WINNER')
                   setShowWinner('computer')
                   // newGameSetup(store)
                   return
                }
                
                if (store.overallResultComputer === store.overallResultPlayer){
-                  console.log('IT IS A TIE !')
+                  // console.log('IT IS A TIE !')
                   setShowWinner('tie')
                   return
                   // newGameSetup(store)
@@ -414,13 +422,13 @@ const GameWindow = () => {
             //  THIS IS GAME WITH GAMES
             else { 
                if (store.overallResultPlayer === +store.gamesToPlay) { 
-                  console.log('DECLARE PLAYER AS A WINNER')
+                  // console.log('DECLARE PLAYER AS A WINNER')
                   setShowWinner('player')
                   // newGameSetup(store)
                   return
                }
                if (store.overallResultComputer === +store.gamesToPlay) { 
-                  console.log('DECLARE COMPUTER AS A WINNER')
+                  // console.log('DECLARE COMPUTER AS A WINNER')
                   setShowWinner('computer')
                   // newGameSetup(store)
                   return
@@ -430,7 +438,7 @@ const GameWindow = () => {
                }
             }
 
-            console.log('END OF GAME cleanup !!!!!!')
+            // console.log('END OF GAME cleanup !!!!!!')
             store.dealNumber = 1
             store.gameResultComputer = 0
             store.gameResultPlayer = 0
@@ -440,10 +448,10 @@ const GameWindow = () => {
             store.playerCollectedCards = []
             
 
-            console.log('new game setup !!!!!!')
+            // console.log('new game setup !!!!!!')
             nextGameSetup(store)
          } else {
-            console.log('newHandDeal')
+            // console.log('newHandDeal')
             store.dealNumber += 1
             newHandDeal(store)
 
@@ -459,7 +467,7 @@ const GameWindow = () => {
 
       // THROW CARD - NO CALC
       if (store.cardsInCalculation.length === 0) {
-         console.log('THROW PLAYER CARD')
+         // console.log('THROW PLAYER CARD')
 
          store.cardsOnTable.push(store.playerInHandCards.find(playerCard => playerCard.id === id))
          _.remove(store.playerInHandCards, (obj => obj.id === id))
@@ -492,11 +500,11 @@ const GameWindow = () => {
 
 
          store.cardsInCalculation = []
-         console.log('clear cardsInCalc array')
+         // console.log('clear cardsInCalc array')
 
       } else {
          // WRONG CALCULATED CARDS
-         console.log('player calc is WRONG!')
+         // console.log('player calc is WRONG!')
          return
       }
 
@@ -510,19 +518,21 @@ const GameWindow = () => {
       <Styled.GameWindow>
          {showWhoTookLast && 
             <Modal>
-               <h2> Последњи пут карте је узео:</h2>
+               <h2> Ко је последњи узео карте?</h2>
                <h1>{showWhoTookLast}</h1>
                <div>
-                  <h2> Он узима остало на столу!</h2>
+                  {showWhoTookLast === "Ти" && <h2>Браво! Ти узимаш остале карте на столу!</h2>}
+                  {showWhoTookLast === "Били" && <h2>Били узима остале карте на столу!</h2>}
                </div>
             </Modal>
          }
          {showWhoHasMoreCards && 
             <Modal>
-               <h2> Највише карата је узео:</h2>
+               <h2> Ко је узео највише карата?</h2>
                <h1>{showWhoHasMoreCards}</h1>
                <div>
-                  <h2> Добија додатна 3 поена!</h2>
+                  {showWhoHasMoreCards === "Ти" && <h2>Браво! Добијаш додатна 3 пеона!</h2>}
+                  {showWhoHasMoreCards === "Били" && <h2>Били добија додатна 3 поена!</h2>}
                </div>
             </Modal>
          }
@@ -534,7 +544,8 @@ const GameWindow = () => {
                   src={Bili_smeh}
                />
                <div>
-                  <h2> Такав је пос'o, ни ја не волим да ГУБИМ!</h2>
+                  <h2>Такав је пос'o, ни ја не волим да ГУБИМ!</h2>
+                  
                </div>
                <StartGameButton action={() => {store.startWindow = true}} label={'Реванш!'}/>
             </Modal>
