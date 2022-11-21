@@ -1,5 +1,5 @@
 import React from 'react';
-import _ from 'lodash'
+// import _ from 'lodash'
 import * as Styled from "./Scoreboard.styled.js";
 import { useObserver } from 'mobx-react'
 import { StoreContext } from './../../../store/store'
@@ -45,8 +45,8 @@ const Scoreboard = (props) => {
          <div className={'combiWrapper'}>{props.combi}</div>
          <div className={"gameInfoContainer"}>
             <header className={"gameInfoHeader"}>Инфо</header>
-            <div className={"gameInfo"}>Igra: {useObserver(() => store.gameNumber)}/{useObserver(() => store.gamesToPlay)}</div>
-            <div className={"dealInfo"}>Deljenje: {useObserver(() => store.dealNumber)}/4</div>
+            <div className={"gameInfo"}>Игра: {useObserver(() => store.gameNumber)}/{useObserver(() => store.gamesToPlay)}</div>
+            <div className={"dealInfo"}>Дељење: {useObserver(() => store.dealNumber)}/4</div>
          </div>
          <div className={"resultContainer"}>
             <header className={"resultHeader"}>Резултат</header>
@@ -71,13 +71,13 @@ const Scoreboard = (props) => {
                      </div>
                   </div>
                   <div className={"cardsSumWrapper"}>
-                     <div className={"sumTitle"}>karte:</div>
+                     <div className={"sumTitle"}>КАРТЕ:</div>
                      <div className={"cardsSum"}>{useObserver(() => store.compCollectedCards.length)}</div>
                   </div>
                </div>
 
                <div className={"playerScoreContainer"}>
-                  <div className={"playerName"}> Играч</div>
+                  <div className={"playerName"}> Ти</div>
                   <div className={"playerScore"}>{useObserver(() => store.gameResultPlayer)}</div>
                   <div className={"tablaWrapper"}>
                      <div className={"tabla"}>
@@ -95,7 +95,7 @@ const Scoreboard = (props) => {
                      </div>
                   </div>
                   <div className={"cardsSumWrapper"}>
-                     <div className={"sumTitle"}>karte:</div>
+                     <div className={"sumTitle"}>КАРТЕ:</div>
                      <div className={"cardsSum"}>{useObserver(() => store.playerCollectedCards.length)}</div>
                   </div>
                </div>

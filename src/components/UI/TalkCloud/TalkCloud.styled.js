@@ -87,7 +87,7 @@ export const TalkCloud = styled.div`
       /* overflow: hidden; */
       white-space: nowrap;
       margin: 0;
-      font-family: "Comic Sans MS", "Comic Sans", cursive;
+      font-family: 'Good time';
       @media (max-width: 440px) {
          /* display: inline-block; */
          /* width: 50px; */

@@ -14,7 +14,7 @@ export const nextGameSetup = (store) => {
    // console.log("🚀 ~ file: App.js ~ line 19 ~ App ~ newlyCreatedDeck", newlyCreatedDeck)
    
    const shuffledDeck =  shuffleDeck(newlyCreatedDeck)
-   console.log("🚀 ~ file: App.js ~ line 25 ~ App ~ shuffledDeck", shuffledDeck)
+   // console.log("🚀 ~ file: App.js ~ line 25 ~ App ~ shuffledDeck", shuffledDeck)
    
    shuffledDeck.map(arr => store.addToArray(store.fullDeck, arr[0]))
    store.isShuffled = true

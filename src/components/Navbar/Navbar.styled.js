@@ -6,7 +6,7 @@ export const Navbar = styled.div`
    z-index: 500;
    width: 100%;
    height: 5%;
-   min-height:40px;
+   min-height:50px;
    /* background-color: #24221d; */
    background-image: linear-gradient(#292721 1%, black 90%);
    display: flex;

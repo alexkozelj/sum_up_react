@@ -1,16 +1,5 @@
 import * as Styled from "./Card.styled.js";
-import J_Diamonds from './../../../images/Cards/J-diamonds-min.png'
-import J_Hearts from './../../../images/Cards/J-hearts-min.png'
-import J_Clubs from './../../../images/Cards/J-clubs-min.png'
-import J_Spades from './../../../images/Cards/J-spades-min.png'
-import Q_Diamonds from './../../../images/Cards/Q-diamonds-min.png'
-import Q_Hearts from './../../../images/Cards/Q-hearts-min.png'
-import Q_Clubs from './../../../images/Cards/Q-clubs-min.png'
-import Q_Spades from './../../../images/Cards/Q-spades-min.png'
-import K_Diamonds from './../../../images/Cards/K-diamonds-min.png'
-import K_Hearts from './../../../images/Cards/K-hearts-min.png'
-import K_Clubs from './../../../images/Cards/K-clubs-min.png'
-import K_Spades from './../../../images/Cards/Q-spades-min.png'
+
 
 const Card = (props) => {
 

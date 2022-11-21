@@ -62,7 +62,7 @@ export const Modal = styled.div`
       padding: 10px 0;
    }
 
-   h2 {
+   h2, h3 {
       font-size: 1em;
       text-align: center;
       margin: 0;

@@ -1,11 +1,16 @@
 import styled from "styled-components";
 
-const cardWidth = "30px";
-const cardHeight = "50px";
+const cardWidth = "45px";
+const cardHeight = "75px";
 const cardPadding ='2px';
 const cardHeight_Mobile = "60px";
-const cardWidth_Mobile = "33px";
-const cardPadding_Mobile ='1px';
+const cardWidth_Mobile = "36px";
+const cardPadding_Mobile ='1.5px';
+
+const showCardWidth = "70px";
+const showCardHeight = "120px";
+const showCardWidth_Mobile = "44px";
+const showCardHeight_Mobile = "70px";
 
 const top_Mobile1 = "12px";
 const top_Mobile2 = "6px";
@@ -21,12 +26,12 @@ const left_Mobile4 = "30px";
 const left_Mobile5 = "40px";
 const left_Mobile6 = "50px";
 
-const top1 = "6px";
-const top2 = "3px";
-const top3 = "0";
-const top4 = "0";
-const top5 = "3px";
-const top6 = "6px";
+const top1 = "3px";
+const top2 = "-1px";
+const top3 = "-5px";
+const top4 = "-5px";
+const top5 = "-1px";
+const top6 = "3px";
 
 const left1 = "5px";
 const left2 = "12px";
@@ -76,7 +81,7 @@ export const GameWindow = styled.div`
     justify-content: center;
     align-items: flex-end;
     flex-direction: row;
-    height: 20%;
+    height: 18%;
     /* margin: 1vh 0 3vh 0; */
   }
 
@@ -134,14 +139,14 @@ export const GameWindow = styled.div`
   .playerField {
     display: flex;
     flex-direction: row;
-    height: 18%;
+    /* height: 18%; */
     width: 100%;
     justify-content: center;
     align-items: center;
-    margin-top: 2vh;
+    margin-top: 1.2vh;
     @media (max-width: 480px) {
       width: 100%;
-      height: 22%;
+      /* height: 22%; */
     }
   }
 
@@ -200,7 +205,7 @@ export const GameWindow = styled.div`
   .opponentCardsWrapper {
     /* display: flex; */
     position: relative;
-    width: 105px;
+    width: 115px;
     /* min-width: 120px; */
     height: 80px;
     /* position: flex; */
@@ -228,12 +233,23 @@ export const GameWindow = styled.div`
 
   .showCard {
      /* position: absolute; */
+     
      z-index: 101 !important;
      > div {
-        border: 2px solid tomato;
+        border: 3px solid salmon;
+        width: ${showCardWidth} !important;
+        height: ${showCardHeight} !important;
         /* scale: 1.9; */
      }
      box-shadow: 14px 15px 15px rgba(green);
+
+     @media (max-width: 440px) {
+      > div {
+         width: ${showCardWidth_Mobile} !important;
+         height: ${showCardHeight_Mobile} !important;
+         padding: 5px !important;
+      }
+    }
   }
 
   .biliCard {

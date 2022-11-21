@@ -12,7 +12,7 @@ export const shuffleDeck = (deck) => {
       deck[location2] = tmp;
    }
 
-   console.log("🚀 ~ file: use-shuffle-deck.js ~ line 20 ~ shuffleDeck ~ deck", deck)
+   // console.log("🚀 ~ file: use-shuffle-deck.js ~ line 20 ~ shuffleDeck ~ deck", deck)
    return deck
    // deck.map(arr => store.addToArray(store.fullDeck, arr[0]))
    

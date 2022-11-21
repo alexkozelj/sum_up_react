@@ -5,7 +5,7 @@ const NavbarButton = (props) => {
 
    return (
       <Styled.NavbarButton onClick={props.action} className="text-box">
-         <a href="#" className="btn btn-white btn-animate">{props.children}</a>
+         <a href="#" className="button1">{props.children}</a>
       </Styled.NavbarButton>
    );
 }

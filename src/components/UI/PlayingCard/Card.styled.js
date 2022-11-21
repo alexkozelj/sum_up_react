@@ -7,7 +7,7 @@ const cardBackground = "#fff";
 export const Card = styled.div`
   display: flex;
   width: 70px;
-  height: 110px;
+  height: 125px;
   padding: 0.5em;
   margin: 5px;
   border-radius: 0.6em;
@@ -17,20 +17,11 @@ export const Card = styled.div`
   font: ${fontSize} "Trebuchet MS";
   cursor: pointer;
 
-  @media (max-width: 1440px) {
-    width: 100%;
-    max-width: 49px;
-    /* height: 100%; */
-    max-height: 75px;
-    padding: 0.4em;
-    margin: 1vw;
-    border-radius: 0.5em;
-  }
 
   @media (max-width: 480px) {
-    width: 44px;
+    width: 47px;
     /* height: 100%; */
-    max-height: 75px;
+    max-height: 86px;
     padding: 0.4em;
     margin: 1vw;
     border-radius: 0.5em;
@@ -64,6 +55,7 @@ export const Card = styled.div`
       @media (max-width: 480px) {
         height: min-content;
         /* font-size: 1em; */
+
       }
 
       > div {
@@ -71,13 +63,28 @@ export const Card = styled.div`
       }
 
       .corner_ranks_top {
-         font-size: 1.4em;
+         font-size: 1.7em;
          line-height: 0.8em;
       }
 
       .corner_suits_top {
-         font-size: 0.9em;
-         line-height: 1.1em;
+         font-size: 1em;
+         line-height: 1.4em;
+         width: 100%;
+      }
+
+      @media (max-width: 480px) {
+         .corner_ranks_top {
+            font-size: 1.55em;
+            line-height: 0.8em;
+         }
+
+         .corner_suits_top {
+            font-size: 0.5em;
+            line-height: 1.75em;
+
+         }
+        
       }
 
       /* .corner_value_top {
@@ -133,14 +140,16 @@ export const Card = styled.div`
     height: 90%;
     justify-content: space-around;
     align-items: center;
+    margin: 0 2px;
 
     @media (max-width: 480px) {
       width: 30%;
       justify-content: space-around;
+      margin: 0 1px;
     }
 
     .card__suits {
-      font-size: 9px;
+      font-size: 14px;
       line-height: 7px;
       text-align: center;
 
@@ -151,6 +160,13 @@ export const Card = styled.div`
     }
   }
 
+  .card__column--centered {
+   
+      margin: 0 !important;
+      
+    
+  }
+
   .card__column--img {
     display: flex;
     position: absolute;
@@ -158,7 +174,7 @@ export const Card = styled.div`
     align-items: center;
     width: 100%;
     height: 100%;
-      font-size: 1.7em;
+      font-size: 2em;
     @media (max-width: 480px) {
       top: 8px;
       font-size: 1.75em;

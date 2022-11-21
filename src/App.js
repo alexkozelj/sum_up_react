@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { useObserver } from 'mobx-react'
@@ -19,7 +19,7 @@ const App = () => {
    if (store.fullDeck.length === 0 && store.gameResultComputer === 0 && store.gameResultPlayer === 0) nextGameSetup(store)
 
 
-   const [startWindow, setStartWindow] = useState(true)
+   // const [startWindow, setStartWindow] = useState(true)
    const startWindowHandler = () => {
       store.startWindow = false
    }
