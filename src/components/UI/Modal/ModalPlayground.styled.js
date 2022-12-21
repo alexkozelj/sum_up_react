@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const ModalContainer = styled.div`
-   position: fixed;
+   position: absolute;
    display: flex;
    align-items: center;
    width: 100%;
@@ -17,20 +17,20 @@ export const ModalContainer = styled.div`
 `
 
 export const Backdrop = styled.div`
-   position: fixed;
+   position: absolute;
    top: 0;
    left: 0;
    width: 100%;
    height: 100%;
    z-index: 200;
-   background-color: rgba(0, 0, 0, 0.75);
+   background-color: rgba(0, 0, 0, 0.35);
 `
 
 export const Modal = styled.div`
-   position: fixed;
+   /* position: absolute; */
    /* left: 10px; */
-  width: 65%;
-  height: 55%;
+  width: 60%;
+  height: 85%;
   /* this is what centers your element in the fixed wrapper*/
   display: flex;
   flex-flow: column nowrap;

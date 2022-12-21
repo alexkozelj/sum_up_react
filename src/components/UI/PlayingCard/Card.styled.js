@@ -8,7 +8,7 @@ export const Card = styled.div`
   display: flex;
   width: 70px;
   height: 125px;
-  padding: 0.5em;
+  padding: 8px 8px 6px 7px;
   margin: 5px;
   border-radius: 0.6em;
   border: 2.5px solid transparent;
@@ -63,13 +63,14 @@ export const Card = styled.div`
       }
 
       .corner_ranks_top {
-         font-size: 1.7em;
-         line-height: 0.8em;
+         font-size: 14px;
+         /* line-height: 17px; */
+         margin-bottom: 1px;
       }
 
       .corner_suits_top {
-         font-size: 1em;
-         line-height: 1.4em;
+         font-size: 8px;
+         /* line-height: 7px; */
          width: 100%;
       }
 
@@ -81,7 +82,7 @@ export const Card = styled.div`
 
          .corner_suits_top {
             font-size: 0.5em;
-            line-height: 1.75em;
+            line-height: 15px;
 
          }
         
@@ -140,7 +141,8 @@ export const Card = styled.div`
     height: 90%;
     justify-content: space-around;
     align-items: center;
-    margin: 0 2px;
+    margin: 0 3px;
+    font-family: auto;
 
     @media (max-width: 480px) {
       width: 30%;
@@ -174,7 +176,9 @@ export const Card = styled.div`
     align-items: center;
     width: 100%;
     height: 100%;
-      font-size: 2em;
+   font-size: 2em;
+   font-family: cursive;
+
     @media (max-width: 480px) {
       top: 8px;
       font-size: 1.75em;

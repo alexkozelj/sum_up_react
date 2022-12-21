@@ -12,6 +12,8 @@ export const StoreProvider = ({ children }) => {
          array.push(item)
       },
 
+      disableNavbarButton: false,
+
       startWindow: true,
 
       suits: ["diamonds", "hearts", "clubs", "spades"],

@@ -13,6 +13,7 @@ const ModalOverlay = props => {
 }
 
 const portalElement = document.getElementById('modal')
+const portalElementPlayground = document.getElementById('playgroundModal')
 
 const Modal = (props) => {
    return (

@@ -1,13 +1,17 @@
 import styled from "styled-components";
 
+const backgroundColor = '#f9e3a0e6'
+
 export const Scoreboard = styled.div`
     display: flex;
+    position: relative;
     flex-direction: column;
     width: 30%;
     max-width: 200px;
+    min-width: 145px;
     /* height: 100%; */
     height: max-content;
-    padding: 10px 0;
+    padding: 5px 0 10px 0;
     justify-content: center;
     align-items: center;
     align-self: center;
@@ -21,13 +25,16 @@ export const Scoreboard = styled.div`
       align-self: center;
       flex-direction: column;
       padding-top: 0;
+      min-width: 115px;
     }
   
     .combiWrapper {
-       font-size: 0.7em;
+      height: 15px; 
+      font-size: 9px;
        
       @media (max-width: 440px) {
          padding-top: 1px;
+         height: 13px; 
          font-size: 8px;
       }
     }
@@ -36,7 +43,7 @@ export const Scoreboard = styled.div`
     display: flex;
     flex-direction: column;
     /* padding: 0 0 10px 0; */
-    width: 85%;
+    width: 95%;
     height: 30%;
     background-color: #c3e6cb;
     border-radius: 15px;
@@ -81,7 +88,7 @@ export const Scoreboard = styled.div`
     display: flex;
     flex-direction: column;
     background-color: #ffeeba;
-    width: 85%;
+    width: 95%;
     /* height: 50vh; */
     /* height: max-content; */
     padding: 0 0 15px 0;
@@ -114,20 +121,13 @@ export const Scoreboard = styled.div`
     }
   }
 
-  .resultWrapper {
+  .gameResultWrapper {
     display: flex;
     flex-direction: row;
-    background-color: #ffeeba;
     width: 95%;
-    /* height: max-content; */
     justify-content: center;
     align-items: flex-start;
-    /* border-radius: 12px; */
-    /* border-left: 1px solid black;
-      border-right: 1px solid black; */
-    /* border: 1px solid black; */
-    /* border-radius: 12px;
-    padding: 15px; */
+    
     @media (max-width: 440px) {
     }
   }
@@ -140,12 +140,6 @@ export const Scoreboard = styled.div`
     }
   }
 
-  .opponentScoreContainer {
-    border-right: 1px solid grey;
-    @media (max-width: 440px) {
-    }
-  }
-
   .opponentScoreContainer,
   .playerScoreContainer {
     display: flex;
@@ -154,9 +148,6 @@ export const Scoreboard = styled.div`
     height: 100%;
     align-items: center;
     justify-content: center;
-    /* height: max-content; */
-    border-bottom: 1px solid grey;
-    /* margin: 0 5px; */
     @media (max-width: 440px) {
     }
   }
@@ -166,7 +157,6 @@ export const Scoreboard = styled.div`
     width: 100%;
     font-size: 0.9em;
     font-weight: bold;
-    border-bottom: 1px solid grey;
     padding: 5px;
     @media (max-width: 440px) {
       padding: 5px;
@@ -175,24 +165,97 @@ export const Scoreboard = styled.div`
       /* color: green; */
     }
   }
+  
+  .plus-one {
+   /* visibility: hidden; */
+   /* color: #3f3f3f; */
+   /* background-color: tomato; */
+   color: lightseagreen;
+   width:15px;
+   height:15px;
+   font-size: 15px;
+   position: absolute;
+   left: 62%;
+   /* transform: translate(-50%, -50%); */
+   animation-name: fade-in-up;
+   animation-duration: 2s;
+   animation-iteration-count: 1;
+   animation-timing-function: ease;
+   @media (max-width: 440px) {
+      left: 65%;
+      font-size: 12px;
+    }
+}
 
+   @keyframes fade-in-up {
+      0%,
+      10% {
+         top: 13%;
+         opacity: 1;
+      }
+      100% {
+         top: -70%;
+         opacity: 0;
+      }
+   }
   .opponentScore,
   .playerScore {
-    font-size: 0.9em;
+    height:34px;
+    position: relative;
+    font-size: 16px;
     padding: 2px;
     width: 100%;
     border-bottom: 1px solid grey;
     @media (max-width: 440px) {
-      font-size: 12px;
+      height:30px;
+      font-size: 15px;
     }
   }
 
+  
   .tablaWrapper {
-    padding: 5px 0 0 0;
+
+   display: flex;
+   flex-direction: column;
+   width: 95%;
+   justify-content: center;
+   align-items: flex-start;
+   
+   @media (max-width: 440px) {
+   }
+
+}
+
+   .tablaTitle {
+      width: 100%;
+      height: 20px;
+      background-color: ${backgroundColor};
+      font-size: 12px;
+      font-weight: 450;
+      font-family: "Good Look", "Helvetica Ne";
+      letter-spacing: 2px;
+      border-bottom: 1px solid grey;
+   }
+
+   .tablaFiledWrapper {
+      display: flex;
+      width: 100%;
+   }
+
+  .tablaField {
+   display: flex;
+   align-items: center;
+   width: 50%;
+   height: 25px;
+   background-color: ${backgroundColor};
+    /* padding: 5px 0 0 0; */
   }
 
   .tabla {
     position: relative;
+    justify-content: flex-start;
+    display: flex;
+    padding: 0 25%;
     height: 20px;
     font-size: 0.7em;
     width: 100%;
@@ -204,14 +267,14 @@ export const Scoreboard = styled.div`
   }
 
   .tabla span:nth-child(4) {  
-      /* margin-right: 2px; */
+      margin-right: 5px;
       @media (max-width: 440px) {
          margin-right: 2px;
       }
    }
 
   .tabla span:nth-child(9) {  
-      /* margin-right: 2px; */
+      margin-right: 5px;
       @media (max-width: 440px) {
          margin-right: 2px;
       }
@@ -219,55 +282,78 @@ export const Scoreboard = styled.div`
 
   .tablaCross4 {
     position: absolute;
-    left: -3px;
-    bottom: 7px;
-    transform: rotate(-15deg);
+    margin-right: 2px;
+    /* left: 24px; */
+    bottom: 1px;
+    transform: rotate(-204deg);
     @media (max-width: 440px) {
-      left: -2px;
-      bottom: 6px;
+      left: 15px;
+      bottom: 2px;
     }
   }
 
   .tablaCross9 {
     position: absolute;
-    left: -4px;
-    bottom: 5px;
+    margin-right: 2px;
+    left: 35px;
+    bottom: 7px;
     transform: rotate(-15deg);
     @media (max-width: 440px) {
-      left: 8px;
+      left: 20px;
       bottom: 6px;
     }
   }
 
   .tablaCross14 {
     position: absolute;
-    left: -4px;
-    bottom: 5px;
+    left: 51px;
+    bottom: 7px;
     transform: rotate(-15deg);
     @media (max-width: 440px) {
-      left: 18px;
+      left: 26px;
       bottom: 6px;
     }
   }
 
-  .tablaCross14 {
-    position: absolute;
-    left: -4px;
-    bottom: 5px;
-    transform: rotate(-15deg);
-    @media (max-width: 440px) {
-      left: 18px;
-      bottom: 6px;
-    }
+  .takenCardsWrapper {
+   width: 100%;
+   display: flex;
+   flex-direction: column;
   }
+
+  .cardsSumTitle {
+      width: 100%;
+      height: 20px;
+      background-color: ${backgroundColor};
+      font-size: 12px;
+      font-weight: 450;
+      font-family: "Good Look", "Helvetica Ne";
+      letter-spacing: 1px;
+      border-bottom: 1px solid grey;
+   }
 
   .cardsSumWrapper {
      /* height: */
-     padding: 0 5px;
-     width: 70%;
+     /* padding: 0 5px; */
+     width: 100%;
      display: flex;
      flex-direction: row;
-     justify-content: space-between;
+     /* justify-content: space-between; */
+     @media (max-width: 440px) {
+      padding: 0;
+    }
+  }
+
+  .cardsSumField {
+     /* height: */
+     padding: 0 5px;
+     width: 50%;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     font-size: 13px;
+     font-weight: 400;
+     font-family: "Good Look", "Helvetica Ne";
      @media (max-width: 440px) {
       padding: 0;
     }
@@ -295,12 +381,12 @@ export const Scoreboard = styled.div`
 
   .overallResultWrapper {
     width: 95%;
-    background-color: #f9e3a0e6;
     padding: 5px 1px;
-    font-size: 0.9em;
+    font-size: 15px;
     font-weight: bold;
     border-bottom: 1px solid grey;
     @media (max-width: 440px) {
+      font-size: 12px;
       padding: 5px 1px;
     }
   }
@@ -308,7 +394,7 @@ export const Scoreboard = styled.div`
   .overallResult {
     width: 100%;
     @media (max-width: 440px) {
-      font-size: 8px;
+      font-size: 11px;
     }
   }
 
@@ -326,19 +412,58 @@ export const Scoreboard = styled.div`
   .totalResultOpponent {
     border-right: 1px solid grey;
     @media (max-width: 440px) {
+      
     }
   }
 
   .totalResultOpponent,
   .totalResultPlayer {
-    background-color: #f9e3a0e6;
     width: 100%;
     padding: 5px 0;
-    font-size: 1em;
+    font-size: 16px;
     font-weight: bold;
     @media (max-width: 440px) {
       padding: 3px 0;
-      font-size: 12px;
+      font-size: 15px;
     }
+  }
+
+  .borderRight {
+   border-right: 1px solid grey;
+  }
+  .borderLeft {
+   border-left: 1px solid grey;
+  }
+  .borderBottom {
+   border-bottom: 1px solid grey;
+  }
+  .borderBottom-2 {
+   border-bottom: 2px solid grey;
+  }
+  .borderTop {
+   border-top: 1px solid grey;
+  }
+
+  .titleColor {
+   background-color: #f9e3a0e6;
+  }
+
+  .scoreColor {
+   background-color: #ffeeba;
+  }
+
+  .padding-5 {
+   padding: 5px 0;
+  }
+
+  .title {
+   font-size: 11px;
+   letter-spacing: 1px;
+   font-weight: 400;
+   padding: 2px 0;
+   font-family: "Good Lookup", "Helvetica Neue";
+   @media (max-width: 440px) {
+      font-size: 9px;
+   }
   }
 `;

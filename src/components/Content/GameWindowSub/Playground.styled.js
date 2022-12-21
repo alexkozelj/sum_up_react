@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const Playground = styled.div`
+  /* position: relative; */
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -11,13 +12,14 @@ export const Playground = styled.div`
 
   .playgroundCardsWrapper {
     display: flex;
+    position: relative;
     justify-content: center;
     align-items: center;
-    width: 70%;
-    max-width: 950px;
+    width: 100%;
+    max-width: 750px;
     height: 95%;
     padding: 10px;
-    margin-right: 30px;
+    margin-right: 20px;
     background-color: #7ca385;
     border-radius: 15px;
     border: 1px solid white;
@@ -41,8 +43,8 @@ export const Playground = styled.div`
   }
 
   .playgroundCard {
-    width: 60px;
-    height: 110px;
+    width: 64px;
+    height: 113px;
     /* cursor: pointer; */
     @media (max-width: 440px) {
       width: 44px;

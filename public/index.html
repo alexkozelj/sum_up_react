@@ -130,30 +130,142 @@
       }
 
       .content button {
-         max-width: 200px;
-         margin: 20px 0;
+         position: relative;
+         overflow: hidden;
+         width: 200px;
+         height: 5px;
+         margin: 25px 0;
          border-radius: 8px;
          border: 3px solid #ddff30;
-         font-size: 1.3em;
+         font-size: 18px;
          font-family: "Lato";
          font-weight: 600;
          color: white;
          cursor: pointer;
-         padding: 8px 38px;
-         box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
+         padding: 25px 38px;
+         -webkit-box-shadow: 0px 0px 18px 4px rgba(0, 0, 0, 0.58);
+         -moz-box-shadow: 0px 0px 18px 4px rgba(0, 0, 0, 0.58);
+         box-shadow: 0px 0px 18px 4px rgba(0, 0, 0, 0.58);
          background: linear-gradient(to left top, #56ad42 50%, #4FA93A 50%);
       }
+
+      .content button span {
+         position: absolute;
+         display: block;
+      }
+
+      .content button span:nth-child(1) {
+         height: 3px;
+         width: 200px;
+         top: 0px;
+         left: -200px;
+         background: linear-gradient(to right, rgba(0, 0, 0, 0), #8df6a9);
+         border-top-right-radius: 1px;
+         border-bottom-right-radius: 1px;
+         animation: span1 2s linear infinite;
+         animation-delay: 1s;
+      }
+
+      @keyframes span1 {
+         0% {
+            left: -200px;
+         }
+
+         100% {
+            left: 200px;
+         }
+      }
+
+      .content button span:nth-child(2) {
+         height: 70px;
+         width: 3px;
+         top: -70px;
+         right: 0px;
+         background: linear-gradient(to bottom, rgba(0, 0, 0, 0), #04e781);
+         border-bottom-left-radius: 1px;
+         border-bottom-right-radius: 1px;
+         animation: span2 2s linear infinite;
+         animation-delay: 2s;
+      }
+
+      @keyframes span2 {
+         0% {
+            top: -70px;
+         }
+
+         100% {
+            top: 70px;
+         }
+      }
+
+      .content button span:nth-child(3) {
+         height: 3px;
+         width: 200px;
+         right: -200px;
+         bottom: 0px;
+         background: linear-gradient(to left, rgba(0, 0, 0, 0), #3fe6f5);
+         border-top-left-radius: 1px;
+         border-bottom-left-radius: 1px;
+         animation: span3 2s linear infinite;
+         animation-delay: 3s;
+      }
+
+      @keyframes span3 {
+         0% {
+            right: -200px;
+         }
+
+         100% {
+            right: 200px;
+         }
+      }
+
+      .content button span:nth-child(4) {
+         height: 30px;
+         width: 3px;
+         bottom: -70px;
+         left: 0px;
+         background: linear-gradient(to top, rgba(0, 0, 0, 0), #d475f6);
+         border-top-right-radius: 1px;
+         border-top-left-radius: 1px;
+         animation: span4 2s linear infinite;
+         animation-delay: 4s;
+      }
+
+      @keyframes span4 {
+         0% {
+            bottom: -70px;
+         }
+
+         100% {
+            bottom: 70px;
+         }
+      }
+
+      .content button:hover {
+         transition: all 0.5s;
+         transform: scale(1.1);
+         box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.4);
+      }
+
+      .buttonLabelDiv {
+         height: 15px;
+         position: relative;
+         top: -13px;
+      }
+
+
    </style>
 </head>
 
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LC3939K2PC"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+   window.dataLayer = window.dataLayer || [];
+   function gtag() { dataLayer.push(arguments); }
+   gtag('js', new Date());
 
-  gtag('config', 'G-LC3939K2PC');
+   gtag('config', 'G-LC3939K2PC');
 </script>
 
 <body>
@@ -172,7 +284,13 @@
          </div>
       </div>
 
-      <button onclick="start()">IGRAJ</button>
+      <button onclick="start()">
+         <span></span>
+         <span></span>
+         <span></span>
+         <span></span>
+         <div class="buttonLabelDiv">IGRAJ !</div>
+      </button>
 
       <article>
 

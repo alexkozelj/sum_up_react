@@ -8,11 +8,17 @@ import { StoreContext } from './../../store/store'
 const Header = () => {
    const store = React.useContext(StoreContext)
 
+   const navbarButtonClickHandler = () => { 
+      if (!store.disableNavbarButton) {
+         store.startWindow = true
+      }
+   }
+
    return (
       <Styled.Navbar>
          <Styled.Logo src={logo} />
          <Styled.ButtonWrapper>
-            <NavbarButton action={() => {store.startWindow = true}}>{'Нова Игра'}</NavbarButton>
+           {!store.startWindow && <NavbarButton action={navbarButtonClickHandler}>{'Нова Игра'}</NavbarButton>}
          </Styled.ButtonWrapper>
       </Styled.Navbar>
    );

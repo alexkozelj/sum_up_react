@@ -190,12 +190,13 @@ export const GameWindow = styled.div`
       position: relative;
       justify-content: center;
       align-items: flex-start;
-      width: 50px;
+      width: 70px;
+      /* height: 200px; */
       @media (max-width: 480px) {
          > div {
-            max-width: 45px;
+            max-width: 60px;
             height: 90px;
-            top: 11px;
+            /* top: 11px; */
          }
       }
    }
@@ -207,7 +208,7 @@ export const GameWindow = styled.div`
     position: relative;
     width: 115px;
     /* min-width: 120px; */
-    height: 80px;
+    height: 95px;
     /* position: flex; */
     /* top: 15px; */
     left: 0;
@@ -240,6 +241,7 @@ export const GameWindow = styled.div`
         width: ${showCardWidth} !important;
         height: ${showCardHeight} !important;
         /* scale: 1.9; */
+        padding: 8px 7px;
      }
      box-shadow: 14px 15px 15px rgba(green);
 

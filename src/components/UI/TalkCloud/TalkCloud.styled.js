@@ -7,7 +7,7 @@ export const TalkCloud = styled.div`
    /* flex-direction: column; */
    /* max-width: 150px; */
    max-height: 100%;
-   width: 170px;
+   width: 150px;
    justify-content: flex-start;
    align-items: center;
    position: relative;
@@ -58,30 +58,22 @@ export const TalkCloud = styled.div`
    img {
       /* margin-top: 10px; */
 
-      /* position: absolute; */
-      /* padding: 2px; */
-      /* max-width: 100%; */
-      /* max-height: 100%; */
-      /* align-self: center; */
-      /* opacity: 0.5; */
-      /* justify-content: center; */
-      /* padding-top: 52px; */
-      margin-top: 10px;
-      width: 100%;
+      width: 160px;
       max-height: 65px;
       padding: 2px;
       /* object-fit: contain; */
       overflow: hidden;
       @media (max-width: 440px) {
+         /* width: 140px */
          /* height: 60px; */
          /* max-width: 50px; */
       }
    }
 
    .message1 {
-      font-size: 0.9em;
+      font-size: 16px;
       position: relative;
-      bottom: 3.2em;
+      bottom: 3em;
       padding: 0 2em 0 2.3em;
       width: max-content;
       /* overflow: hidden; */
@@ -95,8 +87,8 @@ export const TalkCloud = styled.div`
          align-self: center; */
          padding: 0 2em 0 2.8em;
          word-wrap: break-word;
-         font-size: 8px;
-         bottom: 51%;
+         font-size: 15px;
+         bottom: 60%;
       }  
    }
 

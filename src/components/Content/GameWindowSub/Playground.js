@@ -4,6 +4,7 @@ import { useObserver } from 'mobx-react'
 import { StoreContext } from './../../../store/store'
 import Card from "./../../UI/PlayingCard/Card";
 import Scoreboard from './Scoreboard.js';
+import ModalPlayground from './../../UI/Modal/ModalPlayground';
 
 const Playground = (props) => {
 
@@ -14,7 +15,7 @@ const Playground = (props) => {
       if (!props.playersMove) return
 
       const card = store.cardsOnTable.find(x => x.id === id);
-      
+
       if (document.getElementById(id).classList.contains('playgroundCard')) {
 
          if (document.getElementById(id).classList.contains('markedCard')) {
@@ -40,9 +41,30 @@ const Playground = (props) => {
    return (
       <Styled.Playground>
 
-            {/* TABLE */}
+         {/* TABLE */}
 
          <div className={"playgroundCardsWrapper"}>
+
+            {props.showWhoTookLast &&
+               <ModalPlayground>
+                  <h2> Ко је последњи узео карте?</h2>
+                  <h1>{props.showWhoTookLast}</h1>
+                  <div>
+                     {props.showWhoTookLast === "Ти" && <h2>Браво! Ти узимаш остале карте на столу!</h2>}
+                     {props.showWhoTookLast === "Били" && <h2>Били узима остале карте на столу!</h2>}
+                  </div>
+               </ModalPlayground>
+            }
+            {props.showWhoHasMoreCards &&
+               <ModalPlayground>
+                  <h2> Ко је узео највише карата?</h2>
+                  <h1>{props.showWhoHasMoreCards}</h1>
+                  <div>
+                     {props.showWhoHasMoreCards === "Ти" && <div><h2>Браво! Добијаш додатна 3 поена!</h2></div>}
+                     {props.showWhoHasMoreCards === "Били" && <h2>Били добија додатна 3 поена!</h2>}
+                  </div>
+               </ModalPlayground>
+            }
             <div className={"cardsWrapper"}>
 
                {
@@ -65,10 +87,10 @@ const Playground = (props) => {
             </div>
          </div>
 
-         <Scoreboard combi={props.combi}/>
+         <Scoreboard combi={props.combi} upByComp={props.upByComp} upByPlayer={props.upByPlayer}/>
 
       </Styled.Playground>
-      
+
    );
 };
 
