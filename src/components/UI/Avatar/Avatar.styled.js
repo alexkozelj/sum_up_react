@@ -6,52 +6,38 @@ export const Avatar = styled.div`
    display: flex;
    flex-direction: column;
    max-width: 50%;
-   max-height: 50%;
+   max-height: 200px;
    justify-content: center;
    align-items: center;
    position: relative;
-   /* border: 3px solid black; */
    border-radius: 10px;
    opacity: 0.8;
-   /* background-color: tomato; */
    text-align: center;
-   /* display: grid; */
 
    .wrapper {
       display: flex;
-      /* position: relative; */
-      /* max-width: 50%; */
-      max-height: 50%;
-      /* min-width: 45%; */
+      height: 85px;
+
       justify-content: center;
-      /* max-width: 100px; */
-      /* height: 100px; */
       border: 5px solid #b54936;
       border-radius: 10px;
-      /* opacity: 0.8; */
       background-color: black;
       text-align: center;
-      /* display: grid; */
    }
    
    img {
-      /* position: absolute; */
-      /* padding: 2px; */
-      /* max-width: 100%; */
-      /* max-height: 100%; */
-      /* align-self: center; */
-      /* opacity: 0.5; */
-      /* justify-content: center; */
       max-width: 100%;
-      max-height: 100%;
+      height: 100%;
+      height: 75px;
       padding: 2px;
       object-fit: contain;
       overflow: hidden;
    }
 
    p {
-      font-size: 2em;
+      font-size: 1.2em;
       padding: 5px;
+      margin-bottom: 0 !important;
    }
 
    @media (max-width: 440px) {
@@ -59,5 +45,6 @@ export const Avatar = styled.div`
          font-size: 1.5em
       }
    }
+
 
 `

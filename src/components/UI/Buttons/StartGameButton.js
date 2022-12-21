@@ -1,25 +1,28 @@
-   import * as Styled from './StartGameButton.styled.js';
 
-   const StartGameButton = (props) => {
-      
-      const startGameHandler = () => {
-         console.log('this is from button')
-         props.startGame()
-      }
+import React from "react";
+import * as Styled from './StartGameButton.styled.js';
 
-      return (
-         <Styled.StartGameButton>
-            <div className="wrapper">
-               <button onClick={startGameHandler}>
-                  <span></span>
-                  <span></span>
-                  Почни игру!
-                  <span></span>
-                  <span></span>
-               </button>
-            </div>
-         </Styled.StartGameButton>
-      );
+
+const StartGameButton = (props) => {
+
+   const buttonHandler = () => {
+      // console.log('this is from button')
+      props.action()
    }
 
-   export default StartGameButton;
+   return (
+      <Styled.StartGameButton>
+         <div className="wrapper">
+            <button onClick={buttonHandler}>
+               <span></span>
+               <span></span>
+               {props.label}
+               <span></span>
+               <span></span>
+            </button>
+         </div>
+      </Styled.StartGameButton>
+   );
+}
+
+export default StartGameButton;

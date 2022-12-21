@@ -1,6 +1,5 @@
 import * as Styled from "./Card.styled.js";
-import J_Diamonds from './../../../images/Cards/J-diamonds-min.png'
-import Q_Spades from './../../../images/Cards/Q-spades-min.png'
+
 
 const Card = (props) => {
 
@@ -8,201 +7,246 @@ const Card = (props) => {
    const diamonds = '♦'
    const spades = '♠'
    const clubs = '♣'
+   const king = '♚'
+   const queen = '♛'
+   const jack = '⚜'
 
-   const setSymbolHandler = (symbol) => {
-      if (symbol === 'hearts') return hearts
-      if (symbol === 'diamonds') return diamonds
-      if (symbol === 'spades') return spades
-      if (symbol === 'clubs') return clubs
+   const setSuitHandler = (suits) => {
+      if (suits === 'hearts') return hearts
+      if (suits === 'diamonds') return diamonds
+      if (suits === 'spades') return spades
+      if (suits === 'clubs') return clubs
    }
 
-   const cardSymbol =
-      <div className={"card__symbol " + props.symbol}>
+   const cardSuit =
+      <div className={"card__suits " + props.suits}>
          <div>
-            {setSymbolHandler(props.symbol)}
+            {setSuitHandler(props.suits)}
          </div>
       </div>
 
+   // const cardClickHandler = () => {
+   //    console.log('this is from cardClickHandler')
+   //    props.cardClickHandler()
+   // }
+   // console.log('id from card', props.id)
+
+   // {props.backCard &&
+   //    <div className="card__inner card__inner--centered">
+   //       {/* <div className="card__column--img"> */}
+
+   //       <div className={'back'}></div>
+   //       {/* </div> */}
+   //    </div>
+   // }
+
    return (
-      <Styled.Card className={props.className}>
-         <section className={"card card--" + props.symbol} value={props.value}>
+      <Styled.Card className={props.className} id={props.id} onClick={props.onClick}>
+
+         <section className={"card card--" + props.suits} ranks={props.ranks}>
+            
+            {/* backCardDiv */}
+            <div id={`backCardDiv-${props.id}`} className={props.classNameSection}></div>
+
             <div className="corner_wrapper_top">
-               <div className={"corner_value_top " + props.symbol}>{props.value}</div>
-               <div className={"corner_symbol_top " + props.symbol}>{setSymbolHandler(props.symbol)}</div>
+               <div className={"corner_ranks_top " + props.suits}>{props.ranks}</div>
+               <div className={"corner_suits_top " + props.suits}>{setSuitHandler(props.suits)}</div>
             </div>
 
-            {props.value === 'A' &&
+
+            {props.ranks === 'A' &&
                <div className="card__inner card__inner--centered">
-                  <div style={{fontSize:30}}>
-                     {cardSymbol}
+
+                  <div className={'ace_card'}>
+                     {cardSuit}
                   </div>
                </div>
             }
 
-            {props.value === '2' &&
-               <div className="card__inner card__inner--centered">
-                  <div className="card__column">
-                     {cardSymbol}
-                     {cardSymbol}
-                  </div>
-               </div>
-            }
-
-
-            {props.value === '3' &&
+            {props.ranks === '2' &&
                <div className="card__inner card__inner--centered">
                   <div className="card__column">
-                     {cardSymbol}
-                     {cardSymbol}
-                     {cardSymbol}
+                     {cardSuit}
+                     {cardSuit}
                   </div>
                </div>
             }
 
-            {props.value === '4' &&
-               <div className="card__inner">
+
+            {props.ranks === '3' &&
+               <div className="card__inner card__inner--centered">
                   <div className="card__column">
-                     {cardSymbol}
-                     {cardSymbol}
-                  </div>
-                  <div className="card__column">
-                     {cardSymbol}
-                     {cardSymbol}
+                     {cardSuit}
+                     {cardSuit}
+                     {cardSuit}
                   </div>
                </div>
             }
 
-            {props.value === '5' &&
+            {props.ranks === '4' &&
                <div className="card__inner">
                   <div className="card__column">
-                     {cardSymbol}
-                     {cardSymbol}
+                     {cardSuit}
+                     {cardSuit}
+                  </div>
+                  <div className="card__column">
+                     {cardSuit}
+                     {cardSuit}
+                  </div>
+               </div>
+            }
+
+            {props.ranks === '5' &&
+               <div className="card__inner">
+                  <div className="card__column">
+                     {cardSuit}
+                     {cardSuit}
                   </div>
                   <div className="card__column card__column--centered">
-                     {cardSymbol}
+                     {cardSuit}
                   </div>
                   <div className="card__column">
-                     {cardSymbol}
-                     {cardSymbol}
-                  </div>
-               </div>
-            }
-
-            {props.value === '6' &&
-               <div className="card__inner">
-                  <div className="card__column">
-                     {cardSymbol}
-                     {cardSymbol}
-                     {cardSymbol}
-                  </div>
-                  <div className="card__column">
-                     {cardSymbol}
-                     {cardSymbol}
-                     {cardSymbol}
+                     {cardSuit}
+                     {cardSuit}
                   </div>
                </div>
             }
 
-            {props.value === '7' &&
+            {props.ranks === '6' &&
                <div className="card__inner">
                   <div className="card__column">
-                     {cardSymbol}
-                     {cardSymbol}
-                     {cardSymbol}
+                     {cardSuit}
+                     {cardSuit}
+                     {cardSuit}
+                  </div>
+                  <div className="card__column">
+                     {cardSuit}
+                     {cardSuit}
+                     {cardSuit}
+                  </div>
+               </div>
+            }
+
+            {props.ranks === '7' &&
+               <div className="card__inner">
+                  <div className="card__column">
+                     {cardSuit}
+                     {cardSuit}
+                     {cardSuit}
                   </div>
                   <div className="card__column card__column--centered">
-                     {cardSymbol}
+                     {cardSuit}
                   </div>
                   <div className="card__column">
-                     {cardSymbol}
-                     {cardSymbol}
-                     {cardSymbol}
+                     {cardSuit}
+                     {cardSuit}
+                     {cardSuit}
                   </div>
                </div>
             }
 
-            {props.value === '8' &&
+            {props.ranks === '8' &&
                <div className="card__inner">
                   <div className="card__column">
-                     {cardSymbol}
-                     {cardSymbol}
-                     {cardSymbol}
+                     {cardSuit}
+                     {cardSuit}
+                     {cardSuit}
                   </div>
                   <div className="card__column card__column--centered">
-                     {cardSymbol}
-                     {cardSymbol}
+                     {cardSuit}
+                     {cardSuit}
                   </div>
                   <div className="card__column">
-                     {cardSymbol}
-                     {cardSymbol}
-                     {cardSymbol}
+                     {cardSuit}
+                     {cardSuit}
+                     {cardSuit}
                   </div>
                </div>
             }
 
-            {props.value === '9' &&
+            {props.ranks === '9' &&
                <div className="card__inner">
                   <div className="card__column">
-                     {cardSymbol}
-                     {cardSymbol}
-                     {cardSymbol}
-                     {cardSymbol}
+                     {cardSuit}
+                     {cardSuit}
+                     {cardSuit}
+                     {cardSuit}
                   </div>
                   <div className="card__column card__column--centered">
-                     {cardSymbol}
+                     {cardSuit}
                   </div>
                   <div className="card__column">
-                     {cardSymbol}
-                     {cardSymbol}
-                     {cardSymbol}
-                     {cardSymbol}
+                     {cardSuit}
+                     {cardSuit}
+                     {cardSuit}
+                     {cardSuit}
                   </div>
                </div>
             }
 
-            {props.value === '10' &&
+            {props.ranks === '10' &&
                <div className="card__inner">
                   <div className="card__column">
-                     {cardSymbol}
-                     {cardSymbol}
-                     {cardSymbol}
-                     {cardSymbol}
+                     {cardSuit}
+                     {cardSuit}
+                     {cardSuit}
+                     {cardSuit}
                   </div>
                   <div className="card__column card__column--centered">
-                     {cardSymbol}
-                     {cardSymbol}
+                     {cardSuit}
+                     {cardSuit}
                   </div>
                   <div className="card__column">
-                     {cardSymbol}
-                     {cardSymbol}
-                     {cardSymbol}
-                     {cardSymbol}
+                     {cardSuit}
+                     {cardSuit}
+                     {cardSuit}
+                     {cardSuit}
                   </div>
                </div>
             }
 
-            {props.value === 'J' &&
+            {props.ranks === 'J' &&
                <div className="card__inner card__inner--centered">
                   <div className="card__column--img">
-                     {/* <img src={J_Diamonds} alt={'Jack diamonds card'} /> */}
-                     <img src={Q_Spades} alt={'Jack diamonds card'} />
+                     {props.suits === 'diamonds' && <span className={'red'}>{jack}</span>}
+                     {props.suits === 'hearts' && <span className={'red'}>{jack}</span>}
+                     {props.suits === 'clubs' && <span className={'black'}>{jack}</span>}
+                     {props.suits === 'spades' && <span className={'black'}>{jack}</span>}
                   </div>
                </div>
             }
 
-            {!props.value &&
+            {props.ranks === 'Q' &&
                <div className="card__inner card__inner--centered">
-                  {/* <div className="card__column--img"> */}
-               
-                     <div className={'back'}></div>
-                  {/* </div> */}
+               <div className="card__column--img">
+                     {props.suits === 'diamonds' && <span className={'red'}>{queen}</span>}
+                     {props.suits === 'hearts' && <span className={'red'}>{queen}</span>}
+                     {props.suits === 'clubs' && <span className={'black'}>{queen}</span>}
+                     {props.suits === 'spades' && <span className={'black'}>{queen}</span>}
+                  </div>
                </div>
             }
 
-            <div className="corner_wrapper_bottom">
-               <div className={"corner_symbol--bottom " + props.symbol}>{setSymbolHandler(props.symbol)}</div>
-               <div className={"corner_value--bottom " + props.symbol}>{props.value}</div>
-            </div>
+            {props.ranks === 'K' &&
+               <div className="card__inner card__inner--centered">
+               <div className="card__column--img">
+                     {props.suits === 'diamonds' && <span className={'red'}>{king}</span>}
+                     {props.suits === 'hearts' && <span className={'red'}>{king}</span>}
+                     {props.suits === 'clubs' && <span className={'black'}>{king}</span>}
+                     {props.suits === 'spades' && <span className={'black'}>{king}</span>}
+                  </div>
+               </div>
+            }
+
+            {!props.backCard &&
+               <div className="corner_wrapper_bottom">
+                  <div className={"corner_suits--bottom " + props.suits}>{setSuitHandler(props.suits)}</div>
+                  <div className={"corner_ranks--bottom " + props.suits}>{props.ranks}</div>
+               </div>
+            }
+
+
+
          </section>
 
       </Styled.Card >

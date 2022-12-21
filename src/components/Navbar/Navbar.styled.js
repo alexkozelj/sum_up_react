@@ -3,11 +3,10 @@ import styled from 'styled-components';
 export const Navbar = styled.div`
    /* position: inline-block; */
    top: 0;
-   z-index: 100;
+   z-index: 500;
    width: 100%;
    height: 5%;
    min-height:50px;
-   z-index: 1;
    /* background-color: #24221d; */
    background-image: linear-gradient(#292721 1%, black 90%);
    display: flex;
@@ -19,7 +18,7 @@ export const Navbar = styled.div`
 export const Logo = styled.img`
    width: auto;
    height: 80%;
-   min-height: 45px;
+   min-height: 39px;
    /* grid-column-start: 2; */
    padding: 5px;
    margin-left:15px;

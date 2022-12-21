@@ -1,18 +1,35 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <html lang="en">
 
 <head>
-   <meta charset="utf-8" />
-   <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+   <meta name="description"
+      content="Igraj tablic protiv kompjutera bez reklama potpuno besplatno! Budi spreman - Bili ne voli da gubi!" />
+   <meta name="Keywords" content="tablic, karte, igra, poeni, protiv kompjutera, besplatno" />
+   <meta name="Geography" content="Belgrade, Serbia" />
+   <meta name="Language" content="Serbian" />
+   <meta http-equiv="Expires" content="never" />
+   <meta http-equiv="CACHE-CONTROL" content="NO-CACHE" />
+   <meta http-equiv="PRAGMA" content="NO-CACHE" />
+   <meta name="Copyright" content="Koželj Projects" />
+   <meta name="distribution" content="Global" />
+   <meta name="Robots" content="INDEX,FOLLOW" />
+   <meta name="city" content="Belgrade" />
+   <meta name="country" content="Serbia" />
+
+   <link rel="icon" href="%PUBLIC_URL%/favicon2.ico" />
    <meta name="viewport" content="width=device-width, initial-scale=1" />
    <meta name="theme-color" content="#000000" />
-   <meta name="description" content="Card game" />
-   
+   <meta property="og:title" content="Tablic Kartaska Igra">
+   <meta property="og:type" content="website">
+   <meta property="og:description"
+      content="Igraj tablic protiv kompjutera bez reklama potpuno besplatno! Budi spreman - Bili ne voli da gubi!">
+
    <!--
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
-   <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+   <!-- <link rel="manifest" href="%PUBLIC_URL%/manifest.json" /> -->
    <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
@@ -22,12 +39,313 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-   <title>React App</title>
+   <title> Tablic Igra Karte | Protiv kompjutera bez reklama | Tablanet</title>
+
+   <style>
+      body {
+         /* overflow: visible; */
+      }
+
+      #root {
+         display: none;
+      }
+
+      .content {
+         height: 100vh;
+         background-color: #7CB385;
+         display: flex;
+         flex-direction: column;
+         justify-content: flex-start;
+         align-items: center;
+         padding: 4%;
+         overflow: auto;
+         font-size: 0.8em;
+      }
+
+      .content h1 {
+         font-size: 2em !important;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         flex-direction: row;
+         margin: 10px;
+      }
+
+      .content h2 {
+         font-size: 1.5em !important;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         flex-direction: row;
+         margin: 10px;
+      }
+
+      .content h4 {
+         font-size: 1em !important;
+      }
+
+      article {
+         margin-top: 20px;
+         border: 2px dashed purple;
+         border-radius: 15px;
+         padding: 20px;
+         background-color: #8ecc97;
+      }
+
+      .content .img-wrapper {
+         /* position: absolute; */
+         /* display: inline-block; */
+         margin-top: 15px;
+         position: relative;
+         height: 100px;
+
+         width: 100%;
+         max-width: 200px;
+      }
+
+      .content img {
+         position: absolute;
+         max-width: 200px;
+         padding: 0 0 0 20px;
+         /* width: 100%; */
+         /* left: 4%; */
+         object-fit: contain;
+      }
+
+      .titles {
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         flex-direction: column;
+         /* position: absolute; */
+      }
+
+      .title-container {
+         display: flex;
+         flex-wrap: wrap-reverse;
+         /* position: relative; */
+         width: 100%;
+         justify-content: center;
+
+      }
+
+      .content button {
+         position: relative;
+         overflow: hidden;
+         width: 200px;
+         height: 5px;
+         margin: 25px 0;
+         border-radius: 8px;
+         border: 3px solid #ddff30;
+         font-size: 18px;
+         font-family: "Lato";
+         font-weight: 600;
+         color: white;
+         cursor: pointer;
+         padding: 25px 38px;
+         -webkit-box-shadow: 0px 0px 18px 4px rgba(0, 0, 0, 0.58);
+         -moz-box-shadow: 0px 0px 18px 4px rgba(0, 0, 0, 0.58);
+         box-shadow: 0px 0px 18px 4px rgba(0, 0, 0, 0.58);
+         background: linear-gradient(to left top, #56ad42 50%, #4FA93A 50%);
+      }
+
+      .content button span {
+         position: absolute;
+         display: block;
+      }
+
+      .content button span:nth-child(1) {
+         height: 3px;
+         width: 200px;
+         top: 0px;
+         left: -200px;
+         background: linear-gradient(to right, rgba(0, 0, 0, 0), #8df6a9);
+         border-top-right-radius: 1px;
+         border-bottom-right-radius: 1px;
+         animation: span1 2s linear infinite;
+         animation-delay: 1s;
+      }
+
+      @keyframes span1 {
+         0% {
+            left: -200px;
+         }
+
+         100% {
+            left: 200px;
+         }
+      }
+
+      .content button span:nth-child(2) {
+         height: 70px;
+         width: 3px;
+         top: -70px;
+         right: 0px;
+         background: linear-gradient(to bottom, rgba(0, 0, 0, 0), #04e781);
+         border-bottom-left-radius: 1px;
+         border-bottom-right-radius: 1px;
+         animation: span2 2s linear infinite;
+         animation-delay: 2s;
+      }
+
+      @keyframes span2 {
+         0% {
+            top: -70px;
+         }
+
+         100% {
+            top: 70px;
+         }
+      }
+
+      .content button span:nth-child(3) {
+         height: 3px;
+         width: 200px;
+         right: -200px;
+         bottom: 0px;
+         background: linear-gradient(to left, rgba(0, 0, 0, 0), #3fe6f5);
+         border-top-left-radius: 1px;
+         border-bottom-left-radius: 1px;
+         animation: span3 2s linear infinite;
+         animation-delay: 3s;
+      }
+
+      @keyframes span3 {
+         0% {
+            right: -200px;
+         }
+
+         100% {
+            right: 200px;
+         }
+      }
+
+      .content button span:nth-child(4) {
+         height: 30px;
+         width: 3px;
+         bottom: -70px;
+         left: 0px;
+         background: linear-gradient(to top, rgba(0, 0, 0, 0), #d475f6);
+         border-top-right-radius: 1px;
+         border-top-left-radius: 1px;
+         animation: span4 2s linear infinite;
+         animation-delay: 4s;
+      }
+
+      @keyframes span4 {
+         0% {
+            bottom: -70px;
+         }
+
+         100% {
+            bottom: 70px;
+         }
+      }
+
+      .content button:hover {
+         transition: all 0.5s;
+         transform: scale(1.1);
+         box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.4);
+      }
+
+      .buttonLabelDiv {
+         height: 15px;
+         position: relative;
+         top: -13px;
+      }
+
+
+   </style>
 </head>
 
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LC3939K2PC"></script>
+<script>
+   window.dataLayer = window.dataLayer || [];
+   function gtag() { dataLayer.push(arguments); }
+   gtag('js', new Date());
+
+   gtag('config', 'G-LC3939K2PC');
+</script>
+
 <body>
-   <noscript>You need to enable JavaScript to run this app.</noscript>
+
+   <div id="modal"></div>
    <div id="root"></div>
+   <div class="content">
+      <div class="title-container">
+         <div class="titles">
+            <h1>Igraj Tablić!</h1>
+            <h2>Protiv Kompjutera!</h1>
+               <h2>Bez reklama!</h2>
+               <div class="img-wrapper">
+                  <img src="%PUBLIC_URL%/Bili-kaze-Ajde2.png" />
+               </div>
+         </div>
+      </div>
+
+      <button onclick="start()">
+         <span></span>
+         <span></span>
+         <span></span>
+         <span></span>
+         <div class="buttonLabelDiv">IGRAJ !</div>
+      </button>
+
+      <article>
+
+
+
+         <h4>Kako se igra:</h4>
+
+         <p>Protivnik je Bili Piton i cilj je pobediti ga tako što ćete uzeti najviše poena.
+            Poeni se dobijaju na štihovima, tj. karte koje nose poen, na ukupan broj uzetih karata i na broju tabli
+            (odatle tablić).
+            Tabla se računa kad uzmete sve karte sa stola.
+         </p>
+         <p> Karte koje nose poen su:
+            Pop, Dama, Žandar, Kec (As), Desetke i Dvojka Tref (detelina).
+            Svaka ova karta nosi 1 poen, osim desetke karo (kocka).
+            Tabla nosi 1 poen.
+         </p>
+         <p>
+            Svaka karta ima svoj zbir. Od 2 do 10 bilo kog znaka, a potom
+         <ul>
+            <li>žandar ima zbir 12</li>
+            <li>dama je 13</li>
+            <li>kralj je 14</li>
+            <li>kec može imati zbir 11 ili 1</li>
+         </ul>
+         </p>
+         <p>
+            Potrebno je da nadjete zbir karata na stolu koji se poklapa sa kartom koju imate u ruci.
+         <ul>
+            <li>Primer 1: imate kartu 10 u ruci, a na stolu su 6 i 4. Dakle 6 + 4 = 10</li>
+            <li>Primer 2: možete uzeti karte koje su istog zbira, recimo žandarom u ruci uzmete žandara koji je na stolu
+            </li>
+            <li>Primer 3: kec može se računati kao 1 ili 11, tako recimo ako imate na stolu 10 i kec, možete kecom iz
+               svoje ruke uzeti 10 + 1 = 11</li>
+            <li>Primer 4: takođe možete uzeti 2 iste karte odjednom, recimo dve dame na stolu i uzmete damom iz ruke te
+               dve karte</li>
+            <li>Primer 5: nebitno je koliko karata su uključene u sabiranje, bitno je da je zbir te kombinacije isti sa
+               kartom u ruci. 3 + 4 + 6 = 13 (dama)</li>
+            <li>Primer 6: možete da uzmete i dve kombinacije koje nose zbir. 6 + 5 i 9 + 2 = 11 (kec)</li>
+         </ul>
+
+         </p>
+         <p>
+            Važno: kada obeležavate karte koje želite uzeti, bitno je da to uradite redosledom koje te karte daju
+            željeni
+            zbir
+
+         </p>
+
+
+
+
+
+      </article>
+   </div>
    <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
@@ -39,5 +357,14 @@
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
 </body>
+
+<script>
+   function start() {
+      let root = document.getElementById('root')
+      // let firstPage = document.getElementsByClassName('content')
+      root.style.display = 'block'
+      // if (firstPage) {firstPage.style.display = 'none'}
+   }
+</script>
 
 </html>

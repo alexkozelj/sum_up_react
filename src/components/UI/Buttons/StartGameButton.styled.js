@@ -9,17 +9,17 @@ export const StartGameButton = styled.div`
       width: fit-GameWindow;
       height: auto;
       padding: 10px;
-      margin-bottom: 5vh;
+      margin: 20px 0;
    }
 
    button {
       max-width: 200px;
-      max-height: 60px;
+      max-height: 50px;
       background: linear-gradient(to left top, #b54936 50%, #a54730 50%);
       border-style: none;
       border-radius: 8px;
       color: #fff;
-      font-size: 1.2em;
+      font-size: 1em;
       letter-spacing: 3px;
       font-family: "Lato";
       font-weight: 600;

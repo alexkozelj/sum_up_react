@@ -5,9 +5,10 @@ export const TalkCloud = styled.div`
    
    display: flex;
    /* flex-direction: column; */
-   max-width: 150px;
+   /* max-width: 150px; */
    max-height: 100%;
-   justify-content: center;
+   width: 150px;
+   justify-content: flex-start;
    align-items: center;
    position: relative;
    /* position: absolute;
@@ -20,51 +21,74 @@ export const TalkCloud = styled.div`
    text-align: center;
    /* display: grid; */
    @media (max-width: 440px) {
-      max-width: 96px;
+      width: 100px;
+      /* bottom: 10px;
+      left: -15px; */
    }
 
-   .wrapper {
-      position: relative;
-      width: 100%;
-      height: 100%;
-   }
-
-   .opponentMessage {
+   .container {
       display: flex;
       justify-content: center;
       align-items: center;
-      position: absolute;
-      width: 75%;
+      position: relative;
+      width: max-content;
       height: 47%;
       bottom: 32%;
       left: 15%;
-      font-size: 16px;
+      font-size: 0.9em;
       word-wrap: break-word;
    }
+
+
+   .wrapper {
+      position: relative;
+      width: max-content;
+      height: 100%;
+   }
+
+   .cloudWrapper {
+      width: max-content;
+      height: 80px;
+      @media (max-width: 440px) {
+         /* height: 40px; */
+      }
+   }
+
 
    img {
       /* margin-top: 10px; */
 
-      /* position: absolute; */
-      /* padding: 2px; */
-      /* max-width: 100%; */
-      /* max-height: 100%; */
-      /* align-self: center; */
-      /* opacity: 0.5; */
-      /* justify-content: center; */
-      max-width: 100%;
-      max-height: 100%;
+      width: 160px;
+      max-height: 65px;
       padding: 2px;
-      object-fit: contain;
+      /* object-fit: contain; */
       overflow: hidden;
+      @media (max-width: 440px) {
+         /* width: 140px */
+         /* height: 60px; */
+         /* max-width: 50px; */
+      }
    }
 
    .message1 {
       font-size: 16px;
+      position: relative;
+      bottom: 3em;
+      padding: 0 2em 0 2.3em;
+      width: max-content;
+      /* overflow: hidden; */
+      white-space: nowrap;
       margin: 0;
-      font-family: "Comic Sans MS", "Comic Sans", cursive;
+      font-family: 'Good time';
       @media (max-width: 440px) {
-         font-size: 14px;
+         /* display: inline-block; */
+         /* width: 50px; */
+         /* display: flex;
+         align-self: center; */
+         padding: 0 2em 0 2.8em;
+         word-wrap: break-word;
+         font-size: 15px;
+         bottom: 60%;
       }  
    }
 
