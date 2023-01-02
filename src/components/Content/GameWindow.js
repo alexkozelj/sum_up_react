@@ -43,33 +43,83 @@ const GameWindow = () => {
 
    // PLAYER
    const calculus = (playerCard, cardsInCalc) => {
-      let acc = 0;
-      cardsInCalc.map((item, index) => {
-         // console.log("🚀 ~ file: GameWindow.js ~ line 52 ~ checkCalculus ~ playerCard", playerCard)
-         // console.log("🚀 ~ file: GameWindow.js ~ line 54 ~ cardsInCalc.map ~ item", item)
-         // console.log('start acc', acc)
-         if (acc <= playerCard) {
-            if (acc === playerCard) {
-               // console.log('it is equal - index is', index)
-               cardsValuesInCalculation.splice(0, index + 1)
-               acc = 0
-            } else {
-               acc += item
-               if (acc === playerCard) {
-                  // console.log('it is equal - index is', index)
-                  cardsValuesInCalculation.splice(0, index + 1)
-                  acc = 0
+      let combiArray = [6, 3, 6, 10, 3, 7, 4]
+      let combiArrayCopy = [...combiArray]
+      let combinationsIndex = []
+      let combinations = []
+      let playerCard = 13
+      let filteredArr
+
+      let aceCounter = 0;
+      for (val of combiArray) (val === 1) && aceCounter++
+
+      console.log('ace counter: ', aceCounter)
+      console.log('combinations 1', combinations)
+      console.log('combiArray 1', combiArray)
+
+      const sameCard = (arr) => { arr.map((val, ind) => val === playerCard && combinationsIndex.push(ind) && combinations.push(val)) }
+
+      const pair = (arr) => {
+         for (let i = 0; i < arr.length; i++) {
+            for (let y = 0; y < arr.length; y++) {
+               if (i !== y && (arr[i] + arr[y] === playerCard)
+                  && !combinationsIndex.includes(i) && !combinationsIndex.includes(y)) {
+                  combinationsIndex.push(i, y)
+                  combinations.push(arr[i], arr[y])
                }
             }
-            // console.log('summed acc', acc)
-         } else {
-            acc = item
-            // console.log('acc = item')
          }
-      })
+      }
+
+      const threeCards = (arr) => {
+         for (let i = 0; i < arr.length; i++) {
+            for (let y = 0; y < arr.length; y++) {
+               for (let x = 0; x < arr.length; x++) {
+                  if ((i !== y && i !== x && y !== x) && (arr[i] + arr[y] + arr[x] === playerCard)
+                     && (!combinationsIndex.includes(i) && !combinationsIndex.includes(y)
+                        && !combinationsIndex.includes(x))) {
+                     combinationsIndex.push(i, y, x)
+                     combinations.push(arr[i], arr[y], arr[x])
+                  }
+               }
+            }
+         }
+      }
+
+      const changeAceValue = () => {
+         for (let i = 0; i < combiArray.length; i++) {
+            if (!combinationsIndex.includes(i) && combiArray[i] === 1) {
+               combiArray[i] = 11
+               break
+            }
+         }
+      }
+
+      if (combiArray.length >= 3) threeCards(combiArray)
+      if (combiArray.length >= 2) pair(combiArray)
+
+
+      if (aceCounter > 0 && combinations.length !== combiArray.length) {
+         console.log('while loop starts')
+         while (aceCounter > 0) {
+            changeAceValue()
+            pair(combiArray)
+            if (combinations.length === combiArray.length) break
+            aceCounter--
+         }
+
+      }
+
+
+      console.log('combinations 2', combinations, combinations.length)
+      console.log('combinationsIndex 2', combinationsIndex, combinationsIndex.length)
+      console.log('combiArray 2', combiArray, combiArray.length)
+
    }
 
    const checkCalculus = (playerCard, cardsInCalc) => {
+      // console.log("🚀 ~ file: GameWindow.js:73 ~ checkCalculus ~ cardsInCalc", cardsInCalc)
+      // console.log("🚀 ~ file: GameWindow.js:73 ~ checkCalculus ~ playerCard", playerCard)
       // IF ACE
       if (playerCard === 1 || cardsInCalc.includes(1)) {
          // console.log('ACE is THERE', playerCard, cardsInCalc.includes(1))
@@ -89,7 +139,7 @@ const GameWindow = () => {
                if (item === 1) {
                   // console.log('ACE IS IN CALC')
                   cardsInCalc[index] = 11
-                  calculus(playerCard, cardsInCalc)
+                  playerCard === 1 ? calculus(11, cardsInCalc) : calculus(playerCard, cardsInCalc)
                }
             })
          }
@@ -380,7 +430,7 @@ const GameWindow = () => {
 
 
             }
-            
+
             store.disableNavbarButton = false
             await delay(500)
 
@@ -403,7 +453,7 @@ const GameWindow = () => {
                   setShowWinner('game tie')
                   // await delay(5000)
                   nextGameSetup(store)
-                  
+
                   isPlayersMove(true)
                   return
                }
@@ -466,7 +516,7 @@ const GameWindow = () => {
 
 
             // console.log('new game setup !!!!!!')
-            
+
             nextGameSetup(store)
          } else {
             // console.log('newHandDeal')
@@ -544,7 +594,7 @@ const GameWindow = () => {
                      { <h2>Били узима остале карте на столу!</h2>}
                   </div>
                </Modal> */}
-         
+
          {showWinner === 'computer' &&
             <Modal>
                <h1> _ПОРАЗ_</h1>
@@ -640,14 +690,14 @@ const GameWindow = () => {
             </div>
 
             {/* {combi} */}
-            <Playground 
+            <Playground
                playersMove={playersMove}
-               combi={combi} 
+               combi={combi}
                showWhoTookLast={showWhoTookLast}
                showWhoHasMoreCards={showWhoHasMoreCards}
                upByComp={upByComp}
                upByPlayer={upByPlayer}
-               />
+            />
 
             {/* PLAYER AREA */}
             <div className={'playerField'}>

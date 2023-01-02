@@ -266,14 +266,14 @@ export const Scoreboard = styled.div`
     }
   }
 
-  .tabla span:nth-child(4) {  
+  .tabla span:nth-child(5) {  
       margin-right: 5px;
       @media (max-width: 440px) {
          margin-right: 2px;
       }
    }
 
-  .tabla span:nth-child(9) {  
+  .tabla span:nth-child(10) {  
       margin-right: 5px;
       @media (max-width: 440px) {
          margin-right: 2px;

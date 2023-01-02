@@ -70,16 +70,19 @@ const Scoreboard = (props) => {
                      <span key={`tablaComp-${1}`}>|</span>
                      <span key={`tablaComp-${1}`}>|</span>
                      <span key={`tablaComp-${1}`}>|</span>
-                     <span key={`tablaComp-${1}`} className={`tablaCross4`}>|</span> */}
+                     <span key={`tablaComp-${1}`}>|</span>
+                     <span key={`tablaComp-${1}`}>|</span> */}
+                     {/* <span key={`tablaComp-${1}`} className={`tablaCross4`}>|</span> */}
                         {
                            useObserver(() =>
                               store.tablaPointComputer.map((tabla, index) =>
                                  (index !== 4 && index !== 9 && index !== 14) ?
                                     <span key={`tablaComp-${index}`}>{tabla}</span> :
-                                    <span key={`tablaComp-${index}`} className={`tablaCross${index}`}>__</span>
+                                    <span key={`tablaComp-${index}`}>{tabla}</span>
                               )
                            )
                         }
+                        {/* <span key={`tablaComp-${index}`} className={`tablaCross${index}`}>__</span> */}
 
                      </div>
                   </div>
