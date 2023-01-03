@@ -43,19 +43,22 @@ const GameWindow = () => {
 
    // PLAYER
    const calculus = (playerCard, cardsInCalc) => {
-      let combiArray = [6, 3, 6, 10, 3, 7, 4]
-      let combiArrayCopy = [...combiArray]
+      console.log("🚀 ~ file: GameWindow.js:46 ~ calculus ~ playerCard", playerCard)
+      console.log("🚀 ~ file: GameWindow.js:46 ~ calculus ~ cardsInCalc", cardsInCalc)
+      if (playerCard === 1) { playerCard = 11}
+      console.log("🚀 ~ file: GameWindow.js:466 ~ calculus ~ playerCard", playerCard)
+      // let cardsInCalc = [6, 7, 5, 4]
       let combinationsIndex = []
       let combinations = []
-      let playerCard = 13
-      let filteredArr
-
       let aceCounter = 0;
-      for (val of combiArray) (val === 1) && aceCounter++
+      // let playerCard = 11
+
+      for (let val of cardsInCalc) (val === 1) && aceCounter++
+      cardsInCalc.sort((a, b) => b - a)
 
       console.log('ace counter: ', aceCounter)
       console.log('combinations 1', combinations)
-      console.log('combiArray 1', combiArray)
+      console.log('cardsInCalc 1', cardsInCalc)
 
       const sameCard = (arr) => { arr.map((val, ind) => val === playerCard && combinationsIndex.push(ind) && combinations.push(val)) }
 
@@ -86,67 +89,151 @@ const GameWindow = () => {
          }
       }
 
+      const fourCards = (arr) => {
+         for (let i = 0; i < arr.length; i++) {
+            for (let y = 0; y < arr.length; y++) {
+               for (let x = 0; x < arr.length; x++) {
+                  for (let q = 0; q < arr.length; q++) {
+                     if ((i !== y && i !== x && i !== q && y !== x && y !== q && x !== q)) {
+                        if ((arr[i] + arr[y] + arr[x] + arr[q] === playerCard)
+                           && (!combinationsIndex.includes(i) && !combinationsIndex.includes(y)
+                              && !combinationsIndex.includes(x) && !combinationsIndex.includes(q))) {
+                           combinationsIndex.push(i, y, x, q)
+                           combinations.push(arr[i], arr[y], arr[x], arr[q])
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      }
+
+      const fiveCards = (arr) => {
+         for (let i = 0; i < arr.length; i++) {
+            for (let y = 0; y < arr.length; y++) {
+               for (let x = 0; x < arr.length; x++) {
+                  for (let q = 0; q < arr.length; q++) {
+                     for (let w = 0; w < arr.length; w++) {
+                        if ((i !== y && i !== x && i !== q && i !== w && y !== x && y !== q && y !== w && x !== q && x !== w && q !== w)) {
+                           if ((arr[i] + arr[y] + arr[x] + arr[q] + arr[w] === playerCard)
+                              && (!combinationsIndex.includes(i) && !combinationsIndex.includes(y)
+                                 && !combinationsIndex.includes(x) && !combinationsIndex.includes(q)
+                                 && !combinationsIndex.includes(w))) {
+                              combinationsIndex.push(i, y, x, q, w)
+                              combinations.push(arr[i], arr[y], arr[x], arr[q], arr[w])
+                           }
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      }
+
       const changeAceValue = () => {
-         for (let i = 0; i < combiArray.length; i++) {
-            if (!combinationsIndex.includes(i) && combiArray[i] === 1) {
-               combiArray[i] = 11
+         for (let i = 0; i < cardsInCalc.length; i++) {
+            if (!combinationsIndex.includes(i) && cardsInCalc[i] === 1) {
+               cardsInCalc[i] = 11
                break
             }
          }
       }
 
-      if (combiArray.length >= 3) threeCards(combiArray)
-      if (combiArray.length >= 2) pair(combiArray)
+      sameCard(cardsInCalc)
+      if (cardsInCalc.length >= 2) pair(cardsInCalc)
+      if (cardsInCalc.length >= 3) threeCards(cardsInCalc)
+      if (cardsInCalc.length >= 4) fourCards(cardsInCalc)
+      if (cardsInCalc.length >= 5) fiveCards(cardsInCalc)
 
 
-      if (aceCounter > 0 && combinations.length !== combiArray.length) {
+      if (aceCounter > 0 && combinations.length !== cardsInCalc.length) {
          console.log('while loop starts')
          while (aceCounter > 0) {
             changeAceValue()
-            pair(combiArray)
-            if (combinations.length === combiArray.length) break
+            sameCard(cardsInCalc)
+            if (cardsInCalc.length >= 2) pair(cardsInCalc)
+            if (cardsInCalc.length >= 3) threeCards(cardsInCalc)
+            if (cardsInCalc.length >= 4) fourCards(cardsInCalc)
+            if (cardsInCalc.length >= 5) fiveCards(cardsInCalc)
+
+            if (combinations.length === cardsInCalc.length) break
             aceCounter--
          }
 
       }
 
+      // let acc = 0;
+      // cardsInCalc.map((item, index) => {
+      //    // console.log("🚀 ~ file: GameWindow.js ~ line 52 ~ checkCalculus ~ playerCard", playerCard)
+      //    // console.log("🚀 ~ file: GameWindow.js ~ line 54 ~ cardsInCalc.map ~ item", item)
+      //    // console.log('start acc', acc)
+      //    if (acc <= playerCard) {
+      //       if (acc === playerCard) {
+      //          console.log('it is equal - index is', index)
+      //          cardsValuesInCalculation.splice(0, index + 1)
+      //          acc = 0
+      //       } else {
+      //          console.log("🚀 ~ file: GameWindow.js:58 ~ cardsInCalc.map ~ item", item)
+      //          acc += item
+      //          if (acc === playerCard) {
+      //             console.log('acc === playerCard 2 - index is', index)
+      //             console.log("🚀 ~ file: GameWindow.js:61 ~ cardsInCalc.map ~ cardsValuesInCalculation", cardsValuesInCalculation)
+      //             cardsValuesInCalculation.splice(0, index + 1)
+      //             acc = 0
+      //          }
+      //       }
+      //       // console.log('summed acc', acc)
+      //    } 
+
+      //    if (acc > playerCard) {
+      //       acc = item
+      //       // console.log('acc = item')
+      //    }
+      // })
+
+      if (cardsInCalc.length === combinations.length) {
+         console.log("🚀 ~ file: GameWindow.js:192 ~ calculus ~ cardsInCalc.length", cardsInCalc.length)
+         console.log("🚀 ~ file: GameWindow.js:193 ~ calculus ~ combinations.length", combinations.length)
+         console.log("🚀 ~ file: GameWindow.js:195 ~ calculus ~ cardsValuesInCalculation", cardsValuesInCalculation)
+         cardsValuesInCalculation.splice(0, cardsValuesInCalculation.length)
+         console.log("🚀 ~ file: GameWindow.js:195 ~ calculus ~ cardsValuesInCalculation 2", cardsValuesInCalculation)
+      }
 
       console.log('combinations 2', combinations, combinations.length)
       console.log('combinationsIndex 2', combinationsIndex, combinationsIndex.length)
-      console.log('combiArray 2', combiArray, combiArray.length)
-
+      console.log('cardsInCalc 2', cardsInCalc, cardsInCalc.length)
    }
 
    const checkCalculus = (playerCard, cardsInCalc) => {
       // console.log("🚀 ~ file: GameWindow.js:73 ~ checkCalculus ~ cardsInCalc", cardsInCalc)
       // console.log("🚀 ~ file: GameWindow.js:73 ~ checkCalculus ~ playerCard", playerCard)
       // IF ACE
-      if (playerCard === 1 || cardsInCalc.includes(1)) {
+      // if (playerCard === 1 || cardsInCalc.includes(1)) {
          // console.log('ACE is THERE', playerCard, cardsInCalc.includes(1))
 
          calculus(playerCard, cardsInCalc)
          if (cardsValuesInCalculation.length === 0) return
 
-         // console.log('not returned')
-         if (playerCard === 1) {
-            calculus(11, cardsInCalc)
-            if (cardsValuesInCalculation.length === 0) return
-         }
+         // // console.log('not returned')
+         // if (playerCard === 1) {
+         //    calculus(11, cardsInCalc)
+         //    if (cardsValuesInCalculation.length === 0) return
+         // }
 
-         if (cardsInCalc.includes(1)) {
-            cardsInCalc.map((item, index) => {
-               if (cardsValuesInCalculation.length === 0) return
-               if (item === 1) {
-                  // console.log('ACE IS IN CALC')
-                  cardsInCalc[index] = 11
-                  playerCard === 1 ? calculus(11, cardsInCalc) : calculus(playerCard, cardsInCalc)
-               }
-            })
-         }
+         // if (cardsInCalc.includes(1)) {
+         //    cardsInCalc.map((item, index) => {
+         //       if (cardsValuesInCalculation.length === 0) return
+         //       if (item === 1) {
+         //          // console.log('ACE IS IN CALC')
+         //          cardsInCalc[index] = 11
+         //          playerCard === 1 ? calculus(11, cardsInCalc) : calculus(playerCard, cardsInCalc)
+         //       }
+         //    })
+         // }
          // IF NOT ACE
-      } else {
-         calculus(playerCard, cardsInCalc)
-      }
+      // } else {
+      //    calculus(playerCard, cardsInCalc)
+      // }
 
    }
 
