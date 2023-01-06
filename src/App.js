@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { useObserver } from 'mobx-react'
@@ -10,8 +10,24 @@ import Navbar from "./components/Navbar/Navbar";
 import GameWindow from "./components/Content/GameWindow.js";
 import StartWindow from "./components/Content/StartWindow.js";
 
+import svg from './images/low-poly-grid-haikei.svg'
+
 
 const App = () => {
+
+   useEffect(() => {
+
+      let currentLocalStorage = JSON.parse(localStorage.getItem('allTimeScore')) || [];
+      console.log("🚀 ~ file: App.js:19 ~ useEffect ~ currentLocalStorage", currentLocalStorage)
+
+      let initStorage = { 'Bili': 0, 'Player': 0 }
+
+      if (!currentLocalStorage?.length) currentLocalStorage.push(initStorage);
+
+      localStorage.setItem('allTimeScore', JSON.stringify(currentLocalStorage));
+
+   }, [])
+
 
    const store = React.useContext(StoreContext)
    // let newlyCreatedDeck
@@ -25,17 +41,20 @@ const App = () => {
    }
 
    return (
-      <Styled.App className="App">
-         <Navbar></Navbar>
-         {
-            useObserver(() =>
+      <Styled.App className="App" >
+         <div>
+            {/* <img style={{ top: '0', height: '100vh', width: '100vw'}} src={svg}></img> */}
+            <Navbar></Navbar>
+            {
+               useObserver(() =>
 
-               store.startWindow ?
-                  <StartWindow windowHandler={startWindowHandler} /> : <GameWindow />
+                  store.startWindow ?
+                     <StartWindow windowHandler={startWindowHandler} /> : <GameWindow />
 
-            )
+               )
 
-         }
+            }
+         </div>
       </Styled.App>
    );
 };

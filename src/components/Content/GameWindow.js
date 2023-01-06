@@ -40,13 +40,26 @@ const GameWindow = () => {
    }
 
 
+   // ADD ALL TIME SCORE POINT - COMPUTER
+   const addAlltimePoint = (who) => {
+      let curentLocalStorage = JSON.parse(localStorage.getItem('allTimeScore'))
+      console.log("🚀 ~ file: GameWindow.js:482 ~ compMove ~ curentLocalStorage", curentLocalStorage)
+      let newScore
+      if (curentLocalStorage.length) {
+         who === 'computer' ? newScore = [{'Bili': curentLocalStorage[0].Bili + 1, 'Player': curentLocalStorage[0].Player}]
+         : newScore = [{'Bili': curentLocalStorage[0].Bili, 'Player': curentLocalStorage[0].Player + 1}]
+      }
+      curentLocalStorage.push(newScore)
+      localStorage.setItem('allTimeScore', JSON.stringify(newScore));
+
+   }
 
    // PLAYER
    const calculus = (playerCard, cardsInCalc) => {
-      console.log("🚀 ~ file: GameWindow.js:46 ~ calculus ~ playerCard", playerCard)
-      console.log("🚀 ~ file: GameWindow.js:46 ~ calculus ~ cardsInCalc", cardsInCalc)
+      // console.log("🚀 ~ file: GameWindow.js:46 ~ calculus ~ playerCard", playerCard)
+      // console.log("🚀 ~ file: GameWindow.js:46 ~ calculus ~ cardsInCalc", cardsInCalc)
       if (playerCard === 1) { playerCard = 11}
-      console.log("🚀 ~ file: GameWindow.js:466 ~ calculus ~ playerCard", playerCard)
+      // console.log("🚀 ~ file: GameWindow.js:466 ~ calculus ~ playerCard", playerCard)
       // let cardsInCalc = [6, 7, 5, 4]
       let combinationsIndex = []
       let combinations = []
@@ -56,11 +69,13 @@ const GameWindow = () => {
       for (let val of cardsInCalc) (val === 1) && aceCounter++
       cardsInCalc.sort((a, b) => b - a)
 
-      console.log('ace counter: ', aceCounter)
-      console.log('combinations 1', combinations)
-      console.log('cardsInCalc 1', cardsInCalc)
+      // console.log('ace counter: ', aceCounter)
+      // console.log('combinations 1', combinations)
+      // console.log('cardsInCalc 1', cardsInCalc)
 
-      const sameCard = (arr) => { arr.map((val, ind) => val === playerCard && combinationsIndex.push(ind) && combinations.push(val)) }
+      const sameCard = (arr) => { 
+         arr.map((val, ind) =>( val === playerCard && !combinationsIndex.includes(ind)) && combinationsIndex.push(ind) && combinations.push(val)) 
+      }
 
       const pair = (arr) => {
          for (let i = 0; i < arr.length; i++) {
@@ -147,7 +162,7 @@ const GameWindow = () => {
 
 
       if (aceCounter > 0 && combinations.length !== cardsInCalc.length) {
-         console.log('while loop starts')
+         // console.log('while loop starts')
          while (aceCounter > 0) {
             changeAceValue()
             sameCard(cardsInCalc)
@@ -192,16 +207,20 @@ const GameWindow = () => {
       // })
 
       if (cardsInCalc.length === combinations.length) {
-         console.log("🚀 ~ file: GameWindow.js:192 ~ calculus ~ cardsInCalc.length", cardsInCalc.length)
-         console.log("🚀 ~ file: GameWindow.js:193 ~ calculus ~ combinations.length", combinations.length)
-         console.log("🚀 ~ file: GameWindow.js:195 ~ calculus ~ cardsValuesInCalculation", cardsValuesInCalculation)
+         // console.log("🚀 ~ file: GameWindow.js:192 ~ calculus ~ cardsInCalc.length", cardsInCalc.length)
+         // console.log("🚀 ~ file: GameWindow.js:193 ~ calculus ~ combinations.length", combinations.length)
+         // console.log("🚀 ~ file: GameWindow.js:195 ~ calculus ~ cardsValuesInCalculation", cardsValuesInCalculation)
          cardsValuesInCalculation.splice(0, cardsValuesInCalculation.length)
-         console.log("🚀 ~ file: GameWindow.js:195 ~ calculus ~ cardsValuesInCalculation 2", cardsValuesInCalculation)
+         store.billyMessage = {message: 'Пробај Лаки!', font: '400'}
+         // console.log("🚀 ~ file: GameWindow.js:195 ~ calculus ~ cardsValuesInCalculation 2", cardsValuesInCalculation)
+      } else {
+         console.log('notify player that calculus is wrong')
+         store.billyMessage = {message: 'Провери збир!', font: '800'}
       }
 
-      console.log('combinations 2', combinations, combinations.length)
-      console.log('combinationsIndex 2', combinationsIndex, combinationsIndex.length)
-      console.log('cardsInCalc 2', cardsInCalc, cardsInCalc.length)
+      // console.log('combinations 2', combinations, combinations.length)
+      // console.log('combinationsIndex 2', combinationsIndex, combinationsIndex.length)
+      // console.log('cardsInCalc 2', cardsInCalc, cardsInCalc.length)
    }
 
    const checkCalculus = (playerCard, cardsInCalc) => {
@@ -248,12 +267,12 @@ const GameWindow = () => {
       compInHandCards.map((card, i) => {
          let combi = []
          cardValue = card.calculusValue
-         // console.log("🚀 ~ file: GameWindow.js ~ line 93 ~ compInHandCards.map ~ cardValue", cardValue)
-         let aceInHand = card.calculusValue === 1
+         console.log("🚀 ~ file: GameWindow.js ~ line 93 ~ compInHandCards.map ~ cardValue", cardValue)
+         // let aceInHand = card.calculusValue === 1
 
          store.cardsOnTable.map((tableCardA, a) => {
             // console.log("🚀 ~ file: GameWindow.js ~ line 98 ~ store.cardsOnTable.map ~ tableCardA", tableCardA.calculusValue, cardValue)
-            if (tableCardA.calculusValue === cardValue) {
+            if (tableCardA.calculusValue === cardValue || (tableCardA.calculusValue === 1 && cardValue === 11)) {
                if (combi && combi.includes(card)) { combi.push(tableCardA) } else { combi.push(card, tableCardA) }
             }
             // if (aceInHand && tableCardA.calculusValue === 1 && tableCardA.calculusValue + store.cardsOnTable[a + 1]?.calculusValue > 11) {
@@ -276,9 +295,8 @@ const GameWindow = () => {
                   if (combi && (combi.includes(tableCardA) || combi.includes(tableCardB))) return
                   if (combi && combi.includes(card)) { combi.push(tableCardA, tableCardB) } else { combi.push(card, tableCardA, tableCardB) }
                }
-               let isAceThere = false;
-               if (tableCardA.calculusValue === 1 || tableCardB.calculusValue === 1) { isAceThere = true }
-               if (tableCardA.calculusValue + tableCardB.calculusValue < cardValue && isAceThere) {
+               
+               if (tableCardA.calculusValue + tableCardB.calculusValue < cardValue &&  (tableCardA.calculusValue === 1 || tableCardB.calculusValue === 1)) {
                   if (tableCardA.calculusValue + tableCardB.calculusValue + 10 === cardValue) {
                      // console.log('IT CHECKS FOR ACE !@#@!#@!!@!#$!$@!#@!$@$#$#@$#@@@###')
                      if (combi && (combi.includes(tableCardA) || combi.includes(tableCardB))) return
@@ -292,6 +310,7 @@ const GameWindow = () => {
                   if (tableCardA === tableCardB || tableCardA === tableCardC || tableCardB === tableCardC) return
                   if (tableCardC.calculusValue >= cardValue) return
                   if (tableCardA.calculusValue + tableCardB.calculusValue + tableCardC.calculusValue > cardValue) return
+                 
                   if (tableCardA.calculusValue + tableCardB.calculusValue + tableCardC.calculusValue === cardValue) {
                      if (combi && ((combi.includes(tableCardA) || combi.includes(tableCardB) || combi.includes(tableCardC)))) return
                      if (combi && combi.includes(card)) { combi.push(tableCardA, tableCardB, tableCardC) } else { combi.push(card, tableCardA, tableCardB, tableCardC) }
@@ -310,6 +329,7 @@ const GameWindow = () => {
                   })
                })
             })
+            
 
 
 
@@ -317,29 +337,100 @@ const GameWindow = () => {
             // console.log("🚀 ~ file: GameWindow.js ~ line 156 ~ arr.map ~ combi", combi)
             if (!combi || !combi.length) return
 
-            // ADD ACE AS A SAME CARD  
-            if (card.calculusValue === 11) {
-               // console.log("🚀 ~ CARD VALE IS 11 184")
-               // console.log("🚀 ~ file: GameWindow.js ~ line 184 ~ store.cardsOnTable.map ~ card.calculusValue", card.calculusValue)
-               let isAceInCombi = false
-               let isAceOnTable = false
-
-               combi.length && combi.map(combiCard => { if (combiCard.calculusValue === 1) { isAceInCombi = true } })
-               store.cardsOnTable.map(tableCard => { if (tableCard.calculusValue === 1) { isAceOnTable = true } })
-
-               if (!isAceInCombi && isAceOnTable) {
-
-                  console.log("🚀 ~ 194 TAKEING ACE ====>>>>>")
-                  store.cardsOnTable.map(el => el.calculusValue === 1 && store.cardsOnTable.find(ace => ace.id === el.id && combi.push(ace)))
-
-               }
-
-               // console.log('this is COMBI from ACE 199 combi=', combi)
-
-            }
-
             combinations.push(combi)
          })
+
+         if (cardValue === 1) {
+            store.cardsOnTable.map((tableCardA, a) => {
+               // console.log("🚀 ~ file: GameWindow.js ~ line 98 ~ store.cardsOnTable.map ~ tableCardA", tableCardA.calculusValue, cardValue)
+               if (tableCardA.calculusValue === cardValue) {
+                  if (combi && combi.includes(card)) { combi.push(tableCardA) } else { combi.push(card, tableCardA) }
+               }
+               // if (aceInHand && tableCardA.calculusValue === 1 && tableCardA.calculusValue + store.cardsOnTable[a + 1]?.calculusValue > 11) {
+               //    if (combi && combi.includes(card)) { combi.push(tableCardA) } else { combi.push(card, tableCardA) }
+               // }
+               if (card.calculusValue === 1) {
+                  // console.log('CARD VALUE IS NOW 11')
+                  cardValue = 11
+               }
+               if (tableCardA.calculusValue > cardValue) return
+               // CARD 2
+               store.cardsOnTable.map((tableCardB, b) => {
+                  if (b === a) return
+                  // if (aceInHand && tableCardA.calculusValue === 1 && tableCardA.calculusValue + tableCardB.calculusValue + store.cardsOnTable[b + 1]?.calculusValue > 11) {
+                  //    if (combi && combi.includes(card)) { combi.push(tableCardA) } else { combi.push(card, tableCardA) }
+                  // }
+                  if (tableCardB.calculusValue >= cardValue) return
+                  if (tableCardA.calculusValue + tableCardB.calculusValue > cardValue) return
+                  if (tableCardA.calculusValue + tableCardB.calculusValue === cardValue) {
+                     if (combi && (combi.includes(tableCardA) || combi.includes(tableCardB))) return
+                     if (combi && combi.includes(card)) { combi.push(tableCardA, tableCardB) } else { combi.push(card, tableCardA, tableCardB) }
+                  }
+                  let isAceThere = false;
+                  if (tableCardA.calculusValue === 1 || tableCardB.calculusValue === 1) { isAceThere = true }
+                  if (tableCardA.calculusValue + tableCardB.calculusValue < cardValue && isAceThere) {
+                     if (tableCardA.calculusValue + tableCardB.calculusValue + 10 === cardValue) {
+                        // console.log('IT CHECKS FOR ACE !@#@!#@!!@!#$!$@!#@!$@$#$#@$#@@@###')
+                        if (combi && (combi.includes(tableCardA) || combi.includes(tableCardB))) return
+                        if (combi && combi.includes(card)) { combi.push(tableCardA, tableCardB) } else { combi.push(card, tableCardA, tableCardB) }
+                     }
+                  }
+   
+                  // CARD 3
+                  store.cardsOnTable.map((tableCardC, c) => {
+                     if (c === a || c === b) return
+                     if (tableCardA === tableCardB || tableCardA === tableCardC || tableCardB === tableCardC) return
+                     if (tableCardC.calculusValue >= cardValue) return
+                     if (tableCardA.calculusValue + tableCardB.calculusValue + tableCardC.calculusValue > cardValue) return
+                     if (tableCardA.calculusValue + tableCardB.calculusValue + tableCardC.calculusValue === cardValue) {
+                        if (combi && ((combi.includes(tableCardA) || combi.includes(tableCardB) || combi.includes(tableCardC)))) return
+                        if (combi && combi.includes(card)) { combi.push(tableCardA, tableCardB, tableCardC) } else { combi.push(card, tableCardA, tableCardB, tableCardC) }
+                     }
+   
+                     // CARD 4
+                     store.cardsOnTable.map((tableCardD, d) => {
+                        if (d === a || d === b || d === c) return
+                        if (tableCardD === tableCardA || tableCardD === tableCardB || tableCardD === tableCardC) return
+                        if (tableCardC.calculusValue >= cardValue) return
+                        if (tableCardA.calculusValue + tableCardB.calculusValue + tableCardC.calculusValue + tableCardD.calculusValue > cardValue) return
+                        if (tableCardA.calculusValue + tableCardB.calculusValue + tableCardC.calculusValue + tableCardD.calculusValue === cardValue) {
+                           if (combi && (combi.includes(tableCardA) || combi.includes(tableCardB) || combi.includes(tableCardC) || combi.includes(tableCardD))) return
+                           if (combi && combi.includes(card)) { combi.push(tableCardA, tableCardB, tableCardC, tableCardD) } else { combi.push(card, tableCardA, tableCardB, tableCardC, tableCardD) }
+                        }
+                     })
+                  })
+               })
+   
+   
+   
+   
+               // console.log("🚀 ~ file: GameWindow.js ~ line 156 ~ arr.map ~ combi", combi)
+               if (!combi || !combi.length) return
+   
+               // ADD ACE AS A SAME CARD  
+               // if (card.calculusValue === 1) {
+               //    // console.log("🚀 ~ CARD VALE IS 11 184")
+               //    // console.log("🚀 ~ file: GameWindow.js ~ line 184 ~ store.cardsOnTable.map ~ card.calculusValue", card.calculusValue)
+               //    let isAceInCombi = false
+               //    let isAceOnTable = false
+   
+               //    combi.length && combi.map(combiCard => { if (combiCard.calculusValue === 1) { isAceInCombi = true } })
+               //    store.cardsOnTable.map(tableCard => { if (tableCard.calculusValue === 1) { isAceOnTable = true } })
+   
+               //    if (!isAceInCombi && isAceOnTable) {
+   
+               //       console.log("🚀 ~ 194 TAKEING ACE ====>>>>>")
+               //       store.cardsOnTable.map(el => el.calculusValue === 1 && store.cardsOnTable.find(ace => ace.id === el.id && combi.push(ace)))
+   
+               //    }
+   
+               //    // console.log('this is COMBI from ACE 199 combi=', combi)
+   
+               // }
+   
+               combinations.push(combi)
+            })
+         }
       })
    }
 
@@ -401,9 +492,10 @@ const GameWindow = () => {
 
    const compMove = async () => {
 
+     
       isPlayersMove(false)
       // console.log("🚀 ~ file: GameWindow.js ~ line 88 ~ compMove ~ store.compInHandCards", store.compInHandCards.map(card => card.calculusValue))
-
+      // console.log("🚀 ~ file: GameWindow.js:622 ~ compMove ~ store.compInHandCards", store.compInHandCards)
       // CHECK COMP COMBINATIONS
       checkComputerCalculus(store.compInHandCards)
 
@@ -553,12 +645,14 @@ const GameWindow = () => {
                if (store.overallResultPlayer > store.overallResultComputer) {
                   // console.log('DECLARE PLAYER AS A WINNER')
                   setShowWinner('player')
+                  addAlltimePoint('player')
                   // newGameSetup(store)
                   return
                }
                if (store.overallResultComputer > store.overallResultPlayer) {
                   // console.log('DECLARE COMPUTER AS A WINNER')
                   setShowWinner('computer')
+                  addAlltimePoint('computer')
                   // newGameSetup(store)
                   return
                }
@@ -577,13 +671,16 @@ const GameWindow = () => {
             else {
                if (store.overallResultPlayer === +store.gamesToPlay) {
                   // console.log('DECLARE PLAYER AS A WINNER')
+                  
                   setShowWinner('player')
+                  addAlltimePoint('player')
                   // newGameSetup(store)
                   return
                }
                if (store.overallResultComputer === +store.gamesToPlay) {
                   // console.log('DECLARE COMPUTER AS A WINNER')
                   setShowWinner('computer')
+                  addAlltimePoint('computer')
                   // newGameSetup(store)
                   return
                }
@@ -615,10 +712,16 @@ const GameWindow = () => {
 
       isPlayersMove(true)
    }
+      
 
    const playerCardClickHandler = (card, id, playerCard) => {
 
       if (!playersMove) return
+      
+      // let curentLocalStorage = JSON.parse(localStorage.getItem('allTimeScore'))
+      // let newScore = [{'Bili': curentLocalStorage[0].Bili, 'Player': curentLocalStorage[0].Player + 1}]
+      // // curentLocalStorage.push(newScore)
+      // localStorage.setItem('allTimeScore', JSON.stringify(newScore));
 
       // THROW CARD - NO CALC
       if (store.cardsInCalculation.length === 0) {
@@ -626,7 +729,7 @@ const GameWindow = () => {
 
          store.cardsOnTable.push(store.playerInHandCards.find(playerCard => playerCard.id === id))
          _.remove(store.playerInHandCards, (obj => obj.id === id))
-
+         store.billyMessage = {message: 'Пробај Лаки!', font: '400'}
          isPlayersMove(false)
          compMove()
          return
@@ -770,7 +873,7 @@ const GameWindow = () => {
                      <div className={'opponentAvatarWrapper'}>
                         <Avatar small={true}></Avatar>
                      </div>
-                     <TalkCloud small={true}></TalkCloud>
+                     <TalkCloud></TalkCloud>
                   </div>
                </div>
                <div className={'opponentFieldBuffer'}></div>

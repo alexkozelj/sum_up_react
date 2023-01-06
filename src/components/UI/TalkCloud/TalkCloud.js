@@ -1,22 +1,33 @@
+import React from 'react';
 import * as Styled from './TalkCloud.styled.js';
 import talkCloud from './../../../images/talkCloud-min.png'
+import { StoreContext } from './../../../store/store'
+import { useObserver } from 'mobx-react'
 
 const TalkCloud = (props) => {
-   return (
-      <Styled.TalkCloud small={props.small}>
-         {/* <div className="container"> */}
-            {/* <div className="wrapper"> */}
+   const store = React.useContext(StoreContext)
 
-               <div className="cloudWrapper">
-                  <img
-                     alt="TalkCloud"
-                     src={talkCloud}
-                  >
-                  </img>
-                  <div className={'message1'}>Пробај Лаки! </div>
-               </div>
-               
-            {/* </div> */}
+   return (
+      <Styled.TalkCloud info={store.billyMessage}>
+         {/* <div className="container"> */}
+         {/* <div className="wrapper"> */}
+
+         <div className="cloudWrapper">
+            <img
+               alt="TalkCloud"
+               src={talkCloud}
+            >
+            </img>
+            
+            {
+               useObserver(() =>
+               <div className={'message1'} >{store.billyMessage.message}</div>
+                  
+               )
+            }
+         </div>
+
+         {/* </div> */}
          {/* </div> */}
       </Styled.TalkCloud>
    );

@@ -43,11 +43,11 @@ const left6 = "50px";
 export const GameWindow = styled.div`
   display: flex;
   width: 100%;
-  height: 85%;
+  height: 85vh;
   padding: 10px;
   justify-content: center;
   /* background-color: orange; */
-  background-color: #77bd98;
+  /* background-color: #77bd98; */
   /* text-align: center; */
   /* display: grid; */
   > div {
@@ -81,7 +81,7 @@ export const GameWindow = styled.div`
     justify-content: center;
     align-items: flex-end;
     flex-direction: row;
-    height: 18%;
+    height: fit-content;
     /* margin: 1vh 0 3vh 0; */
   }
 

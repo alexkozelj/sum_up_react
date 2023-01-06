@@ -72,6 +72,9 @@ export const TalkCloud = styled.div`
 
    .message1 {
       font-size: 16px;
+      /* background-color: lightgreen; */
+      font-weight: ${props => props.info.font};
+      color: ${props => props.info.font === '800' ? '#770dc3' : 'black'};
       position: relative;
       bottom: 3em;
       padding: 0 2em 0 2.3em;

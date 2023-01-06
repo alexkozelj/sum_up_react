@@ -3,44 +3,42 @@
 
 const dealCards = (store) => {
    // console.log("🚀 ~ file: dealCards.js:5 ~ dealCards ~ store.fullDeck", store.fullDeck)
+   // let computer = store.compInHandCards
+   // let player = store.playerInHandCards
+   // let table = store.cardsOnTable
 
-   // let playerCard1 = "Q"
-   // let playerCard2 = "A"
-   // let tableCard1 = "7"
-   // let tableCard2 = "6"
-   // let tableCard3 = "Q"
-   // let tableCard4 = "A"
+   // const getCard = (who, rank, suit, id) => {
+   //    for (let i = 0; i < store.fullDeck.length; i++) {
+   //       if (store.fullDeck[i].rank === rank && store.fullDeck[i].suit === suit) {
+   //          store.fullDeck[i].id = id
+   //          store.addToArray(who, store.fullDeck[i])
+   //          break
+   //       }
+   //    }
+   // }
 
-   // let ace = store.fullDeck.findIndex(item => item.rank === playerCard1)
-   // store.fullDeck.splice(ace, 1).map(arr => store.addToArray(store.playerInHandCards, arr))
+   // // COMPUTER
+   // getCard(computer, "A", "hearts", 53)
+   // getCard(computer, "3", "diamonds", 54)
 
-   // let aceInHand = store.fullDeck.findIndex(item => item.rank === playerCard2)
-   // store.fullDeck.splice(aceInHand, 1).map(arr => store.addToArray(store.playerInHandCards, arr))
+   // // PLAYER
+   // getCard(player, "Q", "diamonds", 55)
+   // getCard(player, "2", "diamonds", 56)
 
-   // let seven = store.fullDeck.findIndex(item => item.rank === tableCard1)
-   // store.fullDeck.splice(seven, 1).map(arr => store.addToArray(store.cardsOnTable, arr))
-
-   // let four = store.fullDeck.findIndex(item => item.rank === tableCard2)
-   // store.fullDeck.splice(four, 1).map(arr => store.addToArray(store.cardsOnTable, arr))
-
-   // let ace2 = store.fullDeck.findIndex(item => item.rank === tableCard3)
-   // store.fullDeck.splice(ace2, 1).map(arr => store.addToArray(store.cardsOnTable, arr))
-
-   // let ace3 = store.fullDeck.findIndex(item => item.rank === tableCard4)
-   // store.fullDeck.splice(ace3, 1).map(arr => store.addToArray(store.cardsOnTable, arr))
+   // // TABLE
+   // getCard(table, "J", "hearts", 67)
+   // getCard(table, "6", "hearts", 68)
+   // getCard(table, "A", "spades", 69)
+   // getCard(table, "10", "clubs", 70)
+   // getCard(table, "Q", "clubs", 71)
 
    
-
-   // store.fullDeck.splice(0, 6).map(arr => store.addToArray(store.compInHandCards, arr))
-   // store.fullDeck.splice(0, 5).map(arr => store.addToArray(store.playerInHandCards, arr))
-   // store.fullDeck.splice(0, 3).map(arr => store.addToArray(store.cardsOnTable, arr))
-   // store.fullDeck = []
-
+   
    store.fullDeck.splice(0, 6).map(arr => store.addToArray(store.compInHandCards, arr))
    store.fullDeck.splice(0, 6).map(arr => store.addToArray(store.playerInHandCards, arr))
    store.fullDeck.splice(0, 4).map(arr => store.addToArray(store.cardsOnTable, arr))
    // store.fullDeck = []
-   
+
 }
 
 export default dealCards

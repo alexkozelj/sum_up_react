@@ -18,6 +18,20 @@ const StartWindow = (props) => {
       store.startWindow = false 
    }
 
+   let currentLocalStorage = JSON.parse(localStorage.getItem('allTimeScore'))
+   console.log("🚀 ~ file: StartWindow.js:22 ~ StartWindow ~ currentLocalStorage", currentLocalStorage)
+   let allTimeBili
+   let allTimePlayer
+   if (currentLocalStorage) {
+      allTimeBili = currentLocalStorage[0]?.Bili && currentLocalStorage[0].Bili
+      allTimePlayer = currentLocalStorage[0]?.Player
+   } else {
+      allTimeBili = 0
+      allTimePlayer = 0
+   }
+   console.log("🚀 ~ file: StartWindow.js:24 ~ StartWindow ~ allTimeBili", allTimeBili)
+   console.log("🚀 ~ file: StartWindow.js:26 ~ StartWindow ~ allTimePlayer", allTimePlayer)
+
    const gamesToPlay = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
 
    const gameTypeHandler = (type) => {
@@ -35,7 +49,15 @@ const StartWindow = (props) => {
       <Styled.StartWindow>
          <h1>Твој Противник:</h1>
          <Avatar></Avatar>
+         <h3 style={{ fontFamily: 'cursive'}}>Вечити дерби:</h3>
+         <div style={{width: '150px', display: 'flex', flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center', fontWeight: '800', }}>
+         <span>Ти:  {allTimePlayer}</span>
+         <span>Били:  {allTimeBili}</span>
+         </div>
+         
+         
          <h3> Pobednik je onaj sa najvise:</h3>
+
 
          {
             useObserver(() =>
