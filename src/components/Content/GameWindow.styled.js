@@ -82,7 +82,11 @@ export const GameWindow = styled.div`
     align-items: flex-end;
     flex-direction: row;
     height: fit-content;
+    padding-top: 10px;
     /* margin: 1vh 0 3vh 0; */
+    @media (max-width: 1440px) {
+      padding-top: 0;
+    }
   }
 
   .opponentFieldContainer {

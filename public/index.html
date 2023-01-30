@@ -2,9 +2,19 @@
 <html lang="en">
 
 <head>
+   <!-- Google Tag Manager -->
+   <script>(function (w, d, s, l, i) {
+         w[l] = w[l] || []; w[l].push({
+            'gtm.start':
+               new Date().getTime(), event: 'gtm.js'
+         }); var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+               'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', 'GTM-NWTX8TG');</script>
+   <!-- End Google Tag Manager -->
    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
    <meta name="description"
-      content="Igraj tablic protiv kompjutera bez reklama potpuno besplatno! Budi spreman - Bili ne voli da gubi!" />
+      content="Tablić - Igraj tablic protiv kompjutera bez reklama potpuno besplatno! Budi spreman - Bili ne voli da gubi!" />
    <meta name="Keywords" content="tablic, karte, igra, poeni, protiv kompjutera, besplatno" />
    <meta name="Geography" content="Belgrade, Serbia" />
    <meta name="Language" content="Serbian" />
@@ -23,7 +33,7 @@
    <meta property="og:title" content="Tablic Kartaska Igra">
    <meta property="og:type" content="website">
    <meta property="og:description"
-      content="Igraj tablic protiv kompjutera bez reklama potpuno besplatno! Budi spreman - Bili ne voli da gubi!">
+      content="Tablić - Igraj tablic protiv kompjutera bez reklama potpuno besplatno! Budi spreman - Bili ne voli da gubi!">
 
    <!--
       manifest.json provides metadata used when your web app is installed on a
@@ -39,11 +49,31 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-   <title> Tablic Igra Karte | Protiv kompjutera bez reklama | Tablanet</title>
+   <title>Tablić | Tablic igra karte | Protiv kompjutera bez reklama | Tablanet</title>
 
    <style>
+      @media (max-height : 630px) {
+         .landscape-mobile-container {
+            background-color: #56ad42;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+         }
+
+         #root,
+         .content {
+            display: none !important;
+         }
+      }
+
+
       body {
+
          /* overflow: visible; */
+         /* for mobile landscape */
+
       }
 
       #root {
@@ -258,23 +288,17 @@
          position: relative;
          top: -13px;
       }
-
-
    </style>
 </head>
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-LC3939K2PC"></script>
-<script>
-   window.dataLayer = window.dataLayer || [];
-   function gtag() { dataLayer.push(arguments); }
-   gtag('js', new Date());
 
-   gtag('config', 'G-LC3939K2PC');
-</script>
 
 <body>
-
+   <!-- Google Tag Manager (noscript) -->
+   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NWTX8TG" height="0" width="0"
+         style="display:none;visibility:hidden"></iframe></noscript>
+   <!-- End Google Tag Manager (noscript) -->
+   
    <div id="modal"></div>
    <div id="root"></div>
    <div class="content">
@@ -361,6 +385,10 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+   <div class="landscape-mobile-container">
+      <h1>Окрени мобилни усправно!</h1>
+      <h1>:)</h1>
+   </div>
 </body>
 
 <script>
