@@ -28,14 +28,15 @@ const Scoreboard = (props) => {
 
    return (
 
-      <Styled.Scoreboard>
+      <Styled.Scoreboard gameType={store.gameType}>
 
          {/* SCOREBOARD */}
 
          <div className={'combiWrapper'}>{props.combi}</div>
          <div className={"gameInfoContainer"}>
             <header className={"gameInfoHeader"}>Инфо</header>
-            <div className={"gameInfo"}>Игра: {useObserver(() => store.gameNumber)}|{useObserver(() => store.gamesToPlay)}</div>
+            <div className={"gameInfoGames"}>Играмо до: <strong>{useObserver(() => store.gamesToPlay)}</strong></div>
+            <div className={"gameInfoPoints"}>Игра: {useObserver(() => store.gameNumber)}|{useObserver(() => store.gamesToPlay)}</div>
             <div className={"dealInfo"}>Дељење: {useObserver(() => store.dealNumber)}/4</div>
          </div>
          <div className={"resultContainer"}>

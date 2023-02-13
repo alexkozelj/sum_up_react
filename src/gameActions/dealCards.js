@@ -17,20 +17,20 @@ const dealCards = (store) => {
    //    }
    // }
 
-   // // COMPUTER
+   // // // COMPUTER
    // getCard(computer, "A", "hearts", 53)
-   // getCard(computer, "3", "diamonds", 54)
+   // // getCard(computer, "3", "diamonds", 54)
 
-   // // PLAYER
-   // getCard(player, "Q", "diamonds", 55)
+   // // // PLAYER
+   // getCard(player, "K", "diamonds", 55)
    // getCard(player, "2", "diamonds", 56)
 
-   // // TABLE
-   // getCard(table, "J", "hearts", 67)
-   // getCard(table, "6", "hearts", 68)
-   // getCard(table, "A", "spades", 69)
-   // getCard(table, "10", "clubs", 70)
-   // getCard(table, "Q", "clubs", 71)
+   // // // TABLE
+   // getCard(table, "5", "hearts", 67)
+   // getCard(table, "8", "spades", 69)
+   // getCard(table, "9", "hearts", 68)
+   // getCard(table, "Q", "clubs", 70)
+   // getCard(table, "A", "clubs", 71)
 
    
    

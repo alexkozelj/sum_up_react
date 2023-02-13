@@ -46,6 +46,8 @@ export const Playground = styled.div`
     width: 64px;
     height: 113px;
     /* cursor: pointer; */
+    /* transition: all 0.1s ease-out; */
+
     @media (max-width: 440px) {
       width: 44px;
       height: 75px;

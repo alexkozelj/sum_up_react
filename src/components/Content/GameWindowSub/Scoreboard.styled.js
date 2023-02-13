@@ -69,10 +69,16 @@ export const Scoreboard = styled.div`
     }
   }
 
-  .gameInfo {
+  .gameInfoGames {
+    display: ${props => props.gameType !== 'games' && 'none'};
     border-bottom: 1px solid white;
   }
-  .gameInfo,
+  .gameInfoPoints {
+    display: ${props => props.gameType === 'games' && 'none'};
+    border-bottom: 1px solid white;
+  }
+  .gameInfoGames,
+  .gameInfoPoints,
   .dealInfo {
     text-align: center;
     font-size: 0.7em;
@@ -176,6 +182,7 @@ export const Scoreboard = styled.div`
    font-size: 15px;
    position: absolute;
    left: 62%;
+   
    /* transform: translate(-50%, -50%); */
    animation-name: fade-in-up;
    animation-duration: 2s;

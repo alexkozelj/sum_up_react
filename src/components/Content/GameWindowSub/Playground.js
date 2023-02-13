@@ -65,6 +65,16 @@ const Playground = (props) => {
                   </div>
                </ModalPlayground>
             }
+            {props.showGamePointWinner &&
+               <ModalPlayground>
+                  <h2> Ко добија ову рунду?</h2>
+                  <h1>{props.showWhoHasMoreCards}</h1>
+                  <div>
+                     {props.showGamePointWinner === "Ти" && <div><h1>Браво! Ову рунду добијаш ТИ!</h1></div>}
+                     {props.showGamePointWinner === "Били" && <h1>Ову рунду добија БИЛИ!</h1>}
+                  </div>
+               </ModalPlayground>
+            }
             <div className={"cardsWrapper"}>
 
                {
