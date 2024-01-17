@@ -1,15 +1,52 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
-  "icons": [
+  "name": "Tablic Karte Igra",
+  "short_name": "Tablic",
+  "dir": "ltr",
+  "lang": "en-US",
+  "orientation": "portrait",
+  "start_url": "/",
+  "background_color": "#ffffff",
+  "theme_color": "#000000",
+  "display": "standalone",
+  "description": "Card game Tablic where a user plays against a computer aka Bili Piton.",
+  "screenshots": [
     {
-      "src": "favicon2.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
+      "url": "Bili-kaze-Ajde2.png",
+      "form_factor": "wide"
     }
   ],
-  "start_url": ".",
-  "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "icons": [
+    {
+      "src": "favicon-16x16.png",
+      "sizes": "16x16"
+    },
+    {
+      "src": "favicon-24x24",
+      "sizes": "24x24"
+    },
+    {
+      "src": "favicon-32x32.png",
+      "sizes": "32x32"
+    },
+    {
+      "src": "favicon-64x64.png",
+      "sizes": "64x64"
+    },
+    {
+      "src": "favicon-196x196.png",
+      "sizes": "196x196",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "favicon-144x144.png",
+      "sizes": "144x144",
+      "purpose": "any"
+    },
+    {
+      "src": "favicon-512x512.png",
+      "sizes": "512x512",
+      "purpose": "any"
+    }
+  ]
 }

@@ -19,7 +19,7 @@ const StartWindow = (props) => {
    }
 
    let currentLocalStorage = JSON.parse(localStorage.getItem('allTimeScore'))
-   console.log("🚀 ~ file: StartWindow.js:22 ~ StartWindow ~ currentLocalStorage", currentLocalStorage)
+   // console.log("🚀 ~ file: StartWindow.js:22 ~ StartWindow ~ currentLocalStorage", currentLocalStorage)
    let allTimeBili
    let allTimePlayer
    if (currentLocalStorage) {
@@ -29,8 +29,8 @@ const StartWindow = (props) => {
       allTimeBili = 0
       allTimePlayer = 0
    }
-   console.log("🚀 ~ file: StartWindow.js:24 ~ StartWindow ~ allTimeBili", allTimeBili)
-   console.log("🚀 ~ file: StartWindow.js:26 ~ StartWindow ~ allTimePlayer", allTimePlayer)
+   // console.log("🚀 ~ file: StartWindow.js:24 ~ StartWindow ~ allTimeBili", allTimeBili)
+   // console.log("🚀 ~ file: StartWindow.js:26 ~ StartWindow ~ allTimePlayer", allTimePlayer)
 
    const gamesToPlay = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
 
@@ -42,7 +42,7 @@ const StartWindow = (props) => {
 
    const numberOfGamesHandler = (numberOfGames) => {
       if ( numberOfGames ) { store.gamesToPlay = numberOfGames }
-      console.log('start window, games to play', store.gamesToPlay)
+      // console.log('start window, games to play', store.gamesToPlay)
    }
 
    return (

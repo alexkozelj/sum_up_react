@@ -16,7 +16,7 @@ const Header = () => {
 
    return (
       <Styled.Navbar>
-         <Styled.Logo src={logo} />
+         <Styled.Logo alt={'Logo igre'} src={logo} />
          <Styled.ButtonWrapper>
            {!store.startWindow && <NavbarButton action={navbarButtonClickHandler}>{'Нова Игра'}</NavbarButton>}
          </Styled.ButtonWrapper>

@@ -18,7 +18,7 @@ const App = () => {
    useEffect(() => {
 
       let currentLocalStorage = JSON.parse(localStorage.getItem('allTimeScore')) || [];
-      console.log("🚀 ~ file: App.js:19 ~ useEffect ~ currentLocalStorage", currentLocalStorage)
+      // console.log("🚀 ~ file: App.js:19 ~ useEffect ~ currentLocalStorage", currentLocalStorage)
 
       let initStorage = { 'Bili': 0, 'Player': 0 }
 
