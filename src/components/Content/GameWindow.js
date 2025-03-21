@@ -212,7 +212,7 @@ const GameWindow = () => {
          // console.log("🚀 ~ file: GameWindow.js:193 ~ calculus ~ combinations.length", combinations.length)
          // console.log("🚀 ~ file: GameWindow.js:195 ~ calculus ~ cardsValuesInCalculation", cardsValuesInCalculation)
          cardsValuesInCalculation.splice(0, cardsValuesInCalculation.length)
-         store.billyMessage = { message: 'Пробај Лаки!', font: '400' }
+         store.billyMessage = { message: 'Пумпај Лаки!', font: '400' }
          // console.log("🚀 ~ file: GameWindow.js:195 ~ calculus ~ cardsValuesInCalculation 2", cardsValuesInCalculation)
       } else {
          console.log('notify player that calculus is wrong')
@@ -754,7 +754,7 @@ const GameWindow = () => {
 
          store.cardsOnTable.push(store.playerInHandCards.find(playerCard => playerCard.id === id))
          _.remove(store.playerInHandCards, (obj => obj.id === id))
-         store.billyMessage = { message: 'Пробај Лаки!', font: '400' }
+         store.billyMessage = { message: 'Пумпај Лаки!', font: '400' }
          isPlayersMove(false)
          compMove()
          return

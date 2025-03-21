@@ -167,7 +167,7 @@
       .content button {
          position: relative;
          overflow: hidden;
-         width: 200px;
+         width: 230px;
          height: 5px;
          margin: 25px 0;
          border-radius: 8px;
@@ -235,7 +235,7 @@
 
       .content button span:nth-child(3) {
          height: 3px;
-         width: 200px;
+         width: 230px;
          right: -200px;
          bottom: 0px;
          background: linear-gradient(to left, rgba(0, 0, 0, 0), #3fe6f5);
@@ -283,10 +283,26 @@
          box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.4);
       }
 
+      .buttonStart {
+         width: 100%;
+      }
+
       .buttonLabelDiv {
          height: 15px;
+         width: 100%;
          position: relative;
          top: -13px;
+      }
+      .pumpaj-do-kraja {
+         display: flex;
+         flex-direction: column;
+         justify-content: center;
+         background: #8ecc97;
+         color: black;
+         border: 2px solid #ddff31;
+         border-radius: 20px;
+         padding: 24px 36px;
+         margin: 20px 0;
       }
    </style>
 </head>
@@ -312,13 +328,19 @@
                </div>
          </div>
       </div>
+      <div class="pumpaj-do-kraja">
+         <h1>Волиш таблић?</h1>
+         <h1>Знаш да 2 + 2 дају 4 ?!</h1>
+          <h1>Били је ❤️ уз студенте!</h1>
+         <h1>А ти? </h1>
+      </div>
 
-      <button onclick="start()">
+      <button class="buttonStart" onclick="start()">
          <span></span>
          <span></span>
          <span></span>
          <span></span>
-         <div class="buttonLabelDiv">IGRAJ !</div>
+         <div class="buttonLabelDiv">ЗАЈЕДНО! ❤️</div>
       </button>
 
       <article>

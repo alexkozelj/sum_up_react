@@ -14,7 +14,7 @@ export const StoreProvider = ({ children }) => {
 
       disableNavbarButton: false,
 
-      billyMessage: {message: 'Пробај Лаки!', color: 'black', fontSize: '16px'},
+      billyMessage: {message: 'Пумпај Лаки!', color: 'black', fontSize: '16px'},
 
       startWindow: true,
 
